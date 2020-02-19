@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech on where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/categories/tech/</link>
+    <link>http://suwenjiang.github.io/categories/tech/</link>
     <description>Recent content in Tech on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 21 Oct 2019 16:10:17 +1000</lastBuildDate>
     
-	<atom:link href="http://blog.legooz.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://suwenjiang.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using ngix docker to host static files</title>
-      <link>http://blog.legooz.com/post/deploy_static_files_in_nginx_docker/</link>
+      <link>http://suwenjiang.github.io/post/deploy_static_files_in_nginx_docker/</link>
       <pubDate>Mon, 21 Oct 2019 16:10:17 +1000</pubDate>
       
-      <guid>http://blog.legooz.com/post/deploy_static_files_in_nginx_docker/</guid>
+      <guid>http://suwenjiang.github.io/post/deploy_static_files_in_nginx_docker/</guid>
       <description>&lt;h2 id=&#34;induction&#34;&gt;Induction&lt;/h2&gt;
 
 &lt;p&gt;As needs to work in a new role for realse management. Recently, I&amp;rsquo;ve been trying to know about some main CI/CD tools in the market, and container technology as well.
@@ -25,10 +25,10 @@ When talking about the container, invetably we have to mention the &lt;strong&gt
     
     <item>
       <title>windows docker mount shared directory</title>
-      <link>http://blog.legooz.com/post/docker_mount_share_directory/</link>
+      <link>http://suwenjiang.github.io/post/docker_mount_share_directory/</link>
       <pubDate>Sun, 29 Oct 2017 14:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/docker_mount_share_directory/</guid>
+      <guid>http://suwenjiang.github.io/post/docker_mount_share_directory/</guid>
       <description>In docker for windows:
  Mount d:/logs directory into ubuntu contain as /data   docker run -it -v d:/Logs:/data ubuntu /bin/sh
  or
@@ -38,10 +38,10 @@ When talking about the container, invetably we have to mention the &lt;strong&gt
     
     <item>
       <title>Moving saved Projects Between Sites</title>
-      <link>http://blog.legooz.com/post/moving-saved-projects-between-sites/</link>
+      <link>http://suwenjiang.github.io/post/moving-saved-projects-between-sites/</link>
       <pubDate>Fri, 21 Jul 2017 14:17:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/moving-saved-projects-between-sites/</guid>
+      <guid>http://suwenjiang.github.io/post/moving-saved-projects-between-sites/</guid>
       <description>Information Details Overview When performing site copy operation, the saved projects would be missing in newly copied site. For by default, the projects associated with the specific site.
 So it would be necessary to modify the documents binding site.
 Solution  Find the tool &amp;ldquo;Elasticsearch.Manager.exe&amp;rdquo; in below address:   c:\Program Files\Latitude Geographics\Geocortex Core\Diagnostics\Manager for Elasticsearch
@@ -50,10 +50,10 @@ Solution  Find the tool &amp;ldquo;Elasticsearch.Manager.exe&amp;rdquo; in below
     
     <item>
       <title>快速了解mongodb的空间操作</title>
-      <link>http://blog.legooz.com/post/mongodb-spatial-query/</link>
+      <link>http://suwenjiang.github.io/post/mongodb-spatial-query/</link>
       <pubDate>Tue, 14 Jun 2016 09:50:21 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/mongodb-spatial-query/</guid>
+      <guid>http://suwenjiang.github.io/post/mongodb-spatial-query/</guid>
       <description>&lt;p&gt;遥想当年做毕业设计的时候，为了写论文而写论文，定了个mongodb 与oracle的互操作。当时使用的mongodb是无法对空间数据进行操作的。当时单纯的使用GDAL将shapelife文件转换文本表达以mongodb进行存储。&lt;/p&gt;
 
 &lt;p&gt;而现在看mongodb的空间操作，虽然没有办法和ArcSDE和PostGIS相比，但是比没有强呀。&lt;/p&gt;
@@ -63,19 +63,19 @@ Solution  Find the tool &amp;ldquo;Elasticsearch.Manager.exe&amp;rdquo; in below
     
     <item>
       <title>需要了解的geojson和操作工具</title>
-      <link>http://blog.legooz.com/post/geojson/</link>
+      <link>http://suwenjiang.github.io/post/geojson/</link>
       <pubDate>Mon, 29 Feb 2016 14:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/geojson/</guid>
+      <guid>http://suwenjiang.github.io/post/geojson/</guid>
       <description>geojson对象 Geojson的几何对象 包含Point，Linestring，Polygon，multiPoint，MultiLinest</description>
     </item>
     
     <item>
       <title>python 中几个层次的中文编码</title>
-      <link>http://blog.legooz.com/post/python-code/</link>
+      <link>http://suwenjiang.github.io/post/python-code/</link>
       <pubDate>Fri, 21 Aug 2015 15:51:30 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/python-code/</guid>
+      <guid>http://suwenjiang.github.io/post/python-code/</guid>
       <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
 
 &lt;p&gt;一直不太喜欢使用命令行，所以去年年底的技术创新中，使用TkInter来开发小工具。结果花费了大量的时间来学习TkInter ui的使用。
@@ -85,10 +85,10 @@ Solution  Find the tool &amp;ldquo;Elasticsearch.Manager.exe&amp;rdquo; in below
     
     <item>
       <title>postGIS安装与shp文件的存储示范</title>
-      <link>http://blog.legooz.com/post/postgisinstallation/</link>
+      <link>http://suwenjiang.github.io/post/postgisinstallation/</link>
       <pubDate>Thu, 07 Mar 2013 09:56:31 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/postgisinstallation/</guid>
+      <guid>http://suwenjiang.github.io/post/postgisinstallation/</guid>
       <description>&lt;p&gt;自己装PostGIS已经有很多次了，由于没有记录，过一段时间就忘掉了。今天就写下本文记录。&lt;/p&gt;
 
 &lt;p&gt;前言：&lt;/p&gt;

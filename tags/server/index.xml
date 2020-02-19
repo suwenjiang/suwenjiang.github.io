@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>server on where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/tags/server/</link>
+    <link>http://suwenjiang.github.io/tags/server/</link>
     <description>Recent content in server on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 13 Oct 2015 14:10:52 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.legooz.com/tags/server/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://suwenjiang.github.io/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>arcgis server/portal 日志格式化脚本</title>
-      <link>http://blog.legooz.com/post/log-format-tool/</link>
+      <link>http://suwenjiang.github.io/post/log-format-tool/</link>
       <pubDate>Tue, 13 Oct 2015 14:10:52 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/log-format-tool/</guid>
+      <guid>http://suwenjiang.github.io/post/log-format-tool/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;通过arcgis for server manager中的logs选项卡可以查看当前站点的日志。其该页面提供了友好的日志显示方式。
@@ -25,10 +25,10 @@
     
     <item>
       <title>arcgis server管理工具之批量发布动态地图服务</title>
-      <link>http://blog.legooz.com/post/batchpublishtools/</link>
+      <link>http://suwenjiang.github.io/post/batchpublishtools/</link>
       <pubDate>Wed, 26 Aug 2015 16:48:24 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/batchpublishtools/</guid>
+      <guid>http://suwenjiang.github.io/post/batchpublishtools/</guid>
       <description>&lt;p&gt;update0918:
 1. 修复了bug 创建链接文件出错
 2. 修复了异常，在24011的警告已处理的情况下，依然出现提示
@@ -40,10 +40,10 @@
     
     <item>
       <title>ArcGIS for Server 自定义打印两种方法</title>
-      <link>http://blog.legooz.com/post/printingtools/</link>
+      <link>http://suwenjiang.github.io/post/printingtools/</link>
       <pubDate>Tue, 17 Sep 2013 11:20:02 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/printingtools/</guid>
+      <guid>http://suwenjiang.github.io/post/printingtools/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;使用web打印会遇到中文乱码，这是因为使用的打印模板中，配图要素的字体选择了非中文友好字体，如下图所示。模板字体改为中文友好字体，再执行下面的自定义模板步骤&lt;/p&gt;</description>

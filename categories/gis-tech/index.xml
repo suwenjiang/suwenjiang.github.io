@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GIS Tech on where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/categories/gis-tech/</link>
+    <link>http://suwenjiang.github.io/categories/gis-tech/</link>
     <description>Recent content in GIS Tech on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 18 Aug 2017 09:35:22 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.legooz.com/categories/gis-tech/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://suwenjiang.github.io/categories/gis-tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Geocortex-How to pass parameter to the report</title>
-      <link>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</link>
+      <link>http://suwenjiang.github.io/post/how-to-pass-parameter-to-report/</link>
       <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</guid>
+      <guid>http://suwenjiang.github.io/post/how-to-pass-parameter-to-report/</guid>
       <description>Details Overview In some case needs to pass parameter value from the viewer or workflow to the report designer to populate controls.
 Solution There are two ways:
 1.Linking with DataField
@@ -27,30 +27,30 @@ Solution There are two ways:
     
     <item>
       <title>Unable to display Distance and Draw Option for compact measurement tool</title>
-      <link>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</link>
+      <link>http://suwenjiang.github.io/post/unable-to-display-distance-and-draw-option/</link>
       <pubDate>Thu, 17 Aug 2017 11:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</guid>
+      <guid>http://suwenjiang.github.io/post/unable-to-display-distance-and-draw-option/</guid>
       <description>Details Overview when clicking the Distance/Area measurement tool in compact toolbar, it is not able to see the option of changing measurement units. Same as Draw palette tool. Just as below shows:
 Solution Already resolved in GVH 2.9.1</description>
     </item>
     
     <item>
       <title>Unable to set the fill color for markup polygon</title>
-      <link>http://blog.legooz.com/post/unable-to-set-the-fill-color-for-the-markup-polygon/</link>
+      <link>http://suwenjiang.github.io/post/unable-to-set-the-fill-color-for-the-markup-polygon/</link>
       <pubDate>Thu, 17 Aug 2017 11:34:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/unable-to-set-the-fill-color-for-the-markup-polygon/</guid>
+      <guid>http://suwenjiang.github.io/post/unable-to-set-the-fill-color-for-the-markup-polygon/</guid>
       <description>Details Overview when drawing a markup polygon with styles other than solid, the fill color would be black constantly in the viewer no matter what color you set.
 Solution This is expected behavior. Unfortunately changing the color for the &amp;lsquo;Fill Style&amp;rsquo; other than &amp;lsquo;Solid&amp;rsquo; is not supported by ESRI&amp;rsquo;s Javascript API. https://developers.arcgis.com/javascript/3/jsapi/simplefillsymbol-amd.html The &amp;lsquo;color&amp;rsquo; property under the &amp;lsquo;Property Details&amp;rsquo; states that this only applies with the SimpleFillSymbol.style = &amp;lsquo;STYLE_SOLID&amp;rsquo;.</description>
     </item>
     
     <item>
       <title>Long Feature Description Missing</title>
-      <link>http://blog.legooz.com/post/long-description-missing/</link>
+      <link>http://suwenjiang.github.io/post/long-description-missing/</link>
       <pubDate>Mon, 17 Jul 2017 14:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/long-description-missing/</guid>
+      <guid>http://suwenjiang.github.io/post/long-description-missing/</guid>
       <description>Information Details Overview In GVH 2.9, when only setting the Feature Long Descritpion, then performing identify operation would get description missing. For example:
 .
 However, when configuring the Feature Descrtipion and Feature Long Description at the same time, it would get the expected result as below shows:
@@ -61,20 +61,20 @@ However, when configuring the Feature Descrtipion and Feature Long Description a
     
     <item>
       <title>Tools Button  Keeps Showing</title>
-      <link>http://blog.legooz.com/post/tool-keep-showing/</link>
+      <link>http://suwenjiang.github.io/post/tool-keep-showing/</link>
       <pubDate>Mon, 17 Jul 2017 14:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/tool-keep-showing/</guid>
+      <guid>http://suwenjiang.github.io/post/tool-keep-showing/</guid>
       <description>Details Overview When the Tools setting open when at startup. The tools button keeps showing just as below shows:
 Solution Already resolved in GVH 2.9</description>
     </item>
     
     <item>
       <title>Adding Existing PAC into GE</title>
-      <link>http://blog.legooz.com/post/add-existing-pac-to-ge/</link>
+      <link>http://suwenjiang.github.io/post/add-existing-pac-to-ge/</link>
       <pubDate>Thu, 13 Jul 2017 14:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/add-existing-pac-to-ge/</guid>
+      <guid>http://suwenjiang.github.io/post/add-existing-pac-to-ge/</guid>
       <description> Details Overview How to add existing proxy file .PAC into Geocortex?
 Solution This can be done using the web.configs of the REST and Manager applications(C:\Program Files (x86)\Latitude Geographics\Geocortex Essentials\Default\REST Elements\Manager\web.config) by using the following in the system.net section as below.
 &amp;lt;system.net&amp;gt; &amp;lt;defaultProxy useDefaultCredentials=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;proxy usesystemdefault=&amp;quot;False&amp;quot; scriptLocation=&amp;quot;http://pacproxy.com.au/proxy.pac&amp;quot; /&amp;gt; &amp;lt;/defaultProxy&amp;gt;  </description>
@@ -82,10 +82,10 @@ Solution This can be done using the web.configs of the REST and Manager applicat
     
     <item>
       <title>Mongodb文档的CURD操作</title>
-      <link>http://blog.legooz.com/post/mongodb-curd/</link>
+      <link>http://suwenjiang.github.io/post/mongodb-curd/</link>
       <pubDate>Tue, 14 Jun 2016 16:38:38 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/mongodb-curd/</guid>
+      <guid>http://suwenjiang.github.io/post/mongodb-curd/</guid>
       <description>&lt;p&gt;从当年写毕业论文学习如何使用mongodb，到现在陆陆续续的在使用。一直都没有系统的去看看mongodb的文档。由于moogoose的原因，最近又在操作
 mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&lt;/p&gt;
 
@@ -95,10 +95,10 @@ mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&
     
     <item>
       <title>ArcGIS Javascript4.0 亮点摘录</title>
-      <link>http://blog.legooz.com/post/jsapinews/</link>
+      <link>http://suwenjiang.github.io/post/jsapinews/</link>
       <pubDate>Mon, 09 May 2016 17:45:59 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/jsapinews/</guid>
+      <guid>http://suwenjiang.github.io/post/jsapinews/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;最近esri推出了ArcGIS Javascript的api4.0版本，在长时间的beta，都beta3后，终于郑重的推出了4.0 正式版本。作为开发者，长吁一口气。也许大家会有疑问，为何更新一个版本需要如此长的时间。真相只有一个，那就是：&lt;/p&gt;
@@ -120,10 +120,10 @@ mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&
     
     <item>
       <title>ArcGIS Server 无法删除切片</title>
-      <link>http://blog.legooz.com/post/deletefile/</link>
+      <link>http://suwenjiang.github.io/post/deletefile/</link>
       <pubDate>Mon, 29 Feb 2016 14:55:23 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/deletefile/</guid>
+      <guid>http://suwenjiang.github.io/post/deletefile/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;问题场景如下：&lt;/p&gt;
@@ -137,10 +137,10 @@ mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&
     
     <item>
       <title>arcgis server site 快速恢复与重建</title>
-      <link>http://blog.legooz.com/post/reconstruct-site/</link>
+      <link>http://suwenjiang.github.io/post/reconstruct-site/</link>
       <pubDate>Wed, 21 Oct 2015 09:53:35 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/reconstruct-site/</guid>
+      <guid>http://suwenjiang.github.io/post/reconstruct-site/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;在实际的工作中，会遇到如下的情形：
@@ -153,10 +153,10 @@ mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&
     
     <item>
       <title>arcgis server/portal 日志格式化脚本</title>
-      <link>http://blog.legooz.com/post/log-format-tool/</link>
+      <link>http://suwenjiang.github.io/post/log-format-tool/</link>
       <pubDate>Tue, 13 Oct 2015 14:10:52 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/log-format-tool/</guid>
+      <guid>http://suwenjiang.github.io/post/log-format-tool/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;通过arcgis for server manager中的logs选项卡可以查看当前站点的日志。其该页面提供了友好的日志显示方式。
@@ -165,10 +165,10 @@ mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&
     
     <item>
       <title>arcgis server管理工具之批量发布动态地图服务</title>
-      <link>http://blog.legooz.com/post/batchpublishtools/</link>
+      <link>http://suwenjiang.github.io/post/batchpublishtools/</link>
       <pubDate>Wed, 26 Aug 2015 16:48:24 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/batchpublishtools/</guid>
+      <guid>http://suwenjiang.github.io/post/batchpublishtools/</guid>
       <description>&lt;p&gt;update0918:
 1. 修复了bug 创建链接文件出错
 2. 修复了异常，在24011的警告已处理的情况下，依然出现提示
@@ -180,10 +180,10 @@ mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&
     
     <item>
       <title>SOI简介</title>
-      <link>http://blog.legooz.com/post/introduction/</link>
+      <link>http://suwenjiang.github.io/post/introduction/</link>
       <pubDate>Thu, 23 Jul 2015 15:33:03 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/introduction/</guid>
+      <guid>http://suwenjiang.github.io/post/introduction/</guid>
       <description>&lt;h2 id=&#34;导语&#34;&gt;导语&lt;/h2&gt;
 
 &lt;p&gt;arcgis for server10.3.1中提供了一个新的功能叫做soi。本文简单的介绍soi概念，实现，在使用过程中的注意事项。阅读本文和使用soi需要以下先决条件&lt;/p&gt;
@@ -195,10 +195,10 @@ mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&
     
     <item>
       <title>ArcGIS for Server 自定义打印两种方法</title>
-      <link>http://blog.legooz.com/post/printingtools/</link>
+      <link>http://suwenjiang.github.io/post/printingtools/</link>
       <pubDate>Tue, 17 Sep 2013 11:20:02 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/printingtools/</guid>
+      <guid>http://suwenjiang.github.io/post/printingtools/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;使用web打印会遇到中文乱码，这是因为使用的打印模板中，配图要素的字体选择了非中文友好字体，如下图所示。模板字体改为中文友好字体，再执行下面的自定义模板步骤&lt;/p&gt;</description>

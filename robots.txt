@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://blog.legooz.com/sitemap.xml
+Sitemap: http://suwenjiang.github.io/sitemap.xml

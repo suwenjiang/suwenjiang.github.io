@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/</link>
+    <link>http://suwenjiang.github.io/</link>
     <description>Recent content on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 21 Oct 2019 16:10:17 +1000</lastBuildDate>
     
-        <atom:link href="http://blog.legooz.com/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://suwenjiang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>http://blog.legooz.com/about/</link>
+      <link>http://suwenjiang.github.io/about/</link>
       <pubDate>Sun, 20 Oct 2019 21:38:52 +0800</pubDate>
       
-      <guid>http://blog.legooz.com/about/</guid>
+      <guid>http://suwenjiang.github.io/about/</guid>
       
         <description>&lt;p&gt;This is Suwen M Jiang, Australia based. A GeoSpatial technology enthusiast.
 Most of my career is around ArcGIS platform, but familar with a varity of main spatial platforms/tools in the market.&lt;/p&gt;
@@ -28,10 +28,10 @@ Most of my career is around ArcGIS platform, but familar with a varity of main s
     
     <item>
       <title>Posts</title>
-      <link>http://blog.legooz.com/post/</link>
+      <link>http://suwenjiang.github.io/post/</link>
       <pubDate>Mon, 21 Oct 2019 16:10:17 +1000</pubDate>
       
-      <guid>http://blog.legooz.com/post/</guid>
+      <guid>http://suwenjiang.github.io/post/</guid>
       
         <description></description>
       

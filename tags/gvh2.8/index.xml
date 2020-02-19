@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GVH2.8 on where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/tags/gvh2.8/</link>
+    <link>http://suwenjiang.github.io/tags/gvh2.8/</link>
     <description>Recent content in GVH2.8 on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 17 Jul 2017 14:55:22 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.legooz.com/tags/gvh2.8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://suwenjiang.github.io/tags/gvh2.8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tools Button  Keeps Showing</title>
-      <link>http://blog.legooz.com/post/tool-keep-showing/</link>
+      <link>http://suwenjiang.github.io/post/tool-keep-showing/</link>
       <pubDate>Mon, 17 Jul 2017 14:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/tool-keep-showing/</guid>
+      <guid>http://suwenjiang.github.io/post/tool-keep-showing/</guid>
       <description>Details Overview When the Tools setting open when at startup. The tools button keeps showing just as below shows:
 Solution Already resolved in GVH 2.9</description>
     </item>

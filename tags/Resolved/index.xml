@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Resolved on where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/tags/resolved/</link>
+    <link>http://suwenjiang.github.io/tags/resolved/</link>
     <description>Recent content in Resolved on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 17 Aug 2017 11:55:22 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.legooz.com/tags/resolved/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://suwenjiang.github.io/tags/resolved/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Unable to display Distance and Draw Option for compact measurement tool</title>
-      <link>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</link>
+      <link>http://suwenjiang.github.io/post/unable-to-display-distance-and-draw-option/</link>
       <pubDate>Thu, 17 Aug 2017 11:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</guid>
+      <guid>http://suwenjiang.github.io/post/unable-to-display-distance-and-draw-option/</guid>
       <description>Details Overview when clicking the Distance/Area measurement tool in compact toolbar, it is not able to see the option of changing measurement units. Same as Draw palette tool. Just as below shows:
 Solution Already resolved in GVH 2.9.1</description>
     </item>
     
     <item>
       <title>Tools Button  Keeps Showing</title>
-      <link>http://blog.legooz.com/post/tool-keep-showing/</link>
+      <link>http://suwenjiang.github.io/post/tool-keep-showing/</link>
       <pubDate>Mon, 17 Jul 2017 14:55:22 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/tool-keep-showing/</guid>
+      <guid>http://suwenjiang.github.io/post/tool-keep-showing/</guid>
       <description>Details Overview When the Tools setting open when at startup. The tools button keeps showing just as below shows:
 Solution Already resolved in GVH 2.9</description>
     </item>

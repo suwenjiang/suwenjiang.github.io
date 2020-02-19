@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>arcgisserver on where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/tags/arcgisserver/</link>
+    <link>http://suwenjiang.github.io/tags/arcgisserver/</link>
     <description>Recent content in arcgisserver on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 29 Feb 2016 14:55:23 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.legooz.com/tags/arcgisserver/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://suwenjiang.github.io/tags/arcgisserver/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ArcGIS Server 无法删除切片</title>
-      <link>http://blog.legooz.com/post/deletefile/</link>
+      <link>http://suwenjiang.github.io/post/deletefile/</link>
       <pubDate>Mon, 29 Feb 2016 14:55:23 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/deletefile/</guid>
+      <guid>http://suwenjiang.github.io/post/deletefile/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;问题场景如下：&lt;/p&gt;
@@ -30,10 +30,10 @@
     
     <item>
       <title>arcgis server site 快速恢复与重建</title>
-      <link>http://blog.legooz.com/post/reconstruct-site/</link>
+      <link>http://suwenjiang.github.io/post/reconstruct-site/</link>
       <pubDate>Wed, 21 Oct 2015 09:53:35 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/reconstruct-site/</guid>
+      <guid>http://suwenjiang.github.io/post/reconstruct-site/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;在实际的工作中，会遇到如下的情形：

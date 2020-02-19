@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>arcpy on where to build and share personal knowlegebase</title>
-    <link>http://blog.legooz.com/tags/arcpy/</link>
+    <link>http://suwenjiang.github.io/tags/arcpy/</link>
     <description>Recent content in arcpy on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 26 Aug 2015 16:48:24 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.legooz.com/tags/arcpy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://suwenjiang.github.io/tags/arcpy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>arcgis server管理工具之批量发布动态地图服务</title>
-      <link>http://blog.legooz.com/post/batchpublishtools/</link>
+      <link>http://suwenjiang.github.io/post/batchpublishtools/</link>
       <pubDate>Wed, 26 Aug 2015 16:48:24 +0000</pubDate>
       
-      <guid>http://blog.legooz.com/post/batchpublishtools/</guid>
+      <guid>http://suwenjiang.github.io/post/batchpublishtools/</guid>
       <description>&lt;p&gt;update0918:
 1. 修复了bug 创建链接文件出错
 2. 修复了异常，在24011的警告已处理的情况下，依然出现提示
