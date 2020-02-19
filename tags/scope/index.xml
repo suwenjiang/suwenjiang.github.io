@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scope on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/tags/scope/</link>
+    <description>Recent content in scope on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 01 Mar 2016 16:48:04 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/tags/scope/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[译]关于JavaScript 作用域你想知道的一切</title>
+      <link>http://blog.legooz.com/post/jsdomain/</link>
+      <pubDate>Tue, 01 Mar 2016 16:48:04 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/jsdomain/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/&#34;&gt;原文连接&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;在学习js的过程对闭包什么的，理解不好，偶然搜到这篇文章。豁然开朗，随翻译。&lt;/p&gt;
+
+&lt;p&gt;Javacript 中有一系列作用域的概念。对于新的JS的开发人员无法理解这些概念，甚至一些经验丰富的开发者也未必能。这篇文章主要目的帮助理解JavaScript中的一些概念如：scope,closure, this, namespace, function scope, global scope, lexical scope and public/private scope. 希望从这篇文章中能回答如下的问题：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

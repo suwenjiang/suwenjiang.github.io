@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/post/</link>
+    <description>Recent content in Posts on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 21 Oct 2019 16:10:17 +1000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using ngix docker to host static files</title>
+      <link>http://blog.legooz.com/post/deploy_static_files_in_nginx_docker/</link>
+      <pubDate>Mon, 21 Oct 2019 16:10:17 +1000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/deploy_static_files_in_nginx_docker/</guid>
+      <description>&lt;h2 id=&#34;induction&#34;&gt;Induction&lt;/h2&gt;
+
+&lt;p&gt;As needs to work in a new role for realse management. Recently, I&amp;rsquo;ve been trying to know about some main CI/CD tools in the market, and container technology as well.
+When talking about the container, invetably we have to mention the &lt;strong&gt;Docker&lt;/strong&gt;. Docker in some way it&amp;rsquo;s almost equals to container technology.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>将hexo部署到AWS的S3</title>
+      <link>http://blog.legooz.com/post/hexo-into-s3/</link>
+      <pubDate>Thu, 08 Aug 2019 20:55:32 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/hexo-into-s3/</guid>
+      <description>前言 此前一直使用Github 托管自己的Hexo博客，相安无事。但此前尝试了不同vendor的图床，不多久就图挂了。随想着自己使用S3来构建自</description>
+    </item>
+    
+    <item>
+      <title>使用aws route53 配置Godaddy域名</title>
+      <link>http://blog.legooz.com/post/how-to-configure-domain-in-aws-router-53/</link>
+      <pubDate>Sat, 03 Aug 2019 10:51:16 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/how-to-configure-domain-in-aws-router-53/</guid>
+      <description>前言 最近逐渐把博客的迁移到aws上，也正好借此机会，实践AWS为拿certificate而准备。 此前在godaddy 购买了域名 legooz.com ，一直在使用</description>
+    </item>
+    
+    <item>
+      <title>写在2018结束前</title>
+      <link>http://blog.legooz.com/post/2018/</link>
+      <pubDate>Thu, 20 Dec 2018 15:18:19 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/2018/</guid>
+      <description>明天就是圣诞假期前的最后一个工作日，办公室到处是放假的氛围。也趁机做点自己的事情。看看了自己的博客，已经荒废了很久了。 想想原因有： + 以前博客</description>
+    </item>
+    
+    <item>
+      <title>windows docker mount shared directory</title>
+      <link>http://blog.legooz.com/post/docker_mount_share_directory/</link>
+      <pubDate>Sun, 29 Oct 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/docker_mount_share_directory/</guid>
+      <description>In docker for windows:
+ Mount d:/logs directory into ubuntu contain as /data   docker run -it -v d:/Logs:/data ubuntu /bin/sh
+ or
+ docker run -it -v d:/Logs:/data ubuntu bash
+  Mount directory to nginx &amp;gt; docker run &amp;ndash;name blogserver -v D:/Dropbox/Dropbox/blog/personal_blog/suwenjiang.github.com:/usr/share/nginx/html:ro -d -p 7777:80 nginx  Reference</description>
+    </item>
+    
+    <item>
+      <title>unable to run rc.local at startup</title>
+      <link>http://blog.legooz.com/post/unable-to-run-rc-local/</link>
+      <pubDate>Sun, 15 Oct 2017 13:50:14 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/unable-to-run-rc-local/</guid>
+      <description>在raspberry pi 上安装了一个家庭私有云owncloud服务器。但是客服端间歇性连接不上服务器。 通过排查，发现问题是由于支持ownclo</description>
+    </item>
+    
+    <item>
+      <title>Geocortex-How to pass parameter to the report</title>
+      <link>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</link>
+      <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</guid>
+      <description>Details Overview In some case needs to pass parameter value from the viewer or workflow to the report designer to populate controls.
+Solution There are two ways:
+1.Linking with DataField
+ Adding the DataField in Report designer just as below shows:  
+ Adding Text Field in Printing Template    please keep in mind the DataField have to be the same in above two places
+  Assigning the value   Report Dateset Transform Workflow  If need to manipulate the report dataset in workflow, the Report Dataset Transform Workflow would be a good choice.</description>
+    </item>
+    
+    <item>
+      <title>Unable to display Distance and Draw Option for compact measurement tool</title>
+      <link>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</link>
+      <pubDate>Thu, 17 Aug 2017 11:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</guid>
+      <description>Details Overview when clicking the Distance/Area measurement tool in compact toolbar, it is not able to see the option of changing measurement units. Same as Draw palette tool. Just as below shows:
+Solution Already resolved in GVH 2.9.1</description>
+    </item>
+    
+    <item>
+      <title>Unable to set the fill color for markup polygon</title>
+      <link>http://blog.legooz.com/post/unable-to-set-the-fill-color-for-the-markup-polygon/</link>
+      <pubDate>Thu, 17 Aug 2017 11:34:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/unable-to-set-the-fill-color-for-the-markup-polygon/</guid>
+      <description>Details Overview when drawing a markup polygon with styles other than solid, the fill color would be black constantly in the viewer no matter what color you set.
+Solution This is expected behavior. Unfortunately changing the color for the &amp;lsquo;Fill Style&amp;rsquo; other than &amp;lsquo;Solid&amp;rsquo; is not supported by ESRI&amp;rsquo;s Javascript API. https://developers.arcgis.com/javascript/3/jsapi/simplefillsymbol-amd.html The &amp;lsquo;color&amp;rsquo; property under the &amp;lsquo;Property Details&amp;rsquo; states that this only applies with the SimpleFillSymbol.style = &amp;lsquo;STYLE_SOLID&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>Moving saved Projects Between Sites</title>
+      <link>http://blog.legooz.com/post/moving-saved-projects-between-sites/</link>
+      <pubDate>Fri, 21 Jul 2017 14:17:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/moving-saved-projects-between-sites/</guid>
+      <description>Information Details Overview When performing site copy operation, the saved projects would be missing in newly copied site. For by default, the projects associated with the specific site.
+So it would be necessary to modify the documents binding site.
+Solution  Find the tool &amp;ldquo;Elasticsearch.Manager.exe&amp;rdquo; in below address:   c:\Program Files\Latitude Geographics\Geocortex Core\Diagnostics\Manager for Elasticsearch
+  Connect the core service.   Find the &amp;ldquo;docs_geocortex_essentials_users_documents&amp;rdquo; in the left panel tree and click &amp;ldquo;document&amp;rdquo;  In the right panel could see all the document in this server</description>
+    </item>
+    
+    <item>
+      <title>Long Feature Description Missing</title>
+      <link>http://blog.legooz.com/post/long-description-missing/</link>
+      <pubDate>Mon, 17 Jul 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/long-description-missing/</guid>
+      <description>Information Details Overview In GVH 2.9, when only setting the Feature Long Descritpion, then performing identify operation would get description missing. For example:
+.
+However, when configuring the Feature Descrtipion and Feature Long Description at the same time, it would get the expected result as below shows:
+.
+ This issue also raising in GVH 2.8.x
+ Solution It would be fixed in GVH2.9.1</description>
+    </item>
+    
+    <item>
+      <title>Tools Button  Keeps Showing</title>
+      <link>http://blog.legooz.com/post/tool-keep-showing/</link>
+      <pubDate>Mon, 17 Jul 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/tool-keep-showing/</guid>
+      <description>Details Overview When the Tools setting open when at startup. The tools button keeps showing just as below shows:
+Solution Already resolved in GVH 2.9</description>
+    </item>
+    
+    <item>
+      <title>Adding Existing PAC into GE</title>
+      <link>http://blog.legooz.com/post/add-existing-pac-to-ge/</link>
+      <pubDate>Thu, 13 Jul 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/add-existing-pac-to-ge/</guid>
+      <description> Details Overview How to add existing proxy file .PAC into Geocortex?
+Solution This can be done using the web.configs of the REST and Manager applications(C:\Program Files (x86)\Latitude Geographics\Geocortex Essentials\Default\REST Elements\Manager\web.config) by using the following in the system.net section as below.
+&amp;lt;system.net&amp;gt; &amp;lt;defaultProxy useDefaultCredentials=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;proxy usesystemdefault=&amp;quot;False&amp;quot; scriptLocation=&amp;quot;http://pacproxy.com.au/proxy.pac&amp;quot; /&amp;gt; &amp;lt;/defaultProxy&amp;gt;  </description>
+    </item>
+    
+    <item>
+      <title>Mongodb文档的CURD操作</title>
+      <link>http://blog.legooz.com/post/mongodb-curd/</link>
+      <pubDate>Tue, 14 Jun 2016 16:38:38 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/mongodb-curd/</guid>
+      <description>&lt;p&gt;从当年写毕业论文学习如何使用mongodb，到现在陆陆续续的在使用。一直都没有系统的去看看mongodb的文档。由于moogoose的原因，最近又在操作
+mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。&lt;/p&gt;
+
+&lt;p&gt;在mongodb中有db，collection，document数据模型，今天先来说说mongodb的基元document的操作。mongodb所有的操作都围绕document来做。&lt;strong&gt;document相当于
+传统关系型数据库中的row&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>快速了解mongodb的空间操作</title>
+      <link>http://blog.legooz.com/post/mongodb-spatial-query/</link>
+      <pubDate>Tue, 14 Jun 2016 09:50:21 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/mongodb-spatial-query/</guid>
+      <description>&lt;p&gt;遥想当年做毕业设计的时候，为了写论文而写论文，定了个mongodb 与oracle的互操作。当时使用的mongodb是无法对空间数据进行操作的。当时单纯的使用GDAL将shapelife文件转换文本表达以mongodb进行存储。&lt;/p&gt;
+
+&lt;p&gt;而现在看mongodb的空间操作，虽然没有办法和ArcSDE和PostGIS相比，但是比没有强呀。&lt;/p&gt;
+
+&lt;p&gt;文中使用的mongodb为2.4版本，robomongo0.9&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>人类简史（二）</title>
+      <link>http://blog.legooz.com/post/briefhistory2/</link>
+      <pubDate>Sun, 22 May 2016 13:15:21 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/briefhistory2/</guid>
+      <description>&lt;p&gt;人类简史（二）&lt;/p&gt;
+
+&lt;p&gt;专注力越来越弱了。现在要想安静的写个800字文章，真是太难了。继续上上周未完的吧。&lt;/p&gt;
+
+&lt;p&gt;上一篇自己yy作者对这本书的开展，其实作者在第一章中已经告诉了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ArcGIS Javascript4.0 亮点摘录</title>
+      <link>http://blog.legooz.com/post/jsapinews/</link>
+      <pubDate>Mon, 09 May 2016 17:45:59 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/jsapinews/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;最近esri推出了ArcGIS Javascript的api4.0版本，在长时间的beta，都beta3后，终于郑重的推出了4.0 正式版本。作为开发者，长吁一口气。也许大家会有疑问，为何更新一个版本需要如此长的时间。真相只有一个，那就是：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;4.0版本的api是全新的，其不是3.x版本的升级，而是esri推到重来，重新开发的API。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;尝试过beta版本的开发者，会发现4.0的版本变化非常大。有两处给笔者留下非常深刻的印象：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;功能上千呼万唤的3D功能终于出现，以及3D与2D一致的使用性和二三维一体性。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API本身的可用性和封装性。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;3.x的API 很多地方出现封装不一致的情况，导致有时候使用会让你觉着莫名其名。 而4.0的变化非常大，对开发者非常的友好。举栗子如：&lt;strong&gt;在3.x API中对象的属性，有些对象属性可以通过赋值语句赋值，但是有的对象必须通过setMethod()种形式去赋值&lt;/strong&gt; 。还有如&lt;strong&gt;对象名称的大小写不一致统一&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>人类简史（一）</title>
+      <link>http://blog.legooz.com/post/briefhistory1/</link>
+      <pubDate>Sat, 07 May 2016 11:41:37 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/briefhistory1/</guid>
+      <description>&lt;p&gt;从读书那时开始，就一直喜欢历史。要不是被地理这洋流，那季风折磨的，肯定学文了。人算不如天算呀，最后居然学了七年地理信息，并从事地理相关工作。
+回顾自己看的历史相关书中。
+有两本给自己留下了很深刻的印象。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[译]关于JavaScript 作用域你想知道的一切</title>
+      <link>http://blog.legooz.com/post/jsdomain/</link>
+      <pubDate>Tue, 01 Mar 2016 16:48:04 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/jsdomain/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/&#34;&gt;原文连接&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;在学习js的过程对闭包什么的，理解不好，偶然搜到这篇文章。豁然开朗，随翻译。&lt;/p&gt;
+
+&lt;p&gt;Javacript 中有一系列作用域的概念。对于新的JS的开发人员无法理解这些概念，甚至一些经验丰富的开发者也未必能。这篇文章主要目的帮助理解JavaScript中的一些概念如：scope,closure, this, namespace, function scope, global scope, lexical scope and public/private scope. 希望从这篇文章中能回答如下的问题：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ArcGIS Server 无法删除切片</title>
+      <link>http://blog.legooz.com/post/deletefile/</link>
+      <pubDate>Mon, 29 Feb 2016 14:55:23 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/deletefile/</guid>
+      <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+
+&lt;p&gt;问题场景如下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;切片放置在专门的文件服务器上，通过unc共享路径对外共享。文件服务器的OS为windows server2008R2&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;想手动更新切片服务的切片。发现同一切片服务，有的比例级别文件夹可以删除或者重命名。有的比例级别不可以。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

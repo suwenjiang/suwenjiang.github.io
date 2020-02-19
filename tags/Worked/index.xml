@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Worked on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/tags/worked/</link>
+    <description>Recent content in Worked on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 18 Aug 2017 09:35:22 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/tags/worked/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Geocortex-How to pass parameter to the report</title>
+      <link>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</link>
+      <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</guid>
+      <description>Details Overview In some case needs to pass parameter value from the viewer or workflow to the report designer to populate controls.
+Solution There are two ways:
+1.Linking with DataField
+ Adding the DataField in Report designer just as below shows:  
+ Adding Text Field in Printing Template    please keep in mind the DataField have to be the same in above two places
+  Assigning the value   Report Dateset Transform Workflow  If need to manipulate the report dataset in workflow, the Report Dataset Transform Workflow would be a good choice.</description>
+    </item>
+    
+    <item>
+      <title>Adding Existing PAC into GE</title>
+      <link>http://blog.legooz.com/post/add-existing-pac-to-ge/</link>
+      <pubDate>Thu, 13 Jul 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/add-existing-pac-to-ge/</guid>
+      <description> Details Overview How to add existing proxy file .PAC into Geocortex?
+Solution This can be done using the web.configs of the REST and Manager applications(C:\Program Files (x86)\Latitude Geographics\Geocortex Essentials\Default\REST Elements\Manager\web.config) by using the following in the system.net section as below.
+&amp;lt;system.net&amp;gt; &amp;lt;defaultProxy useDefaultCredentials=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;proxy usesystemdefault=&amp;quot;False&amp;quot; scriptLocation=&amp;quot;http://pacproxy.com.au/proxy.pac&amp;quot; /&amp;gt; &amp;lt;/defaultProxy&amp;gt;  </description>
+    </item>
+    
+  </channel>
+</rss>

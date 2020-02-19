@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/tags/docker/</link>
+    <description>Recent content in docker on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 21 Oct 2019 16:10:17 +1000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using ngix docker to host static files</title>
+      <link>http://blog.legooz.com/post/deploy_static_files_in_nginx_docker/</link>
+      <pubDate>Mon, 21 Oct 2019 16:10:17 +1000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/deploy_static_files_in_nginx_docker/</guid>
+      <description>&lt;h2 id=&#34;induction&#34;&gt;Induction&lt;/h2&gt;
+
+&lt;p&gt;As needs to work in a new role for realse management. Recently, I&amp;rsquo;ve been trying to know about some main CI/CD tools in the market, and container technology as well.
+When talking about the container, invetably we have to mention the &lt;strong&gt;Docker&lt;/strong&gt;. Docker in some way it&amp;rsquo;s almost equals to container technology.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>windows docker mount shared directory</title>
+      <link>http://blog.legooz.com/post/docker_mount_share_directory/</link>
+      <pubDate>Sun, 29 Oct 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/docker_mount_share_directory/</guid>
+      <description>In docker for windows:
+ Mount d:/logs directory into ubuntu contain as /data   docker run -it -v d:/Logs:/data ubuntu /bin/sh
+ or
+ docker run -it -v d:/Logs:/data ubuntu bash
+  Mount directory to nginx &amp;gt; docker run &amp;ndash;name blogserver -v D:/Dropbox/Dropbox/blog/personal_blog/suwenjiang.github.com:/usr/share/nginx/html:ro -d -p 7777:80 nginx  Reference</description>
+    </item>
+    
+  </channel>
+</rss>

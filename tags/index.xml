@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/tags/</link>
+    <description>Recent content in Tags on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 21 Oct 2019 16:10:17 +1000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>docker</title>
+      <link>http://blog.legooz.com/tags/docker/</link>
+      <pubDate>Mon, 21 Oct 2019 16:10:17 +1000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>http://blog.legooz.com/tags/nginx/</link>
+      <pubDate>Mon, 21 Oct 2019 16:10:17 +1000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS</title>
+      <link>http://blog.legooz.com/tags/aws/</link>
+      <pubDate>Thu, 08 Aug 2019 20:55:32 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo</title>
+      <link>http://blog.legooz.com/tags/hexo/</link>
+      <pubDate>Thu, 08 Aug 2019 20:55:32 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>S3</title>
+      <link>http://blog.legooz.com/tags/s3/</link>
+      <pubDate>Thu, 08 Aug 2019 20:55:32 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/s3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>domain</title>
+      <link>http://blog.legooz.com/tags/domain/</link>
+      <pubDate>Sat, 03 Aug 2019 10:51:16 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/domain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>godaddy</title>
+      <link>http://blog.legooz.com/tags/godaddy/</link>
+      <pubDate>Sat, 03 Aug 2019 10:51:16 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/godaddy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>route53</title>
+      <link>http://blog.legooz.com/tags/route53/</link>
+      <pubDate>Sat, 03 Aug 2019 10:51:16 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/route53/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shared directory</title>
+      <link>http://blog.legooz.com/tags/shared-directory/</link>
+      <pubDate>Sun, 29 Oct 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/shared-directory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>http://blog.legooz.com/tags/linux/</link>
+      <pubDate>Sun, 15 Oct 2017 13:50:14 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>owncloud</title>
+      <link>http://blog.legooz.com/tags/owncloud/</link>
+      <pubDate>Sun, 15 Oct 2017 13:50:14 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/owncloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberry</title>
+      <link>http://blog.legooz.com/tags/raspberry/</link>
+      <pubDate>Sun, 15 Oct 2017 13:50:14 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/raspberry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GVH</title>
+      <link>http://blog.legooz.com/tags/gvh/</link>
+      <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/gvh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HowTo</title>
+      <link>http://blog.legooz.com/tags/howto/</link>
+      <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/howto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Worked</title>
+      <link>http://blog.legooz.com/tags/worked/</link>
+      <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/worked/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Known Issue</title>
+      <link>http://blog.legooz.com/tags/known-issue/</link>
+      <pubDate>Thu, 17 Aug 2017 11:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/known-issue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resolved</title>
+      <link>http://blog.legooz.com/tags/resolved/</link>
+      <pubDate>Thu, 17 Aug 2017 11:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/resolved/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NotResolved</title>
+      <link>http://blog.legooz.com/tags/notresolved/</link>
+      <pubDate>Thu, 17 Aug 2017 11:34:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/notresolved/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Workaround</title>
+      <link>http://blog.legooz.com/tags/workaround/</link>
+      <pubDate>Fri, 21 Jul 2017 14:17:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/workaround/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GVH2.8</title>
+      <link>http://blog.legooz.com/tags/gvh2.8/</link>
+      <pubDate>Mon, 17 Jul 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/tags/gvh2.8/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

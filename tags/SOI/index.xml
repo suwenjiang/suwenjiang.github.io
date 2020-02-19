@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SOI on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/tags/soi/</link>
+    <description>Recent content in SOI on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 23 Jul 2015 15:33:03 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/tags/soi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SOI简介</title>
+      <link>http://blog.legooz.com/post/introduction/</link>
+      <pubDate>Thu, 23 Jul 2015 15:33:03 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/introduction/</guid>
+      <description>&lt;h2 id=&#34;导语&#34;&gt;导语&lt;/h2&gt;
+
+&lt;p&gt;arcgis for server10.3.1中提供了一个新的功能叫做soi。本文简单的介绍soi概念，实现，在使用过程中的注意事项。阅读本文和使用soi需要以下先决条件&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;SOI是ArcGIS Server 10.3.1中新增加的功能。故开发和部署SOI需要安装ArcObject sdk 10.3.1 和 ArcGIS Server 10.3.1。&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

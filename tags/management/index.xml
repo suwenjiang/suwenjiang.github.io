@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>management on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/tags/management/</link>
+    <description>Recent content in management on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 21 Oct 2015 09:53:35 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/tags/management/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>arcgis server site 快速恢复与重建</title>
+      <link>http://blog.legooz.com/post/reconstruct-site/</link>
+      <pubDate>Wed, 21 Oct 2015 09:53:35 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/reconstruct-site/</guid>
+      <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+
+&lt;p&gt;在实际的工作中，会遇到如下的情形：
+&amp;gt; &lt;strong&gt;arcgis server服务能够启动&lt;/strong&gt;，但是由于未知的操作原因导致site里面的某个功能出现故障。&lt;/p&gt;
+
+&lt;p&gt;要想在短时间内，使得server能够恢复正常功能。且：
+1. 不重新安装arcgis server
+2. 不重新发布服务，&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

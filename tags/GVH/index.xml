@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GVH on where to build and share personal knowlegebase</title>
+    <link>http://blog.legooz.com/tags/gvh/</link>
+    <description>Recent content in GVH on where to build and share personal knowlegebase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 18 Aug 2017 09:35:22 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.legooz.com/tags/gvh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Geocortex-How to pass parameter to the report</title>
+      <link>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</link>
+      <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/how-to-pass-parameter-to-report/</guid>
+      <description>Details Overview In some case needs to pass parameter value from the viewer or workflow to the report designer to populate controls.
+Solution There are two ways:
+1.Linking with DataField
+ Adding the DataField in Report designer just as below shows:  
+ Adding Text Field in Printing Template    please keep in mind the DataField have to be the same in above two places
+  Assigning the value   Report Dateset Transform Workflow  If need to manipulate the report dataset in workflow, the Report Dataset Transform Workflow would be a good choice.</description>
+    </item>
+    
+    <item>
+      <title>Unable to display Distance and Draw Option for compact measurement tool</title>
+      <link>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</link>
+      <pubDate>Thu, 17 Aug 2017 11:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/unable-to-display-distance-and-draw-option/</guid>
+      <description>Details Overview when clicking the Distance/Area measurement tool in compact toolbar, it is not able to see the option of changing measurement units. Same as Draw palette tool. Just as below shows:
+Solution Already resolved in GVH 2.9.1</description>
+    </item>
+    
+    <item>
+      <title>Unable to set the fill color for markup polygon</title>
+      <link>http://blog.legooz.com/post/unable-to-set-the-fill-color-for-the-markup-polygon/</link>
+      <pubDate>Thu, 17 Aug 2017 11:34:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/unable-to-set-the-fill-color-for-the-markup-polygon/</guid>
+      <description>Details Overview when drawing a markup polygon with styles other than solid, the fill color would be black constantly in the viewer no matter what color you set.
+Solution This is expected behavior. Unfortunately changing the color for the &amp;lsquo;Fill Style&amp;rsquo; other than &amp;lsquo;Solid&amp;rsquo; is not supported by ESRI&amp;rsquo;s Javascript API. https://developers.arcgis.com/javascript/3/jsapi/simplefillsymbol-amd.html The &amp;lsquo;color&amp;rsquo; property under the &amp;lsquo;Property Details&amp;rsquo; states that this only applies with the SimpleFillSymbol.style = &amp;lsquo;STYLE_SOLID&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>Moving saved Projects Between Sites</title>
+      <link>http://blog.legooz.com/post/moving-saved-projects-between-sites/</link>
+      <pubDate>Fri, 21 Jul 2017 14:17:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/moving-saved-projects-between-sites/</guid>
+      <description>Information Details Overview When performing site copy operation, the saved projects would be missing in newly copied site. For by default, the projects associated with the specific site.
+So it would be necessary to modify the documents binding site.
+Solution  Find the tool &amp;ldquo;Elasticsearch.Manager.exe&amp;rdquo; in below address:   c:\Program Files\Latitude Geographics\Geocortex Core\Diagnostics\Manager for Elasticsearch
+  Connect the core service.   Find the &amp;ldquo;docs_geocortex_essentials_users_documents&amp;rdquo; in the left panel tree and click &amp;ldquo;document&amp;rdquo;  In the right panel could see all the document in this server</description>
+    </item>
+    
+    <item>
+      <title>Adding Existing PAC into GE</title>
+      <link>http://blog.legooz.com/post/add-existing-pac-to-ge/</link>
+      <pubDate>Thu, 13 Jul 2017 14:55:22 +0000</pubDate>
+      
+      <guid>http://blog.legooz.com/post/add-existing-pac-to-ge/</guid>
+      <description> Details Overview How to add existing proxy file .PAC into Geocortex?
+Solution This can be done using the web.configs of the REST and Manager applications(C:\Program Files (x86)\Latitude Geographics\Geocortex Essentials\Default\REST Elements\Manager\web.config) by using the following in the system.net section as below.
+&amp;lt;system.net&amp;gt; &amp;lt;defaultProxy useDefaultCredentials=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;proxy usesystemdefault=&amp;quot;False&amp;quot; scriptLocation=&amp;quot;http://pacproxy.com.au/proxy.pac&amp;quot; /&amp;gt; &amp;lt;/defaultProxy&amp;gt;  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://blog.legooz.com/sitemap.xml
