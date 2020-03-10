@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>raspberry on where to build and share personal knowlegebase</title>
-    <link>http://suwenjiang.github.io/tags/raspberry/</link>
+    <link>https://suwenjiang.github.io/tags/raspberry/</link>
     <description>Recent content in raspberry on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 15 Oct 2017 13:50:14 +0000</lastBuildDate>
     
-	<atom:link href="http://suwenjiang.github.io/tags/raspberry/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suwenjiang.github.io/tags/raspberry/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>unable to run rc.local at startup</title>
-      <link>http://suwenjiang.github.io/post/unable-to-run-rc-local/</link>
+      <link>https://suwenjiang.github.io/post/unable-to-run-rc-local/</link>
       <pubDate>Sun, 15 Oct 2017 13:50:14 +0000</pubDate>
       
-      <guid>http://suwenjiang.github.io/post/unable-to-run-rc-local/</guid>
+      <guid>https://suwenjiang.github.io/post/unable-to-run-rc-local/</guid>
       <description>在raspberry pi 上安装了一个家庭私有云owncloud服务器。但是客服端间歇性连接不上服务器。 通过排查，发现问题是由于支持ownclo</description>
     </item>
     

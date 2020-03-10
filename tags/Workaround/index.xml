@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workaround on where to build and share personal knowlegebase</title>
-    <link>http://suwenjiang.github.io/tags/workaround/</link>
+    <link>https://suwenjiang.github.io/tags/workaround/</link>
     <description>Recent content in Workaround on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 21 Jul 2017 14:17:22 +0000</lastBuildDate>
     
-	<atom:link href="http://suwenjiang.github.io/tags/workaround/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suwenjiang.github.io/tags/workaround/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Moving saved Projects Between Sites</title>
-      <link>http://suwenjiang.github.io/post/moving-saved-projects-between-sites/</link>
+      <link>https://suwenjiang.github.io/post/moving-saved-projects-between-sites/</link>
       <pubDate>Fri, 21 Jul 2017 14:17:22 +0000</pubDate>
       
-      <guid>http://suwenjiang.github.io/post/moving-saved-projects-between-sites/</guid>
+      <guid>https://suwenjiang.github.io/post/moving-saved-projects-between-sites/</guid>
       <description>Information Details Overview When performing site copy operation, the saved projects would be missing in newly copied site. For by default, the projects associated with the specific site.
 So it would be necessary to modify the documents binding site.
 Solution  Find the tool &amp;ldquo;Elasticsearch.Manager.exe&amp;rdquo; in below address:   c:\Program Files\Latitude Geographics\Geocortex Core\Diagnostics\Manager for Elasticsearch

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>S3 on where to build and share personal knowlegebase</title>
-    <link>http://suwenjiang.github.io/tags/s3/</link>
+    <link>https://suwenjiang.github.io/tags/s3/</link>
     <description>Recent content in S3 on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 08 Aug 2019 20:55:32 +0000</lastBuildDate>
     
-	<atom:link href="http://suwenjiang.github.io/tags/s3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suwenjiang.github.io/tags/s3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>将hexo部署到AWS的S3</title>
-      <link>http://suwenjiang.github.io/post/hexo-into-s3/</link>
+      <link>https://suwenjiang.github.io/post/hexo-into-s3/</link>
       <pubDate>Thu, 08 Aug 2019 20:55:32 +0000</pubDate>
       
-      <guid>http://suwenjiang.github.io/post/hexo-into-s3/</guid>
+      <guid>https://suwenjiang.github.io/post/hexo-into-s3/</guid>
       <description>前言 此前一直使用Github 托管自己的Hexo博客，相安无事。但此前尝试了不同vendor的图床，不多久就图挂了。随想着自己使用S3来构建自</description>
     </item>
     

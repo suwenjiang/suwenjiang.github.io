@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on where to build and share personal knowlegebase</title>
-    <link>http://suwenjiang.github.io/tags/python/</link>
+    <link>https://suwenjiang.github.io/tags/python/</link>
     <description>Recent content in python on where to build and share personal knowlegebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 13 Oct 2015 14:10:52 +0000</lastBuildDate>
     
-	<atom:link href="http://suwenjiang.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suwenjiang.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>arcgis server/portal 日志格式化脚本</title>
-      <link>http://suwenjiang.github.io/post/log-format-tool/</link>
+      <link>https://suwenjiang.github.io/post/log-format-tool/</link>
       <pubDate>Tue, 13 Oct 2015 14:10:52 +0000</pubDate>
       
-      <guid>http://suwenjiang.github.io/post/log-format-tool/</guid>
+      <guid>https://suwenjiang.github.io/post/log-format-tool/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;通过arcgis for server manager中的logs选项卡可以查看当前站点的日志。其该页面提供了友好的日志显示方式。
@@ -25,10 +25,10 @@
     
     <item>
       <title>arcgis server管理工具之批量发布动态地图服务</title>
-      <link>http://suwenjiang.github.io/post/batchpublishtools/</link>
+      <link>https://suwenjiang.github.io/post/batchpublishtools/</link>
       <pubDate>Wed, 26 Aug 2015 16:48:24 +0000</pubDate>
       
-      <guid>http://suwenjiang.github.io/post/batchpublishtools/</guid>
+      <guid>https://suwenjiang.github.io/post/batchpublishtools/</guid>
       <description>&lt;p&gt;update0918:
 1. 修复了bug 创建链接文件出错
 2. 修复了异常，在24011的警告已处理的情况下，依然出现提示
@@ -40,10 +40,10 @@
     
     <item>
       <title>python 中几个层次的中文编码</title>
-      <link>http://suwenjiang.github.io/post/python-code/</link>
+      <link>https://suwenjiang.github.io/post/python-code/</link>
       <pubDate>Fri, 21 Aug 2015 15:51:30 +0000</pubDate>
       
-      <guid>http://suwenjiang.github.io/post/python-code/</guid>
+      <guid>https://suwenjiang.github.io/post/python-code/</guid>
       <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
 
 &lt;p&gt;一直不太喜欢使用命令行，所以去年年底的技术创新中，使用TkInter来开发小工具。结果花费了大量的时间来学习TkInter ui的使用。
