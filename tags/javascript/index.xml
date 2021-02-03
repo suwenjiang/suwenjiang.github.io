@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>javascript on where to build and share personal knowlegebase</title>
-    <link>https://suwenjiang.github.io/tags/javascript/</link>
-    <description>Recent content in javascript on where to build and share personal knowlegebase</description>
+    <title>javascript on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/javascript/</link>
+    <description>Recent content in javascript on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 09 May 2016 17:45:59 +0000</lastBuildDate>
     
-	<atom:link href="https://suwenjiang.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ArcGIS Javascript4.0 亮点摘录</title>
-      <link>https://suwenjiang.github.io/post/jsapinews/</link>
+      <link>http://localhost:1313/posts/jsapinews/</link>
       <pubDate>Mon, 09 May 2016 17:45:59 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/jsapinews/</guid>
+      <guid>http://localhost:1313/posts/jsapinews/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;最近esri推出了ArcGIS Javascript的api4.0版本，在长时间的beta，都beta3后，终于郑重的推出了4.0 正式版本。作为开发者，长吁一口气。也许大家会有疑问，为何更新一个版本需要如此长的时间。真相只有一个，那就是：&lt;/p&gt;
@@ -38,10 +38,10 @@
     
     <item>
       <title>[译]关于JavaScript 作用域你想知道的一切</title>
-      <link>https://suwenjiang.github.io/post/jsdomain/</link>
+      <link>http://localhost:1313/posts/jsdomain/</link>
       <pubDate>Tue, 01 Mar 2016 16:48:04 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/jsdomain/</guid>
+      <guid>http://localhost:1313/posts/jsdomain/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/&#34;&gt;原文连接&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;在学习js的过程对闭包什么的，理解不好，偶然搜到这篇文章。豁然开朗，随翻译。&lt;/p&gt;

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cache on where to build and share personal knowlegebase</title>
-    <link>https://suwenjiang.github.io/tags/cache/</link>
-    <description>Recent content in cache on where to build and share personal knowlegebase</description>
+    <title>cache on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/cache/</link>
+    <description>Recent content in cache on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 29 Feb 2016 14:55:23 +0000</lastBuildDate>
     
-	<atom:link href="https://suwenjiang.github.io/tags/cache/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/cache/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ArcGIS Server 无法删除切片</title>
-      <link>https://suwenjiang.github.io/post/deletefile/</link>
+      <link>http://localhost:1313/posts/deletefile/</link>
       <pubDate>Mon, 29 Feb 2016 14:55:23 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/deletefile/</guid>
+      <guid>http://localhost:1313/posts/deletefile/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;问题场景如下：&lt;/p&gt;

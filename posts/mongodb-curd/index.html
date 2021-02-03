@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mongodb文档的CURD操作 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="mjiang" /><meta name="description" content="从当年写毕业论文学习如何使用mongodb，到现在陆陆续续的在使用。一直都没有系统的去看看mongodb的文档。由于moogoose的原因，最近又在操作 mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。
+在mongodb中有db，collection，document数据模型，今天先来说说mongodb的基元document的操作。mongodb所有的操作都围绕document来做。document相当于 传统关系型数据库中的row
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.58.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/posts/mongodb-curd/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mongodb文档的CURD操作" />
+<meta property="og:description" content="从当年写毕业论文学习如何使用mongodb，到现在陆陆续续的在使用。一直都没有系统的去看看mongodb的文档。由于moogoose的原因，最近又在操作
+mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。
+
+在mongodb中有db，collection，document数据模型，今天先来说说mongodb的基元document的操作。mongodb所有的操作都围绕document来做。document相当于
+传统关系型数据库中的row" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/mongodb-curd/" />
+<meta property="article:published_time" content="2016-06-14T16:38:38+00:00" />
+<meta property="article:modified_time" content="2016-06-14T16:38:38+00:00" />
+<meta itemprop="name" content="Mongodb文档的CURD操作">
+<meta itemprop="description" content="从当年写毕业论文学习如何使用mongodb，到现在陆陆续续的在使用。一直都没有系统的去看看mongodb的文档。由于moogoose的原因，最近又在操作
+mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。
+
+在mongodb中有db，collection，document数据模型，今天先来说说mongodb的基元document的操作。mongodb所有的操作都围绕document来做。document相当于
+传统关系型数据库中的row">
+
+
+<meta itemprop="datePublished" content="2016-06-14T16:38:38&#43;00:00" />
+<meta itemprop="dateModified" content="2016-06-14T16:38:38&#43;00:00" />
+<meta itemprop="wordCount" content="2660">
+
+
+
+<meta itemprop="keywords" content="opensource,mongodb,database,CURD," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mongodb文档的CURD操作"/>
+<meta name="twitter:description" content="从当年写毕业论文学习如何使用mongodb，到现在陆陆续续的在使用。一直都没有系统的去看看mongodb的文档。由于moogoose的原因，最近又在操作
+mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。
+
+在mongodb中有db，collection，document数据模型，今天先来说说mongodb的基元document的操作。mongodb所有的操作都围绕document来做。document相当于
+传统关系型数据库中的row"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>从当年写毕业论文学习如何使用mongodb，到现在陆陆续续的在使用。一直都没有系统的去看看mongodb的文档。由于moogoose的原因，最近又在操作
+mongodb，想想磨刀不误砍柴工，看看文档，动动笔记录记录。</p>
+
+<p>在mongodb中有db，collection，document数据模型，今天先来说说mongodb的基元document的操作。mongodb所有的操作都围绕document来做。<strong>document相当于
+传统关系型数据库中的row</strong></p>
+
+<h2 id="插入document">插入document</h2>
+
+<p>类似关系型数据库，一条条的row插入到table中，而NoSql中的一个个document 插入到collection中。</p>
+
+<p>插入document的语句有如下几种：</p>
+
+<ol>
+<li><code>db.collection_name.insert()</code></li>
+<li><code>db.collection_name.insertOne()</code></li>
+<li><code>db.collection_name.insertMany()</code></li>
+</ol>
+
+<p>通过字面意思也知道这几种插入方法的不同。其中1既可以插入一个document，也可以插入多个。而2,3是后续版本中添加的。mongodb的所有的写操作都是<strong>原子（atomic）</strong>。</p>
+
+<p>mongodb的document都包含一个 <strong>_id</strong> 字段，该字段类似于关系型数据库中的<strong>primary
+key</strong>。其中_id可以在插入文档候自定义赋值，如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">some_col</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&#34;_id&#34;</span><span class="o">:</span><span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s1">&#39;suwen&#39;</span>
+    <span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>也可以不显示指明，如果没有显示指明则mongodb会根据时间戳+pid+随机数信息生成一个类型为objectid的_id 值。如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="nx">db</span><span class="p">.</span><span class="nx">some_col</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&#34;name&#34;</span><span class="o">:</span><span class="s1">&#39;suwen&#39;</span><span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>通过查询，其_id值为5750f3b164cfe92c28a4c2b1。且mongodb含有从 _id中提取时时间戳信息的命令。</p>
+
+<h2 id="查询document">查询document</h2>
+
+<p>在mongo中document的查询语句如下：</p>
+
+<ol>
+<li><code>db.collection.find(&lt;query&gt;,&lt;projection&gt;)</code></li>
+<li><code>db.collection.findOne(&lt;query&gt;,&lt;projection&gt;)</code>
+<br /></li>
+</ol>
+
+<p>其中query为查询语句，而为optional参数对查询返回的<strong>字段</strong>进行过滤。可以控制查询结果的传输量。</p>
+
+<p>其中findOne可以直接获取一个document，而find获取多个document。则在获取document的中的某个字段值的时候需要注意。如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">dd</span><span class="o">=</span><span class="nx">db</span><span class="p">.</span><span class="nx">testpoint</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span><span class="s2">&#34;id1&#34;</span><span class="p">})</span>
+<span class="nx">dd</span><span class="p">.</span><span class="nx">name</span> <span class="c1">// id1
+</span><span class="c1"></span>
+<span class="kd">var</span> <span class="nx">dd</span><span class="o">=</span><span class="nx">db</span><span class="p">.</span><span class="nx">testpoint</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span><span class="s2">&#34;id1&#34;</span><span class="p">})</span>
+
+<span class="nx">dd</span><span class="p">.</span><span class="nx">name</span> <span class="c1">//no result to show
+</span><span class="c1"></span><span class="nx">dd</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">name</span> <span class="c1">//id1
+</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>当find()不添加任何参数或者参数为{}的时候，表示查询当前collection中的所有document。</strong></p>
+
+<ul>
+<li>project</li>
+</ul>
+
+<p>project格式如下：{field1：,field2:..}其中字段值只有<strong>0和1两类</strong>。其中0表示字段排除，1表示字段包含。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt">db.testpoint.findOne({name:&#34;id1&#34;},{_id:0}) //查询结果不包含_id 信息</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>query</li>
+</ul>
+
+<p>mongo提供了非常丰富的query，来应用不同场景的查询。</p>
+
+<p>大体分为下面几类：</p>
+
+<p>1.简单相等查询</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt">db.some_col.find({&#34;name&#34;:&#34;suwen&#34;})</code></pre></td></tr></table>
+</div>
+</div>
+<p>AND条件查询,直接多个字段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt">db.some_col.find({&#34;name&#34;:&#34;suwen&#34;,&#39;gender&#39;:&#39;male&#39;})</code></pre></td></tr></table>
+</div>
+</div>
+<p>其他的OR条件或者比较查询需要与操作符进搭配使用。</p>
+
+<p>2.与操作符结合判断</p>
+
+<p>mongod提供了一些犹如关系型数据库中的操作符$in,$lt等。如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">some_col</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="s2">&#34;name&#34;</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="s2">&#34;suwen,mb&#34;</span><span class="p">]}})</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>用法和关系型数据库的in操作符一样。后面会专门写篇文章来学习这些关键字。</p>
+
+<p>3.嵌套和引用文档的查询
+mongodb 通过嵌套和应用构建复杂的document，这两者怎么查询呢？</p>
+
+<p>有如下document：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">insert</span><span class="p">([{</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;suwen&#39;</span><span class="p">,</span>
+    <span class="nx">contact</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//嵌套document
+</span><span class="c1"></span>        <span class="nx">phone</span><span class="o">:</span> <span class="s1">&#39;111111111&#39;</span><span class="p">,</span>
+        <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;1111@qq.com&#39;</span><span class="p">},</span>
+    <span class="nx">department</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//嵌套document
+</span><span class="c1"></span>        <span class="nx">level</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s2">&#34;giser&#34;</span><span class="p">},</span>
+    
+    <span class="nx">hobby</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;eating&#39;</span><span class="p">,</span><span class="s1">&#39;sleeping&#39;</span><span class="p">,</span><span class="s1">&#39;hit doudou&#39;</span><span class="p">]</span> <span class="c1">//Array
+</span><span class="c1"></span><span class="p">},</span>
+<span class="p">{</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;jmb&#39;</span><span class="p">,</span>
+    <span class="nx">contact</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//嵌套document
+</span><span class="c1"></span>        <span class="nx">phone</span><span class="o">:</span> <span class="s1">&#39;222222222&#39;</span><span class="p">,</span>
+        <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;2222@qq.com&#39;</span><span class="p">},</span>
+    <span class="nx">department</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//嵌套document
+</span><span class="c1"></span>        <span class="nx">level</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s2">&#34;loser&#34;</span>
+    <span class="p">},</span>
+    <span class="nx">hobby</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;sleeping&#39;</span><span class="p">,</span><span class="s1">&#39;eating&#39;</span><span class="p">]</span> <span class="c1">//Array
+</span><span class="c1"></span><span class="p">}])</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>嵌套document的查询有两种方式：</p>
+
+<p>一是<strong>文档完全匹配的形式</strong></p>
+
+<p>如find上面的记录需要使用如下语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
+<span class="p">{</span>
+ <span class="nx">contact</span><span class="o">:</span> <span class="p">{</span> 
+        <span class="nx">phone</span><span class="o">:</span> <span class="s1">&#39;111111111&#39;</span><span class="p">,</span>
+        <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;1111@qq.com&#39;</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>那么如果我只想以电话作为条件是不是可以使用如下这种形式？？？？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
+<span class="p">{</span>
+ <span class="nx">contact</span><span class="o">:</span> <span class="p">{</span> 
+        <span class="nx">phone</span><span class="o">:</span> <span class="s1">&#39;111111111&#39;</span>
+       
+    <span class="p">}</span>
+<span class="p">})</span> <span class="c1">//no results
+</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>执行完，发现并没有结果出现。。这也是为何这种方式叫文档完全匹配。如果只使用嵌套文档中的某个字段作为条件来过滤，则需要使用如下第二种方式：</p>
+
+<p>二是<strong>通过dot notation的形式</strong>，该形式的格式为<code>&lt;document&gt;.&lt;field&gt;</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
+<span class="p">{</span>
+ <span class="s1">&#39;contact.phone&#39;</span><span class="o">:</span><span class="s1">&#39;111111111&#39;</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>4.Array的查询</p>
+
+<p>有了上面几个基础，再来理解Array的查询就容易多了。 document的字段值可能是一个Array类型。如何对Array的值进行判断，从而来筛选document呢？</p>
+
+<p>一是完全匹配形式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="nx">hobby</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;eating&#39;</span><span class="p">,</span><span class="s1">&#39;sleeping&#39;</span><span class="p">,</span><span class="s1">&#39;hit doudou&#39;</span><span class="p">]})</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>同样其为整个Array的匹配。只有全部匹配的Array才能筛选出。</p>
+
+<p>二是匹配Array中的某个元素
+针对Array中的某个元素的匹配，可以使用犹如普通的筛选语句。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt">db.users.find({ hobby: &#39;hit doudou&#39;})</code></pre></td></tr></table>
+</div>
+</div>
+<p>除此之外，array还有一种常见方式
+三对Array某个位置的元素进行匹配
+如对array的index的value为&rsquo;eating&rsquo;的进行匹配。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascipt" data-lang="javascipt">db.users.find({ &#34;hobby.0&#34;: &#39;eating&#39;})</code></pre></td></tr></table>
+</div>
+</div>
+<p>Array除此上面三种方式，还有更为复杂条件匹配。此处按下不表。</p>
+
+<h2 id="update">update</h2>
+
+<p>这个就厉害了。</p>
+
+<ol>
+<li><code>db.collection.update()</code></li>
+<li><code>db.collection.updateOne()</code></li>
+<li><code>db.collection.updateMany()</code></li>
+<li><code>db.collection.replaceOne()</code></li>
+</ol>
+
+<p>其中<code>upate(&lt;query&gt;,&lt;update&gt;,&lt;upsert&gt;,&lt;multi&gt;,&lt;writeConcern&gt;)</code>方法用来<code>更新或者替代</code>匹配的文档。其中前两个参数为必填参数。</p>
+
+<p>query为匹配的条件filter，update为更新的内容，<code>upsert</code>这个参数厉害了，当通过query查找没有匹配的document的且upsert参数为true，这个时候，将会在collection中去insert一条document。而multi指定是否同时更新多个document。</p>
+
+<p>前面说到update()用来更新或者替换，那么问题来了，什么时候是对document的更新，什么是替换整个document。</p>
+
+<blockquote>
+<p>当upate的document中有update操作符如$set,$unset才为更新操作，否则用该document替换匹配的document</p>
+</blockquote>
+
+<p>细思极恐啊。万一这要是弄混淆了。。。不知道mongodb怎么会这么设计。我想这也是为何在后续版本中，将update()方法拆分几个方法的原因。</p>
+
+<h2 id="delete操作">delete操作</h2>
+
+<p>删除操作有如下几个语句
+  1. <code>db.collection.remove()</code>
+  2. <code>db.collection.deleteOne()</code>
+  3. <code>db.collection.deleteMany()</code></p>
+
+<p>用法类似，语法如：<code>revmove(&lt;query&gt;,&lt;justone&gt;,&lt;writeConcern&gt;)</code>。其中query为匹配的条件，其和查询中的条件格式一
+样。默认情况下，remove对所有匹配的记录进行删除，但是通过将参数<code>justone</code>设置为true，则只删除匹配记录中的一条记录。那么问题来了，如果匹配多
+个记录该删除那条呢？此时官方文档狡猾的推荐使用<code>db.collection.findAndDelete()</code>。可以对查询的结果按照条件排序，然后再删除第一条记录。</p>
+
+<p>##总结
+mongodb在版本迭代的过程中，一个操作有多个方式实现。个人觉着还是使用更为精细的控制，比如插入用insertOne或者insertMany。避免造成不必要的误操作。</p>
+
+<h2 id="更多参考">更多参考</h2>
+
+<p><a href="https://docs.mongodb.com/manual/crud/">MongoDB CRUD Operations</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>mjiang</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on where to build and share personal knowlegebase</title>
-    <link>https://suwenjiang.github.io/tags/linux/</link>
-    <description>Recent content in linux on where to build and share personal knowlegebase</description>
+    <title>linux on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in linux on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 15 Oct 2017 13:50:14 +0000</lastBuildDate>
     
-	<atom:link href="https://suwenjiang.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>unable to run rc.local at startup</title>
-      <link>https://suwenjiang.github.io/post/unable-to-run-rc-local/</link>
+      <link>http://localhost:1313/posts/unable-to-run-rc-local/</link>
       <pubDate>Sun, 15 Oct 2017 13:50:14 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/unable-to-run-rc-local/</guid>
+      <guid>http://localhost:1313/posts/unable-to-run-rc-local/</guid>
       <description>在raspberry pi 上安装了一个家庭私有云owncloud服务器。但是客服端间歇性连接不上服务器。 通过排查，发现问题是由于支持ownclo</description>
     </item>
     

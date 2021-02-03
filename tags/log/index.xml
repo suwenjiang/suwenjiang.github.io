@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>log on where to build and share personal knowlegebase</title>
-    <link>https://suwenjiang.github.io/tags/log/</link>
-    <description>Recent content in log on where to build and share personal knowlegebase</description>
+    <title>log on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/log/</link>
+    <description>Recent content in log on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 13 Oct 2015 14:10:52 +0000</lastBuildDate>
     
-	<atom:link href="https://suwenjiang.github.io/tags/log/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/log/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>arcgis server/portal 日志格式化脚本</title>
-      <link>https://suwenjiang.github.io/post/log-format-tool/</link>
+      <link>http://localhost:1313/posts/log-format-tool/</link>
       <pubDate>Tue, 13 Oct 2015 14:10:52 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/log-format-tool/</guid>
+      <guid>http://localhost:1313/posts/log-format-tool/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;通过arcgis for server manager中的logs选项卡可以查看当前站点的日志。其该页面提供了友好的日志显示方式。

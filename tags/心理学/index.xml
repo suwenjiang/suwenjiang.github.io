@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>心理学 on where to build and share personal knowlegebase</title>
-    <link>https://suwenjiang.github.io/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</link>
-    <description>Recent content in 心理学 on where to build and share personal knowlegebase</description>
+    <title>心理学 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</link>
+    <description>Recent content in 心理学 on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 19 Apr 2015 23:10:27 +0000</lastBuildDate>
     
-	<atom:link href="https://suwenjiang.github.io/tags/%E5%BF%83%E7%90%86%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/%E5%BF%83%E7%90%86%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《自控力》读书笔记</title>
-      <link>https://suwenjiang.github.io/post/selfcontrol/</link>
+      <link>http://localhost:1313/posts/selfcontrol/</link>
       <pubDate>Sun, 19 Apr 2015 23:10:27 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/selfcontrol/</guid>
+      <guid>http://localhost:1313/posts/selfcontrol/</guid>
       <description>&lt;p&gt;最近一周开始早上读书，刚读完了《自控力》。这本书给我带来的感觉，犹如《思考，快与慢》。如只从书名和封面来看，我一定会把它们定位鸡汤类书籍。还好在我的书单中有这本书。&lt;/p&gt;</description>
     </item>
     

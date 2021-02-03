@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>arcgis server site 快速恢复与重建 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="mjiang" /><meta name="description" content="背景 在实际的工作中，会遇到如下的情形： &amp;gt; arcgis server服务能够启动，但是由于未知的操作原因导致site里面的某个功能出现故障。
+要想在短时间内，使得server能够恢复正常功能。且： 1. 不重新安装arcgis server 2. 不重新发布服务，
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.58.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/posts/reconstruct-site/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="arcgis server site 快速恢复与重建" />
+<meta property="og:description" content="背景
+
+在实际的工作中，会遇到如下的情形：
+&gt; arcgis server服务能够启动，但是由于未知的操作原因导致site里面的某个功能出现故障。
+
+要想在短时间内，使得server能够恢复正常功能。且：
+1. 不重新安装arcgis server
+2. 不重新发布服务，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/reconstruct-site/" />
+<meta property="article:published_time" content="2015-10-21T09:53:35+00:00" />
+<meta property="article:modified_time" content="2015-10-21T09:53:35+00:00" />
+<meta itemprop="name" content="arcgis server site 快速恢复与重建">
+<meta itemprop="description" content="背景
+
+在实际的工作中，会遇到如下的情形：
+&gt; arcgis server服务能够启动，但是由于未知的操作原因导致site里面的某个功能出现故障。
+
+要想在短时间内，使得server能够恢复正常功能。且：
+1. 不重新安装arcgis server
+2. 不重新发布服务，">
+
+
+<meta itemprop="datePublished" content="2015-10-21T09:53:35&#43;00:00" />
+<meta itemprop="dateModified" content="2015-10-21T09:53:35&#43;00:00" />
+<meta itemprop="wordCount" content="985">
+
+
+
+<meta itemprop="keywords" content="arcgisserver,management," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="arcgis server site 快速恢复与重建"/>
+<meta name="twitter:description" content="背景
+
+在实际的工作中，会遇到如下的情形：
+&gt; arcgis server服务能够启动，但是由于未知的操作原因导致site里面的某个功能出现故障。
+
+要想在短时间内，使得server能够恢复正常功能。且：
+1. 不重新安装arcgis server
+2. 不重新发布服务，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="背景">背景</h2>
+
+<p>在实际的工作中，会遇到如下的情形：
+&gt; <strong>arcgis server服务能够启动</strong>，但是由于未知的操作原因导致site里面的某个功能出现故障。</p>
+
+<p>要想在短时间内，使得server能够恢复正常功能。且：
+1. 不重新安装arcgis server
+2. 不重新发布服务，</p>
+
+<p>则可以对当前server的站点进行快速的恢复与重建。也就是相当于<strong>恢复出场设置功能</strong>。</p>
+
+<h2 id="原理">原理</h2>
+
+<p>在前面的文章已经总结过服务迁移的几种情形，本篇文章为前面情形中最为简单的情况，保持各种参数都不变，具体参考如下链接：</p>
+
+<p>(<a href="http://www.cnblogs.com/myyouthlife/p/4255311.html">http://www.cnblogs.com/myyouthlife/p/4255311.html</a>)</p>
+
+<h2 id="操作步骤">操作步骤</h2>
+
+<p>在按照操作步骤执行前，请确定是否满足条件，参考底下的<strong>注意</strong></p>
+
+<ul>
+<li><p>停止arcgis server 服务。
+&gt; windwos  在服务管理器中，linux通过./stopserver 命令</p></li>
+
+<li><p>对arcgisserver目录进行备份。最简单的办法是重命名该文件夹，只要不叫arcgisserver即可。</p></li>
+
+<li><p>启动arcgis server 服务</p></li>
+
+<li><p>通过manager或者admin重新创建站点</p></li>
+</ul>
+
+<blockquote>
+<p>由于arcgis server 重启后，在服务目录下 找不到arcgisserver文件夹，故会认为当前机器上不存在站点。则manager页面或者admin页面会出现提醒创建site</p>
+</blockquote>
+
+<ul>
+<li>创建site</li>
+</ul>
+
+<blockquote>
+<p>site 的用户名和密码和前面的site 保持匹配。且directory和config-store存储位置也保持匹配。在这一步可能会出现错误 “当前位置已经有站点balalala的”。请去目录下查看是否有arcgisserver目录。有手动删除，然后下一步即可。</p>
+</blockquote>
+
+<ul>
+<li>恢复服务
+再次停止arcgis server服务。 将备份文件夹中的至少如下三个文件夹：config-store\services ; directories\arcgissystem\arcgisinput; directories\arcgisoutput 拷贝到新的站点，覆盖新站点对应的文件夹</li>
+</ul>
+
+<blockquote>
+<p>一般动态地图服务，拷贝上面三个目录即可。但是切片服务或者地理处理服务。需要将arcgiscache和arcgisjob目录拷贝过来。切莫覆盖整个config-store。</p>
+</blockquote>
+
+<ul>
+<li>重启服务</li>
+</ul>
+
+<p>重启arcgis server服务即可。</p>
+
+<h2 id="注意">注意</h2>
+
+<p>该项恢复和重建操作，只适合于如下场景：</p>
+
+<ul>
+<li>在同一台机器上（不在同一台机器上，稍微麻烦，参考原理篇去操作）</li>
+<li>arcgis server版本 大于10.1</li>
+<li>当前site的arcgis server服务能够正常的启动（不能正常启动，只能重装了arcgis server）。</li>
+<li>重建后site的管理员和用户名和旧site的保持匹配</li>
+<li>arcgisserver目录路径保持不变</li>
+<li>服务所使用到的数据源依然可以访问到</li>
+</ul>
+
+<h2 id="总结">总结</h2>
+
+<p>通过上面的步骤，基本上百试不爽。</p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>mjiang</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

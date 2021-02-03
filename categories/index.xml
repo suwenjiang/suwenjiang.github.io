@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on where to build and share personal knowlegebase</title>
-    <link>https://suwenjiang.github.io/categories/</link>
-    <description>Recent content in Categories on where to build and share personal knowlegebase</description>
+    <title>Categories on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 21 Oct 2019 16:10:17 +1000</lastBuildDate>
     
-	<atom:link href="https://suwenjiang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tech</title>
-      <link>https://suwenjiang.github.io/categories/tech/</link>
+      <link>http://localhost:1313/categories/tech/</link>
       <pubDate>Mon, 21 Oct 2019 16:10:17 +1000</pubDate>
       
-      <guid>https://suwenjiang.github.io/categories/tech/</guid>
+      <guid>http://localhost:1313/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GIS Tech</title>
-      <link>https://suwenjiang.github.io/categories/gis-tech/</link>
+      <link>http://localhost:1313/categories/gis-tech/</link>
       <pubDate>Fri, 18 Aug 2017 09:35:22 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/categories/gis-tech/</guid>
+      <guid>http://localhost:1313/categories/gis-tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reading Notes</title>
-      <link>https://suwenjiang.github.io/categories/reading-notes/</link>
+      <link>http://localhost:1313/categories/reading-notes/</link>
       <pubDate>Sun, 22 May 2016 13:15:21 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/categories/reading-notes/</guid>
+      <guid>http://localhost:1313/categories/reading-notes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Translating</title>
-      <link>https://suwenjiang.github.io/categories/translating/</link>
+      <link>http://localhost:1313/categories/translating/</link>
       <pubDate>Tue, 01 Mar 2016 16:48:04 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/categories/translating/</guid>
+      <guid>http://localhost:1313/categories/translating/</guid>
       <description></description>
     </item>
     

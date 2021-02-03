@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>arcgis on where to build and share personal knowlegebase</title>
-    <link>https://suwenjiang.github.io/tags/arcgis/</link>
-    <description>Recent content in arcgis on where to build and share personal knowlegebase</description>
+    <title>arcgis on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/arcgis/</link>
+    <description>Recent content in arcgis on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 09 May 2016 17:45:59 +0000</lastBuildDate>
     
-	<atom:link href="https://suwenjiang.github.io/tags/arcgis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/arcgis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ArcGIS Javascript4.0 亮点摘录</title>
-      <link>https://suwenjiang.github.io/post/jsapinews/</link>
+      <link>http://localhost:1313/posts/jsapinews/</link>
       <pubDate>Mon, 09 May 2016 17:45:59 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/jsapinews/</guid>
+      <guid>http://localhost:1313/posts/jsapinews/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;最近esri推出了ArcGIS Javascript的api4.0版本，在长时间的beta，都beta3后，终于郑重的推出了4.0 正式版本。作为开发者，长吁一口气。也许大家会有疑问，为何更新一个版本需要如此长的时间。真相只有一个，那就是：&lt;/p&gt;
@@ -38,10 +38,10 @@
     
     <item>
       <title>arcgis server/portal 日志格式化脚本</title>
-      <link>https://suwenjiang.github.io/post/log-format-tool/</link>
+      <link>http://localhost:1313/posts/log-format-tool/</link>
       <pubDate>Tue, 13 Oct 2015 14:10:52 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/log-format-tool/</guid>
+      <guid>http://localhost:1313/posts/log-format-tool/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;通过arcgis for server manager中的logs选项卡可以查看当前站点的日志。其该页面提供了友好的日志显示方式。
@@ -50,10 +50,10 @@
     
     <item>
       <title>SOI简介</title>
-      <link>https://suwenjiang.github.io/post/introduction/</link>
+      <link>http://localhost:1313/posts/introduction/</link>
       <pubDate>Thu, 23 Jul 2015 15:33:03 +0000</pubDate>
       
-      <guid>https://suwenjiang.github.io/post/introduction/</guid>
+      <guid>http://localhost:1313/posts/introduction/</guid>
       <description>&lt;h2 id=&#34;导语&#34;&gt;导语&lt;/h2&gt;
 
 &lt;p&gt;arcgis for server10.3.1中提供了一个新的功能叫做soi。本文简单的介绍soi概念，实现，在使用过程中的注意事项。阅读本文和使用soi需要以下先决条件&lt;/p&gt;
