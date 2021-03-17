@@ -1,0 +1,135 @@
+<html>
+<head>
+	
+	<title>arcgis server site 快速恢复与重建</title>
+	<meta name="keywords" content="mjiang's blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+
+<h2 class="title">arcgis server site 快速恢复与重建</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2015年10月21日
+
+
+    <a class="article-category-link" href="/categories/GIS-Tech/">GIS Tech</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">操作步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在实际的工作中，会遇到如下的情形：</p>
+<blockquote>
+<p><strong>arcgis server服务能够启动</strong>，但是由于未知的操作原因导致site里面的某个功能出现故障。</p>
+</blockquote>
+<p>要想在短时间内，使得server能够恢复正常功能。且：</p>
+<ol>
+<li>不重新安装arcgis server</li>
+<li>不重新发布服务，<span id="more"></span>
+则可以对当前server的站点进行快速的恢复与重建。也就是相当于<strong>恢复出场设置功能</strong>。</li>
+</ol>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在前面的文章已经总结过服务迁移的几种情形，本篇文章为前面情形中最为简单的情况，保持各种参数都不变，具体参考如下链接：</p>
+<p>(<a target="_blank" rel="noopener" href="http://www.cnblogs.com/myyouthlife/p/4255311.html">http://www.cnblogs.com/myyouthlife/p/4255311.html</a>)</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>在按照操作步骤执行前，请确定是否满足条件，参考底下的<strong>注意</strong></p>
+<ul>
+<li><p> 停止arcgis server 服务。</p>
+<blockquote>
+<p>windwos  在服务管理器中，linux通过./stopserver 命令</p>
+</blockquote>
+</li>
+<li><p> 对arcgisserver目录进行备份。最简单的办法是重命名该文件夹，只要不叫arcgisserver即可。</p>
+</li>
+<li><p>启动arcgis server 服务</p>
+</li>
+<li><p>通过manager或者admin重新创建站点</p>
+</li>
+</ul>
+<blockquote>
+<p>由于arcgis server 重启后，在服务目录下 找不到arcgisserver文件夹，故会认为当前机器上不存在站点。则manager页面或者admin页面会出现提醒创建site</p>
+</blockquote>
+<ul>
+<li>创建site</li>
+</ul>
+<blockquote>
+<p>site 的用户名和密码和前面的site 保持匹配。且directory和config-store存储位置也保持匹配。在这一步可能会出现错误 “当前位置已经有站点balalala的”。请去目录下查看是否有arcgisserver目录。有手动删除，然后下一步即可。</p>
+</blockquote>
+<ul>
+<li>恢复服务<br>再次停止arcgis server服务。 将备份文件夹中的至少如下三个文件夹：config-store\services ; directories\arcgissystem\arcgisinput; directories\arcgisoutput 拷贝到新的站点，覆盖新站点对应的文件夹</li>
+</ul>
+<blockquote>
+<p>一般动态地图服务，拷贝上面三个目录即可。但是切片服务或者地理处理服务。需要将arcgiscache和arcgisjob目录拷贝过来。切莫覆盖整个config-store。</p>
+</blockquote>
+<ul>
+<li>重启服务</li>
+</ul>
+<p>重启arcgis server服务即可。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>该项恢复和重建操作，只适合于如下场景：</p>
+<ul>
+<li>在同一台机器上（不在同一台机器上，稍微麻烦，参考原理篇去操作）</li>
+<li>arcgis server版本 大于10.1 </li>
+<li>当前site的arcgis server服务能够正常的启动（不能正常启动，只能重装了arcgis server）。</li>
+<li>重建后site的管理员和用户名和旧site的保持匹配</li>
+<li>arcgisserver目录路径保持不变</li>
+<li>服务所使用到的数据源依然可以访问到</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上面的步骤，基本上百试不爽。</p>
+
+
+<!--<a href="http://example.com/2015/10/21/reconstruct-site/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

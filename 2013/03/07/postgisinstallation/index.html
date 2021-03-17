@@ -1,0 +1,125 @@
+<html>
+<head>
+	
+	<title>postGIS安装与shp文件的存储示范</title>
+	<meta name="keywords" content="mjiang's blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+
+<h2 class="title">postGIS安装与shp文件的存储示范</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2013年3月7日
+
+
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+<p>自己装PostGIS已经有很多次了，由于没有记录，过一段时间就忘掉了。今天就写下本文记录。</p>
+<p>前言：</p>
+<p>PostGIS是关系对象型postgresql数据库的空间引擎。在安装PostGIS 前首先必须安装postgresql，然后在安装好的Application Stack Builder 中选择安装PostGIS组件。</p>
+<span id="more"></span>
+<p>##安装</p>
+<p>1.安装文件</p>
+<p>下载Postgresql安装包，选择与自己操作系统相符的安装包。本文中用的postgresql ，Version9.2.3 win 64。</p>
+<p>下载安装包：<a target="_blank" rel="noopener" href="http://www.enterprisedb.com/products-services-training/pgdownload#windows">http://www.enterprisedb.com/products-services-training/pgdownload#windows</a></p>
+<p>2.安装步骤</p>
+<p>Step1：运行安装文件，设置安装目录</p>
+<p>Step2：到图1时，设置超级用户的密码，默认用户名为：postgres</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_1.png-size" alt="图1"></p>
+<p>Step 3：设置数据库使用的区域。如果本地使用可以默认。如图2所示。</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_2.png-size" alt=" 图2"></p>
+<p>Step4:选择安装组件的位置，如图3所示，本文是本地安装选择，第二个。</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_3.png-size" alt="图3"></p>
+<p> Step 5：安装postGIS组件，如图4所示。</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_4.png-size" alt="图 4"></p>
+<p>Step 6：下一步，设置数据库登录的用户名和密码。如图5，下一步等待完成。</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_5.png-size" alt="图 5"></p>
+<p>##shapefile文件入库</p>
+<p>1.PostGIS Shapefile Import/Export Manager工具导入</p>
+<p> PostGIS提供了智能工具，方便快捷的将shapefile文件存入到数据库中。在入库之前，先得建立数据库。</p>
+<p>Step：开始菜单—pgAdminIII，在pgAdminIII对话框中的数据库目录树中新建数据库。如图6所示</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_6.png-size" alt="图 6"></p>
+<p>Step 2：设置新建数据库的属性。在属性页填写变量名和选择所有者，如图7所示。在定义页 选择模板和表空间。如果8所示。笔者在选择模板是没有选择template_postgis_20，在入库是总出现”没有匹配的指定名称和参数”错误。如果选择的字符编码为UTF-8，根据数据的中的编码不一样，也可能出现错误，但是可以在入库时候在做修改。</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_7.png-size" alt="图7">                                                                                       <img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_8.png-size" alt="图8"></p>
+<p>Step 3：经过前面两步已经建好了数据库，接下来的工作是将shapefile文件导入到刚建立的数据库中。点击开始中的PostGIS Shapefile Import/Export Manager，在图9所示的界面中选择，view connection details ，输入数据库连接方式，图10。点击Addfile，加载需要添加的shapefile文件。点击import按钮</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_9.png-size" alt="图 9 ">                                                                          <img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_10.png-size" alt="图 10"></p>
+<p>step 4：在导入过程会遇到编码的错误，如图11。数据库采用了UTF-8，而导入的文件为其他编码，如图13，数据库为UTF-8，而文件为LATINI1，解决办法是点击Options，修改编码方式为LATINI1.修改完成后，在导入，成功后可以在pgAdminIII 中 目录下的数据表中看到导入的数据，如图12的数据表所示。</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_11.png-size" alt="图11">　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_12.png-size" alt="图12">　</p>
+<p>2.使用命令行导入</p>
+<p>使用命令行的到入shapefile文件有两个步骤。一是根据文件生成sql，二是：将sql文件到入到库中。</p>
+<p>Step1：打开cmd，依次输入一下命令(根据自己的postsql 的安装目录)</p>
+<p>d: </p>
+<p>cd D:\Program Files\PostgreSQL\9.2\bin</p>
+<p>shp2pgsql -s -4269 d:\Links.shp jmb&gt;d:\dddd.sql  // shp2 pgsql 为将shp 文件转换为pg（postgis）支持的sql， -s是设置 srid（Spatial Reference System Identifier）jmb为数据库名 ，在d盘下可以看到到处的dddd.sql 文件。图13</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_13.png-size" alt="图13"></p>
+<p>tips： 查看诸如-s的意思，可以直接命令shp2pgsql，如图14所示</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_14.png-size" alt="图14"></p>
+<p>Step 2：通过sql语句查询器入库，打开pgAdminIII，链接数据库，点击工具条上的sql命令，然后加载生成的sql，点击执行，如下图</p>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_15.png-size" alt="图 15">                                                                                       <img src="http://7xovpf.com1.z0.glb.clouddn.com/postgisInstallation_16.png-size" alt="图 16"></p>
+<p> tips: 也可以直接一步运用命令存到数据库中</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>网上关于这方面的资料很多。</p>
+<p>扩展阅读：<strong>POSTGIS IN ACTION</strong></p>
+
+
+<!--<a href="http://example.com/2013/03/07/postgisinstallation/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

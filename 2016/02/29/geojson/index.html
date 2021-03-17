@@ -1,0 +1,140 @@
+<html>
+<head>
+	
+	<title>需要了解的geojson和操作工具</title>
+	<meta name="keywords" content="mjiang's blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+
+<h2 class="title">需要了解的geojson和操作工具</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年2月29日
+
+
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#geojson%E5%AF%B9%E8%B1%A1"><span class="toc-text">geojson对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Geometry-amp-Feature-Collection"><span class="toc-text">Geometry &amp; Feature Collection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#geojson%E7%BC%BA%E9%99%B7"><span class="toc-text">geojson缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8Eesri-json%E7%9A%84%E4%BA%92%E6%93%8D%E4%BD%9C"><span class="toc-text">与esri json的互操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E5%8F%82%E8%80%83"><span class="toc-text">本文参考</span></a></li></ol>
+<h2 id="geojson对象"><a href="#geojson对象" class="headerlink" title="geojson对象"></a>geojson对象</h2><ul>
+<li> Geojson的几何对象</li>
+</ul>
+<p>包含Point，Linestring，Polygon，multiPoint，MultiLinestring，MultiPolygon。Esri json 的几何对象包含 point,multipoint,polyline,polygon,Envelope</p>
+<ul>
+<li>position </li>
+</ul>
+<p>geojson 的几何对象中最小基元为position，x，y坐标构成position。其他几何对象由一个或者多个position 构成。position按照x,y,z的顺序。但是其可以包含其他任意额外值。也就是可以自己定义x,y,z意外的值。其他的几何对象由一到多个position组成。<br>标准的position如：[100.0, 0.0]</p>
+<ul>
+<li>point</li>
+</ul>
+<p>geojson中point表示的层级结构：<br>—point<br>   —coordinates</p>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [100.0, 0.0] &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>LineString&amp;multiPoint</li>
+</ul>
+<p>在geojson中linestring和multipoint的coordinates 的表示是相同的。这也是此处把两者放到一起的原因。<br>geojson 中multipoint的表示直接为{x:value,y:value}的形式。<br>geojson中LineString的表示有2到多个coordinates组成。<br>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;type&quot;: &quot;LineString&quot;, &quot;coordinates&quot;: [ [100.0, 0.0], [101.0, 1.0] ]    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>esri json中polyline为2至多个点组成的paths。但是esri json 比geojson强的地方，<strong>从10.3开始支持对复杂curve对象，像贝塞尔曲线的支持</strong></p>
+<ul>
+<li>MultiLinestring &amp; polygon</li>
+</ul>
+<p>而multiLinestring的coordinates为一到多个Linestring组成。<br>geojson中polygon 为linestring的变形，即是起止点相同。</p>
+<ul>
+<li>multiPolygon</li>
+</ul>
+<p>multiPolygon用来表示带洞的多边形。使用coordinates表示的时候， <strong>外环在前面，内环在后面</strong>。且两者方向相反。虽然geojson和esri json的标准中都没有指出，但是两者都采用右手规则：</p>
+<blockquote>
+<p>内环逆时针，外环顺时针</p>
+</blockquote>
+<ul>
+<li><p>geojson中不存在envelope对象</p>
+</li>
+<li><p>project system<br>geojson 的参考使用的为CRS。其中可以使用named crs和linked crs。named crs 使用<a target="_blank" rel="noopener" href="http://www.opengeospatial.org/ogcna">ogc的 crs urns</a>参考系统表示字符串。linked crs就是连接一个url地址，从该地址能够retrieve 参考信息，支持prj4，ogcwkt以及esriwkt。<br>esri json 的参考使用wkid或者wkt 表示。</p>
+</li>
+</ul>
+<h2 id="Geometry-amp-Feature-Collection"><a href="#Geometry-amp-Feature-Collection" class="headerlink" title="Geometry &amp; Feature Collection"></a>Geometry &amp; Feature Collection</h2><p>在geojson的对象中，geometry collection 和feature collection两类。从字面意思上也容易理解。</p>
+<p>geometry collection为上面列举的几何对象组成的合集。其type为GeometryCollection 。然后包含geometries 数组。前面的multi开始的对象只能表示一种几何对象的集合。<strong>而geometry collection，可以将不同geometry 类型组成一集合。</strong><br>但是这种情况通常较少。GC参考如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;type&quot;: &quot;GeometryCollection&quot;,</span><br><span class="line">    &quot;geometries&quot;: [</span><br><span class="line">      &#123; &quot;type&quot;: &quot;Point&quot;,</span><br><span class="line">        &quot;coordinates&quot;: [100.0, 0.0]</span><br><span class="line">        &#125;,</span><br><span class="line">      &#123; &quot;type&quot;: &quot;LineString&quot;,</span><br><span class="line">        &quot;coordinates&quot;: [ [101.0, 0.0], [102.0, 1.0] ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在esri json中没有geometry collection对象。</p>
+<p>geojson中另一集合对象为Feature Collection。 该对象犹如esri json中的featureset对象。除了包含geometry以为还包含geometry的一些属性信息。其格式参考如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;type&quot;: &quot;FeatureCollection&quot;,</span><br><span class="line">  &quot;features&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;type&quot;: &quot;Feature&quot;,</span><br><span class="line">      &quot;geometry&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;Point&quot;,</span><br><span class="line">        &quot;coordinates&quot;: [0, 0]</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;properties&quot;: &#123;</span><br><span class="line">        &quot;name&quot;: &quot;null island&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="geojson缺陷"><a href="#geojson缺陷" class="headerlink" title="geojson缺陷"></a>geojson缺陷</h2><ol>
+<li>   不能对表达拓扑关系</li>
+<li>  geojson值为json对象，除了json对象中的string, number, and boolean，其他复杂对象不能表达。以date类型为例，需要转换为timestamp 的字符串形式。</li>
+<li> 无法表达circle和curve集合对象。</li>
+</ol>
+<p>上面1,2 esri json也存在此类缺陷。</p>
+<p>有大神指出geojson有性能上的缺陷。这就没有尝试过了。</p>
+<h2 id="与esri-json的互操作"><a href="#与esri-json的互操作" class="headerlink" title="与esri json的互操作"></a>与esri json的互操作</h2><p>曾想自己编程实现两者之间的自由转换。通过搜索以及有很多开源通过pytho和js实现了。js实现的推荐：<br>esri 官方github中推出的geojson-utils。<br><a target="_blank" rel="noopener" href="https://github.com/Esri/geojson-utils">https://github.com/Esri/geojson-utils</a></p>
+<p>说道geojson的研究，这<a target="_blank" rel="noopener" href="http://www.macwright.org/">TOM MACWRIGHT</a>大神对geojson的研究太投入了，不仅自己弄了网站下数geojson格式的数据，还把挖掘了许多geojson转换，分析工具，在其github中列出list。地址如下：<br><a target="_blank" rel="noopener" href="https://github.com/tmcw/awesome-geojson%E3%80%82%E5%8F%AF%E4%BB%A5%E5%A5%BD%E4%B8%8D%E5%A4%B8%E5%BC%A0%E7%9A%84%E8%AF%B4%E3%80%82%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8geojson%E5%B7%A5%E5%85%B7%E3%80%82">https://github.com/tmcw/awesome-geojson。可以好不夸张的说。史上最全geojson工具。</a></p>
+<h2 id="本文参考"><a href="#本文参考" class="headerlink" title="本文参考"></a>本文参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Geometry_objects/02r3000000n1000000/">arcgis rest api geometry object</a></li>
+<li><a target="_blank" rel="noopener" href="http://geojson.org/geojson-spec.html#feature-objects">geojson specification</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.macwright.org/2015/03/23/geojson-second-bite.html#what-you-can't-do-with-geojson">macwright的博客</a></li>
+</ol>
+
+
+<!--<a href="http://example.com/2016/02/29/geojson/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

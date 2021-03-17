@@ -1,0 +1,131 @@
+<html>
+<head>
+	
+	<title>快速了解mongodb的空间操作</title>
+	<meta name="keywords" content="mjiang's blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+
+<h2 class="title">快速了解mongodb的空间操作</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年6月14日
+
+
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%9F%A5%E8%AF%A2%E6%93%8D%E4%BD%9C"><span class="toc-text">空间查询操作</span></a></li></ol>
+<p>遥想当年做毕业设计的时候，为了写论文而写论文，定了个mongodb 与oracle的互操作。当时使用的mongodb是无法对空间数据进行操作的。当时单纯的使用GDAL将shapelife文件转换文本表达以mongodb进行存储。</p>
+<p>而现在看mongodb的空间操作，虽然没有办法和ArcSDE和PostGIS相比，但是比没有强呀。</p>
+<p>文中使用的mongodb为2.4版本，robomongo0.9</p>
+<span id="more"></span>
+
+<p>##空间数据模型</p>
+<p>mongodb中有两类空间平面，一个是spherical，也是我们GIS中所熟悉的，另外一类就是纯粹的Euclidean平面。</p>
+<p>针对Eulidena平面下的空间数据使用legacy coordinate pairs的形式进行表达。其格式为[x,y]形式。表达polygon什么的需要和monodb的Geometry Specifiers 来配合，如</p>
+<p><code>$polygon : [ [ 0 , 0 ] , [ 0 , 1 ] , [ 1 , 1 ] , [ 1 , 0 ] ]</code><br>另一种是地球相关的面，采用的geojson的形式。mongodb从2.4开始支持geojson，到2.6 geojson的几何类型基本可以全部表达。</p>
+<p>有关geojson标准可以参考：<a target="_blank" rel="noopener" href="http://gishub.info/2016/02/29/geojson/">需要了解的geojson和操作工具</a></p>
+<p>本文肯定是使用geojson的。。</p>
+<p>##空间索引</p>
+<p>mongodb的空间索引有三类，针对不同的情形。有的操作是必须要指定采用的索引类型。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/2d/">2d Index</a>针对mongodb 2.2 以前的版本数据使用legancy coordinate pairs存储。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/2dsphere/">2d Sphere Index </a> 用来对sphere的数据进行构建索。本文我们肯定是使用这个索引得。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/geohaystack/">Geo Haystack</a>适合用来对小范围的数据进行索引。在Euclide平面中使用的效率比sphere的效率高。</li>
+</ul>
+<p>##数据准备</p>
+<p>###创建geojson数据<br>为了简便，通过 <a target="_blank" rel="noopener" href="http://geojson.io/">geojson.io</a>在线网站中生成本次实验的geojson。数据情形如下图所示<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/mongodb1.jpg"></p>
+<p>###mongodb将数据入库</p>
+<p>建立了三个collection，并将每个feature以一个document的形式插入。Geometry的key为“loc”。如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.testpoint.insert(&#123;</span><br><span class="line"> &quot;name&quot;:&#39;point1&#39;,</span><br><span class="line"> &quot;loc&quot;:&#123;</span><br><span class="line">  &#123; &quot;type&quot;: &quot;Point&quot;,</span><br><span class="line">  &quot;coordinates&quot;: [100.0, 0.0] &#125;</span><br><span class="line"> &#125;&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下图所示。<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/mongodb2.jpg"></p>
+<h2 id="空间查询操作"><a href="#空间查询操作" class="headerlink" title="空间查询操作"></a>空间查询操作</h2><p>目前mongodb的空间查询类操作只包含如下三大类：</p>
+<ul>
+<li>包含查询（$geoWithin）</li>
+</ul>
+<p>查询名称polgon1的polygon所包含的点：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> polygon=db.testpolygon.findOne(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;polgon1&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">db.testpoint.find(&#123;</span><br><span class="line">   loc : &#123; <span class="attr">$geoWithin</span> : &#123; <span class="attr">$geometry</span> : polygon.loc &#125; &#125; </span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>$geoWithin 可不需要指定spatial index，但是为了效率，建议对空间字段建立index</p>
+<ul>
+<li>相交查询($geoIntersects)</li>
+</ul>
+<p>选择与某个多边形相交的几何对象。比如，选中与面相交的线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> polygon=db.testpolygon.findOne(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;polgon1&quot;</span>&#125;)</span><br><span class="line">db.testline.find(&#123;</span><br><span class="line">loc:&#123; <span class="attr">$geoIntersects</span>:&#123;<span class="attr">$geometry</span>:polygon.loc&#125;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>同样其不需要构建索引，但是从效率的角度建议构建。</p>
+<ul>
+<li>临近查询（$near，$nearSphere）</li>
+</ul>
+<p>用来查找离某个点一定距离的点。<strong>需要构建索引</strong></p>
+<p> 使用<code> db.testpoint.ensureIndex(&quot;2dsphere&quot;)</code></p>
+<p> 创建索引。</p>
+<p> 然后使用$neare 操作符号进行选择，如选择离点id1，最大不超过500公里的点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point=db.testpoint.findOne(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;id1&quot;</span>&#125;)</span><br><span class="line">db.testpoint.find(&#123;</span><br><span class="line">    loc: &#123;<span class="attr">$near</span>: &#123;</span><br><span class="line">           $geometry: point.loc,</span><br><span class="line">           $maxDistance: <span class="number">500000</span>,</span><br><span class="line">        &#125;&#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>返回的记录按照距离的从近到远进行排列。</p>
+<p>##更多参考</p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/applications/geospatial-indexes/">Geospatial Indexes and Queries</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.mlab.com/2014/08/a-primer-on-geospatial-data-and-mongodb/">A Primer on Geospatial Data and MongoDB</a></p>
+<p><a target="_blank" rel="noopener" href="http://tugdualgrall.blogspot.jp/2014/08/introduction-to-mongodb-geospatial.html">tug’s blog introduction-to-mongodb-geospatial</a></p>
+
+
+<!--<a href="http://example.com/2016/06/14/mongodb-spatial-query/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

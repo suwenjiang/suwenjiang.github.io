@@ -1,0 +1,114 @@
+<html>
+<head>
+	
+	<title>python 中几个层次的中文编码</title>
+	<meta name="keywords" content="mjiang's blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+
+<h2 class="title">python 中几个层次的中文编码</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2015年8月21日
+
+
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">字符串变量的编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">脚本的编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%AA%97%E5%8F%A3%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">显示窗口的编码</span></a></li></ol>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>一直不太喜欢使用命令行，所以去年年底的技术创新中，使用TkInter来开发小工具。结果花费了大量的时间来学习TkInter ui的使用。<br>最近想整理该工具，使用命令行的形式，然后将该工具做成exe的形式进行分发。在工作一开始就遇到了编码的问题。<br>在脚本中有如下代码，用来接收用户交互式输入的ip。</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server = raw_input(<span class="string">&quot;请输GIS Server IP:&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>在脚本文件的第一行，我已经加了如下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+<p>但是在windows 的控制台执行的时候，出现了乱码。有点不解，因为自己一直以来在python中，处理中文都是在文件头加入该代码。</p>
+<p>通过搜索发现，是因为在windows cmd 默认的使用的cp936的编码。既然知道使用这种编码则将编码改为如下：</p>
+<!--more-->
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding: cp936-*-</span></span><br></pre></td></tr></table></figure>
+<p>但是得到如下的错误：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: encoding problem: cp936 <span class="keyword">with</span> BOM</span><br></pre></td></tr></table></figure>
+<p>百思不得其解。作为懒癌患者，就想绕过去。则采用如下方式，对单独字符串进行编码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userName=raw_input(<span class="string">&quot;请输入站点管理员用户名:&quot;</span>.decode(<span class="string">&quot;utf-8&quot;</span>).encode(<span class="string">&quot;cp936&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>这样重要在cmd中可以正常的输出中文了。但是问题来了，我的脚本中，有上百行代码有中文。每个地方都这么写，感觉偷懒不成，反被*。<br>这个时候，通过搜索。逐步的发现了问题的原因。这是因为python有几个层次的编码。分别是：</p>
+<ul>
+<li>字符串变量级别编码</li>
+<li>脚本级别的编码</li>
+<li>py文件级别的编码</li>
+<li>显示窗口的编码</li>
+</ul>
+<h2 id="字符串变量的编码"><a href="#字符串变量的编码" class="headerlink" title="字符串变量的编码"></a>字符串变量的编码</h2><p>对单个字符串转码，可以使用：**encode()**编码成可以显示的。通常对字符串不能由一个编码直接转换为另一个编码。通常需要解码到Unicode，然后对unicode字符串重新的编码。比如上面的示例。</p>
+<h2 id="脚本的编码"><a href="#脚本的编码" class="headerlink" title="脚本的编码"></a>脚本的编码</h2><p>上面通过设置 #coding：utf-8设置的就是脚本里面内容的编码。也就是该脚本文件中所有的字符串变量都采用该处设置的编码方式。<br>##py文件的编码<br>py文件的编码，默认的是ANSI。但是也可以使用utf-8，unicode编码。</p>
+<h2 id="显示窗口的编码"><a href="#显示窗口的编码" class="headerlink" title="显示窗口的编码"></a>显示窗口的编码</h2><p>上面的几种情况，中文在运行阶段不会出错。但是这些中文还不一定能够正常的显示。能否正常的显示，<strong>还有显示窗口支持的编码决定</strong>。比如cmd中中文支持GBK和cp936，所以代码中的字符串需要编码到这两种才可以显示。<br>##测试</p>
+<ol>
+<li>当py文件的编码为utf-8的时候。代码中唔需要添加#coding：utf-8 。脚本中的中文，在运行过程不会报错。</li>
+<li>当py文件的编码为ANSI的时候。如代码中没有显示的添加 ** -<em>-coding:utf-8 -</em>- **，则当代码中出现中文的时候，运行脚本的时候。会出现如下错误<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character <span class="string">&#x27;\xe4&#x27;</span> <span class="keyword">in</span> file</span><br></pre></td></tr></table></figure></li>
+<li>当py文件设置为utf-8，而显示设置代码编码为#coding：936。则会出现ncoding problem: cp936 with BOM的错。这个时候，将py文件的编码改为ANSI即可。</li>
+</ol>
+<p>##结论<br>通过上面的测试，有几个结论：</p>
+<ol>
+<li>编码有层次结构。文件编码影响脚本内容编码，脚本内容编码决定 其中的字符串编码。</li>
+<li> 当字符串显示设置了编码的时候。字符串的编码为显示设置的编码，此时文件和脚本编码不起作用。当字符串没有显示设置编码的时候，则采用上一级编码决定。</li>
+<li>所以设置这三种编码的时候，需要确保三种编码之间能够转换。否则会出现上面列举的错误。</li>
+</ol>
+
+
+<!--<a href="http://example.com/2015/08/21/python-code/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>
