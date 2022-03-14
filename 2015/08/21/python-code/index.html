@@ -2,7 +2,7 @@
 <head>
 	
 	<title>python 中几个层次的中文编码</title>
-	<meta name="keywords" content="mjiang's blog" />
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -52,17 +52,17 @@
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">字符串变量的编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">脚本的编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%AA%97%E5%8F%A3%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">显示窗口的编码</span></a></li></ol>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>一直不太喜欢使用命令行，所以去年年底的技术创新中，使用TkInter来开发小工具。结果花费了大量的时间来学习TkInter ui的使用。<br>最近想整理该工具，使用命令行的形式，然后将该工具做成exe的形式进行分发。在工作一开始就遇到了编码的问题。<br>在脚本中有如下代码，用来接收用户交互式输入的ip。</p>
 <span id="more"></span>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server = raw_input(<span class="string">&quot;请输GIS Server IP:&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">server <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">"请输GIS Server IP:"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在脚本文件的第一行，我已经加了如下代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># -*-coding: utf-8 -*-</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>但是在windows 的控制台执行的时候，出现了乱码。有点不解，因为自己一直以来在python中，处理中文都是在文件头加入该代码。</p>
 <p>通过搜索发现，是因为在windows cmd 默认的使用的cp936的编码。既然知道使用这种编码则将编码改为如下：</p>
 <!--more-->
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding: cp936-*-</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># -*-coding: cp936-*-</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>但是得到如下的错误：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: encoding problem: cp936 <span class="keyword">with</span> BOM</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">SyntaxError<span class="token punctuation">:</span> encoding problem<span class="token punctuation">:</span> cp936 <span class="token keyword">with</span> BOM<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>百思不得其解。作为懒癌患者，就想绕过去。则采用如下方式，对单独字符串进行编码。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userName=raw_input(<span class="string">&quot;请输入站点管理员用户名:&quot;</span>.decode(<span class="string">&quot;utf-8&quot;</span>).encode(<span class="string">&quot;cp936&quot;</span>))</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">userName<span class="token operator">=</span><span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">"请输入站点管理员用户名:"</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">"cp936"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这样重要在cmd中可以正常的输出中文了。但是问题来了，我的脚本中，有上百行代码有中文。每个地方都这么写，感觉偷懒不成，反被*。<br>这个时候，通过搜索。逐步的发现了问题的原因。这是因为python有几个层次的编码。分别是：</p>
 <ul>
 <li>字符串变量级别编码</li>
@@ -75,7 +75,7 @@
 <h2 id="显示窗口的编码"><a href="#显示窗口的编码" class="headerlink" title="显示窗口的编码"></a>显示窗口的编码</h2><p>上面的几种情况，中文在运行阶段不会出错。但是这些中文还不一定能够正常的显示。能否正常的显示，<strong>还有显示窗口支持的编码决定</strong>。比如cmd中中文支持GBK和cp936，所以代码中的字符串需要编码到这两种才可以显示。<br>##测试</p>
 <ol>
 <li>当py文件的编码为utf-8的时候。代码中唔需要添加#coding：utf-8 。脚本中的中文，在运行过程不会报错。</li>
-<li>当py文件的编码为ANSI的时候。如代码中没有显示的添加 ** -<em>-coding:utf-8 -</em>- **，则当代码中出现中文的时候，运行脚本的时候。会出现如下错误<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character <span class="string">&#x27;\xe4&#x27;</span> <span class="keyword">in</span> file</span><br></pre></td></tr></table></figure></li>
+<li>当py文件的编码为ANSI的时候。如代码中没有显示的添加 ** -<em>-coding:utf-8 -</em>- **，则当代码中出现中文的时候，运行脚本的时候。会出现如下错误<pre class="line-numbers language-python" data-language="python"><code class="language-python">SyntaxError<span class="token punctuation">:</span> Non<span class="token operator">-</span>ASCII character <span class="token string">'\xe4'</span> <span class="token keyword">in</span> <span class="token builtin">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li>当py文件设置为utf-8，而显示设置代码编码为#coding：936。则会出现ncoding problem: cp936 with BOM的错。这个时候，将py文件的编码改为ANSI即可。</li>
 </ol>
 <p>##结论<br>通过上面的测试，有几个结论：</p>

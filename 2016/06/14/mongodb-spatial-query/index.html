@@ -2,7 +2,7 @@
 <head>
 	
 	<title>快速了解mongodb的空间操作</title>
-	<meta name="keywords" content="mjiang's blog" />
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -72,7 +72,13 @@
 <p>###创建geojson数据<br>为了简便，通过 <a target="_blank" rel="noopener" href="http://geojson.io/">geojson.io</a>在线网站中生成本次实验的geojson。数据情形如下图所示<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/mongodb1.jpg"></p>
 <p>###mongodb将数据入库</p>
 <p>建立了三个collection，并将每个feature以一个document的形式插入。Geometry的key为“loc”。如下所示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.testpoint.insert(&#123;</span><br><span class="line"> &quot;name&quot;:&#39;point1&#39;,</span><br><span class="line"> &quot;loc&quot;:&#123;</span><br><span class="line">  &#123; &quot;type&quot;: &quot;Point&quot;,</span><br><span class="line">  &quot;coordinates&quot;: [100.0, 0.0] &#125;</span><br><span class="line"> &#125;&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">db.testpoint.insert(&#123;
+ &quot;name&quot;:&#39;point1&#39;,
+ &quot;loc&quot;:&#123;
+  &#123; &quot;type&quot;: &quot;Point&quot;,
+  &quot;coordinates&quot;: [100.0, 0.0] &#125;
+ &#125;&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果如下图所示。<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/mongodb2.jpg"></p>
 <h2 id="空间查询操作"><a href="#空间查询操作" class="headerlink" title="空间查询操作"></a>空间查询操作</h2><p>目前mongodb的空间查询类操作只包含如下三大类：</p>
@@ -80,13 +86,20 @@
 <li>包含查询（$geoWithin）</li>
 </ul>
 <p>查询名称polgon1的polygon所包含的点：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> polygon=db.testpolygon.findOne(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;polgon1&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">db.testpoint.find(&#123;</span><br><span class="line">   loc : &#123; <span class="attr">$geoWithin</span> : &#123; <span class="attr">$geometry</span> : polygon.loc &#125; &#125; </span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> polygon<span class="token operator">=</span>db<span class="token punctuation">.</span>testpolygon<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"name"</span><span class="token operator">:</span><span class="token string">"polgon1"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+db<span class="token punctuation">.</span>testpoint<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+   <span class="token literal-property property">loc</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">$geoWithin</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">$geometry</span> <span class="token operator">:</span> polygon<span class="token punctuation">.</span>loc <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> 
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>$geoWithin 可不需要指定spatial index，但是为了效率，建议对空间字段建立index</p>
 <ul>
 <li>相交查询($geoIntersects)</li>
 </ul>
 <p>选择与某个多边形相交的几何对象。比如，选中与面相交的线</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> polygon=db.testpolygon.findOne(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;polgon1&quot;</span>&#125;)</span><br><span class="line">db.testline.find(&#123;</span><br><span class="line">loc:&#123; <span class="attr">$geoIntersects</span>:&#123;<span class="attr">$geometry</span>:polygon.loc&#125;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> polygon<span class="token operator">=</span>db<span class="token punctuation">.</span>testpolygon<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"name"</span><span class="token operator">:</span><span class="token string">"polgon1"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>testline<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+<span class="token literal-property property">loc</span><span class="token operator">:</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">$geoIntersects</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token literal-property property">$geometry</span><span class="token operator">:</span>polygon<span class="token punctuation">.</span>loc<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>同样其不需要构建索引，但是从效率的角度建议构建。</p>
 <ul>
 <li>临近查询（$near，$nearSphere）</li>
@@ -95,7 +108,13 @@
 <p> 使用<code> db.testpoint.ensureIndex(&quot;2dsphere&quot;)</code></p>
 <p> 创建索引。</p>
 <p> 然后使用$neare 操作符号进行选择，如选择离点id1，最大不超过500公里的点。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point=db.testpoint.findOne(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;id1&quot;</span>&#125;)</span><br><span class="line">db.testpoint.find(&#123;</span><br><span class="line">    loc: &#123;<span class="attr">$near</span>: &#123;</span><br><span class="line">           $geometry: point.loc,</span><br><span class="line">           $maxDistance: <span class="number">500000</span>,</span><br><span class="line">        &#125;&#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> point<span class="token operator">=</span>db<span class="token punctuation">.</span>testpoint<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"name"</span><span class="token operator">:</span><span class="token string">"id1"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>testpoint<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">loc</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">$near</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+           <span class="token literal-property property">$geometry</span><span class="token operator">:</span> point<span class="token punctuation">.</span>loc<span class="token punctuation">,</span>
+           <span class="token literal-property property">$maxDistance</span><span class="token operator">:</span> <span class="token number">500000</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>返回的记录按照距离的从近到远进行排列。</p>
 <p>##更多参考</p>
 <p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/applications/geospatial-indexes/">Geospatial Indexes and Queries</a></p>

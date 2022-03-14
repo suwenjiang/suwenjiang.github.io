@@ -2,7 +2,7 @@
 <head>
 	
 	<title>unable to run rc.local at startup</title>
-	<meta name="keywords" content="mjiang's blog" />
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -63,7 +63,17 @@
 <p>chmod +x /etc/rc.local</p>
 </blockquote>
 <p>也有通过下面方法的，这种方法表示很不懂。mark到这儿。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Print the IP address</span><br><span class="line"># Sleep introduced to see if Wifi acquired and IP assigned</span><br><span class="line">date &gt;&gt; &#x2F;tmp&#x2F;rc_local_b4_sleep</span><br><span class="line">sleep 15</span><br><span class="line">date &gt;&gt; &#x2F;tmp&#x2F;rc_local_after_sleep</span><br><span class="line"></span><br><span class="line">_IP&#x3D;$(hostname -I) || true</span><br><span class="line">if [ &quot;$_IP&quot; ]; then</span><br><span class="line">  printf &quot;My IP address is %s\n&quot; &quot;$_IP&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none"># Print the IP address
+# Sleep introduced to see if Wifi acquired and IP assigned
+date &gt;&gt; &#x2F;tmp&#x2F;rc_local_b4_sleep
+sleep 15
+date &gt;&gt; &#x2F;tmp&#x2F;rc_local_after_sleep
+
+_IP&#x3D;$(hostname -I) || true
+if [ &quot;$_IP&quot; ]; then
+  printf &quot;My IP address is %s\n&quot; &quot;$_IP&quot;
+fi
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <!--<a href="http://example.com/2017/10/15/unable-to-run-rc-local/#disqus_thread" class="article-comment-link">Comments</a>

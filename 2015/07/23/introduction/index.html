@@ -2,7 +2,7 @@
 <head>
 	
 	<title>SOI简介</title>
-	<meta name="keywords" content="mjiang's blog" />
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -80,13 +80,22 @@
 <p>arcgis server发布的地图服务，既通过rest也通过soap对外提供服务能力。如果在开发某一个功能，特别是安全方面的控制的时候，如果只在rest的实现方式中添加控制代码而soap中不添加，就soap这端会存在安全漏洞。这个时候的建议就是在三种实现中都处理所有的请求</p>
 </blockquote>
 <p>三种实现方式中，rest是最为简单的实现方式。所有的参数都是json的形式。其中有两个必须实现的方式，其中下面的方法，是需要开发人员处理的：</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">byte</span>[] <span class="title">HandleRESTRequest</span>(<span class="params"><span class="built_in">string</span> capabilities, <span class="built_in">string</span> resourceName, <span class="built_in">string</span></span></span></span><br><span class="line"><span class="function"><span class="params"> operationName, <span class="built_in">string</span> operationInput, <span class="built_in">string</span> outputFormat, <span class="built_in">string</span></span></span></span><br><span class="line"><span class="function"><span class="params"> requestProperties, <span class="keyword">ref</span> <span class="built_in">string</span> responseProperties</span>)</span>;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-CS" data-language="CS"><code class="language-CS">
+public byte[] HandleRESTRequest(string capabilities, string resourceName, string
+ operationName, string operationInput, string outputFormat, string
+ requestProperties, ref string responseProperties);
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>看下这个方法的中的输入参数名，是不是对soi的实现一目了然。在这个方法中，通过对传递过来的参数就行判断，就可以对请求进行过滤。</p>
 <p>那怎么对输出，返回到前端的结果进行处理呢？</p>
 <p>如果需要对结果进行处理，需要捕获response。在模板中，上面函数的返回结果就是response。</p>
 <p>可以声明一个response变量，来接受返回。可以把模板中的return改为var response</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> response = restRequestHandler.HandleRESTRequest(</span><br><span class="line">                        Capabilities, resourceName, operationName, operationInput,</span><br><span class="line">                        outputFormat, requestProperties, <span class="keyword">out</span> responseProperties);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-CS" data-language="CS"><code class="language-CS">
+var response &#x3D; restRequestHandler.HandleRESTRequest(
+                        Capabilities, resourceName, operationName, operationInput,
+                        outputFormat, requestProperties, out responseProperties);
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>获取到response变量后对response的变量进行处理操作。</p>
 <p>最后，在该函数的末尾自己，写一个序列化的函数return回去。可以参考ESRI.ArcGIS.SoeSupport中关于序列化与反序列化的内容。</p>
 <p>开发完了就是部署了。<strong>需要注意的是，一个服务只能启用一个soi</strong>。 本人也思索了下这种情形的原因，因为soi本身没有增加服务的能力。在rest上，功能通过url提供，么有功能增加，url就保持不变。一个服务的多个soi的url是完全一样。</p>

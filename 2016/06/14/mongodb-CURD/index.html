@@ -2,7 +2,7 @@
 <head>
 	
 	<title>Mongodb文档的CURD操作</title>
-	<meta name="keywords" content="mjiang's blog" />
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -63,9 +63,11 @@
 </ol>
 <p>通过字面意思也知道这几种插入方法的不同。其中1既可以插入一个document，也可以插入多个。而2,3是后续版本中添加的。mongodb的所有的写操作都是<strong>原子（atomic）</strong>。</p>
 <p>mongodb的document都包含一个 <strong>_id</strong> 字段，该字段类似于关系型数据库中的<strong>primary<br>key</strong>。其中_id可以在插入文档候自定义赋值，如</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.some_col.insert(&#123;<span class="string">&quot;_id&quot;</span>:<span class="number">6</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&#x27;suwen&#x27;</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">db<span class="token punctuation">.</span>some_col<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"_id"</span><span class="token operator">:</span><span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">'suwen'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>也可以不显示指明，如果没有显示指明则mongodb会根据时间戳+pid+随机数信息生成一个类型为objectid的_id 值。如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.some_col.insert(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&#x27;suwen&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">db<span class="token punctuation">.</span>some_col<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"name"</span><span class="token operator">:</span><span class="token string">'suwen'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>通过查询，其_id值为5750f3b164cfe92c28a4c2b1。且mongodb含有从 _id中提取时时间戳信息的命令。</p>
 <h2 id="查询document"><a href="#查询document" class="headerlink" title="查询document"></a>查询document</h2><p>在mongo中document的查询语句如下：</p>
 <ol>
@@ -74,49 +76,94 @@
 </ol>
 <p>其中query为查询语句，而为optional参数对查询返回的<strong>字段</strong>进行过滤。可以控制查询结果的传输量。</p>
 <p>其中findOne可以直接获取一个document，而find获取多个document。则在获取document的中的某个字段值的时候需要注意。如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dd=db.testpoint.findOne(&#123;<span class="attr">name</span>:<span class="string">&quot;id1&quot;</span>&#125;)</span><br><span class="line">dd.name <span class="comment">// id1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dd=db.testpoint.find(&#123;<span class="attr">name</span>:<span class="string">&quot;id1&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">dd.name <span class="comment">//no result to show</span></span><br><span class="line">dd[<span class="number">0</span>].name <span class="comment">//id1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> dd<span class="token operator">=</span>db<span class="token punctuation">.</span>testpoint<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">"id1"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+dd<span class="token punctuation">.</span>name <span class="token comment">// id1</span>
+
+<span class="token keyword">var</span> dd<span class="token operator">=</span>db<span class="token punctuation">.</span>testpoint<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">"id1"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+dd<span class="token punctuation">.</span>name <span class="token comment">//no result to show</span>
+dd<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name <span class="token comment">//id1</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>当find()不添加任何参数或者参数为{}的时候，表示查询当前collection中的所有document。</strong></p>
 <ul>
 <li>project</li>
 </ul>
 <p>project格式如下：{field1：,field2:..}其中字段值只有<strong>0和1两类</strong>。其中0表示字段排除，1表示字段包含。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.testpoint.findOne(&#123;name:&quot;id1&quot;&#125;,&#123;_id:0&#125;) &#x2F;&#x2F;查询结果不包含_id 信息</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascipt" data-language="javascipt"><code class="language-javascipt">db.testpoint.findOne(&#123;name:&quot;id1&quot;&#125;,&#123;_id:0&#125;) &#x2F;&#x2F;查询结果不包含_id 信息<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>query</li>
 </ul>
 <p>mongo提供了非常丰富的query，来应用不同场景的查询。</p>
 <p>大体分为下面几类：</p>
 <p>1.简单相等查询</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.some_col.find(&#123;&quot;name&quot;:&quot;suwen&quot;&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascipt" data-language="javascipt"><code class="language-javascipt">db.some_col.find(&#123;&quot;name&quot;:&quot;suwen&quot;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>AND条件查询,直接多个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.some_col.find(&#123;&quot;name&quot;:&quot;suwen&quot;,&#39;gender&#39;:&#39;male&#39;&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascipt" data-language="javascipt"><code class="language-javascipt">db.some_col.find(&#123;&quot;name&quot;:&quot;suwen&quot;,&#39;gender&#39;:&#39;male&#39;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>其他的OR条件或者比较查询需要与操作符进搭配使用。</p>
 <p>2.与操作符结合判断</p>
 <p>mongod提供了一些犹如关系型数据库中的操作符$in,$lt等。如</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.some_col.find(&#123;<span class="string">&quot;name&quot;</span>:&#123;<span class="attr">$in</span>:[<span class="string">&quot;suwen,mb&quot;</span>]&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">db<span class="token punctuation">.</span>some_col<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"name"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>$<span class="token keyword">in</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"suwen,mb"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>用法和关系型数据库的in操作符一样。后面会专门写篇文章来学习这些关键字。</p>
 <p>3.嵌套和引用文档的查询<br>mongodb 通过嵌套和应用构建复杂的document，这两者怎么查询呢？</p>
 <p>有如下document：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">db.users.insert([&#123;</span><br><span class="line">    username: <span class="string">&#x27;suwen&#x27;</span>,</span><br><span class="line">    contact: &#123; <span class="comment">//嵌套document</span></span><br><span class="line">        phone: <span class="string">&#x27;111111111&#x27;</span>,</span><br><span class="line">        email: <span class="string">&#x27;1111@qq.com&#x27;</span>&#125;,</span><br><span class="line">    department: &#123; <span class="comment">//嵌套document</span></span><br><span class="line">        level: <span class="number">0</span>,</span><br><span class="line">        title: <span class="string">&quot;giser&quot;</span>&#125;,</span><br><span class="line">    </span><br><span class="line">    hobby: [<span class="string">&#x27;eating&#x27;</span>,<span class="string">&#x27;sleeping&#x27;</span>,<span class="string">&#x27;hit doudou&#x27;</span>] <span class="comment">//Array</span></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    username: <span class="string">&#x27;jmb&#x27;</span>,</span><br><span class="line">    contact: &#123; <span class="comment">//嵌套document</span></span><br><span class="line">        phone: <span class="string">&#x27;222222222&#x27;</span>,</span><br><span class="line">        email: <span class="string">&#x27;2222@qq.com&#x27;</span>&#125;,</span><br><span class="line">    department: &#123; <span class="comment">//嵌套document</span></span><br><span class="line">        level: <span class="number">0</span>,</span><br><span class="line">        title: <span class="string">&quot;loser&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    hobby: [<span class="string">&#x27;sleeping&#x27;</span>,<span class="string">&#x27;eating&#x27;</span>] <span class="comment">//Array</span></span><br><span class="line">&#125;])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">
+db<span class="token punctuation">.</span>users<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">'suwen'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">contact</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token comment">//嵌套document</span>
+        <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">'111111111'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">'1111@qq.com'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">department</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token comment">//嵌套document</span>
+        <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"giser"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    
+    <span class="token literal-property property">hobby</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'eating'</span><span class="token punctuation">,</span><span class="token string">'sleeping'</span><span class="token punctuation">,</span><span class="token string">'hit doudou'</span><span class="token punctuation">]</span> <span class="token comment">//Array</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">'jmb'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">contact</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token comment">//嵌套document</span>
+        <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">'222222222'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">'2222@qq.com'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">department</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token comment">//嵌套document</span>
+        <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"loser"</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">hobby</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'sleeping'</span><span class="token punctuation">,</span><span class="token string">'eating'</span><span class="token punctuation">]</span> <span class="token comment">//Array</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>嵌套document的查询有两种方式：</p>
 <p>一是<strong>文档完全匹配的形式</strong></p>
 <p>如find上面的记录需要使用如下语句：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(</span><br><span class="line">&#123;</span><br><span class="line"> contact: &#123; </span><br><span class="line">        phone: <span class="string">&#x27;111111111&#x27;</span>,</span><br><span class="line">        email: <span class="string">&#x27;1111@qq.com&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">db<span class="token punctuation">.</span>users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+<span class="token punctuation">&#123;</span>
+ <span class="token literal-property property">contact</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> 
+        <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">'111111111'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">'1111@qq.com'</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>那么如果我只想以电话作为条件是不是可以使用如下这种形式？？？？</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(</span><br><span class="line">&#123;</span><br><span class="line"> contact: &#123; </span><br><span class="line">        phone: <span class="string">&#x27;111111111&#x27;</span></span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;) <span class="comment">//no results</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">db<span class="token punctuation">.</span>users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+<span class="token punctuation">&#123;</span>
+ <span class="token literal-property property">contact</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> 
+        <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">'111111111'</span>
+       
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token comment">//no results</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>执行完，发现并没有结果出现。。这也是为何这种方式叫文档完全匹配。如果只使用嵌套文档中的某个字段作为条件来过滤，则需要使用如下第二种方式：</p>
 <p>二是<strong>通过dot notation的形式</strong>，该形式的格式为<code>&lt;document&gt;.&lt;field&gt;</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(</span><br><span class="line">&#123;</span><br><span class="line"> <span class="string">&#x27;contact.phone&#x27;</span>:<span class="string">&#x27;111111111&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">db<span class="token punctuation">.</span>users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+<span class="token punctuation">&#123;</span>
+ <span class="token string-property property">'contact.phone'</span><span class="token operator">:</span><span class="token string">'111111111'</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>4.Array的查询</p>
 <p>有了上面几个基础，再来理解Array的查询就容易多了。 document的字段值可能是一个Array类型。如何对Array的值进行判断，从而来筛选document呢？</p>
 <p>一是完全匹配形式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(&#123; <span class="attr">hobby</span>: [<span class="string">&#x27;eating&#x27;</span>,<span class="string">&#x27;sleeping&#x27;</span>,<span class="string">&#x27;hit doudou&#x27;</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">db<span class="token punctuation">.</span>users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">hobby</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'eating'</span><span class="token punctuation">,</span><span class="token string">'sleeping'</span><span class="token punctuation">,</span><span class="token string">'hit doudou'</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>同样其为整个Array的匹配。只有全部匹配的Array才能筛选出。</p>
 <p>二是匹配Array中的某个元素<br>针对Array中的某个元素的匹配，可以使用犹如普通的筛选语句。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(&#123; hobby: &#39;hit doudou&#39;&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascipt" data-language="javascipt"><code class="language-javascipt">db.users.find(&#123; hobby: &#39;hit doudou&#39;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>除此之外，array还有一种常见方式<br>三对Array某个位置的元素进行匹配<br>如对array的index的value为’eating’的进行匹配。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(&#123; &quot;hobby.0&quot;: &#39;eating&#39;&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascipt" data-language="javascipt"><code class="language-javascipt">db.users.find(&#123; &quot;hobby.0&quot;: &#39;eating&#39;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Array除此上面三种方式，还有更为复杂条件匹配。此处按下不表。</p>
 <h2 id="update"><a href="#update" class="headerlink" title="update"></a>update</h2><p>这个就厉害了。</p>
 <ol>
