@@ -49,11 +49,193 @@
 -->
 </div>
 
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What%E2%80%99s-Koop"><span class="toc-text">What’s Koop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preparation"><span class="toc-text">Preparation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Serverless"><span class="toc-text">Serverless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-text">Summary</span></a></li></ol>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Google BigQuery as data warehouse is renowned it’s serverless, highly scalable and high performance. Although it comes with some geospatial data visualisation and geospatial analytics solutions, comparing  </p>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What%E2%80%99s-Koop"><span class="toc-text">What’s Koop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preparation"><span class="toc-text">Preparation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-the-provider"><span class="toc-text">Create the provider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BigQuery-into-Vector-Tiles"><span class="toc-text">BigQuery into Vector Tiles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArcGIS-API-to-consumer-the-service"><span class="toc-text">ArcGIS API to consumer the service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-text">Summary</span></a></li></ol>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Google BigQuery as data warehouse is renowned for it’s serverless, highly scalable and high performance in operation. Although it provides data visualization and geospatial analysis tools and solutions, while a GIS developer who normally might be not familiar with those tools and more with ArcGIS platform, ArcGIS provides a bunch of choices to do the job in different platforms and devices easily and consistently, the prerequisite is the feed-in data needs to be one type of ArcGIS Geoservices. Therefore, this article will describe how to convert the data from Bigquery into service of ArcGIS and consume it via ArcGIS Pro/Js API as an example.</p>
 <span id="more"></span>
-<h2 id="What’s-Koop"><a href="#What’s-Koop" class="headerlink" title="What’s Koop"></a>What’s Koop</h2><p>Koop  is a geospatial data server which is built with Nodejs.<br>[Koop]<a target="_blank" rel="noopener" href="https://koopjs.github.io/">https://koopjs.github.io/</a></p>
-<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><h2 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h2 id="What’s-Koop"><a href="#What’s-Koop" class="headerlink" title="What’s Koop"></a>What’s Koop</h2><p>There might be a lot of ways to convert the Bigquery into a ArcGIS Service, but here we are going to talk about one open source library named <strong>Koop</strong> which was initialized by Esri itself.</p>
+<p>As per <a target="_blank" rel="noopener" href="https://koopjs.github.io/">Koop’s official webside</a>. Koop is a JavaScript toolkit which was built on Node.js that <strong>translate the GeoJson into the GeoServices specification supported by ArcGIS products</strong>. Below it is a Koop’s integration diagram from which we could take the koop as a middleware that covert feed-in data into GeoServices.As long as the feed-in data could be converted into geojson format.</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AM-JKLVqEcCGKPOj8z3sjLVcphCVUOCMedrvKzKuqCt7uy82HUiLwUtkaoDdBfEkvQMOl6HSdy5rYihc91cBjYUlue1EftZibByDNrVfjNdeKZ77YrNzocn6rVDE55o94U7o4cGLbX3cQILrf3qnBdhEFe1j6A=w1440-h1080-no?authuser=0" alt="Koop"></p>
+<p>The attractive feature of Koop is it uses plugin mechenism, we could dynamically add in <em>Provider</em> to connect the source data and translate them into GeoJSON and pair the <em>Provider</em> with various <em>Output</em> plugin from Esri GeoServices, OGC etc.</p>
+<p>Koop already has some officially supported providers and outputs, which can be found via the website, however, unfortunately, Bigquery hasn’t been an official one yet. So we’re going to develop a custom Koop provider to fetch Bigquery data into GeoJson format.</p>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><ul>
+<li>Load data into BigQuery</li>
+<li>Get service account key</li>
+<li>Install Bigquery for NodeJS</li>
+<li>Install the latest Koop CLI<blockquote>
+<p>npm install -g @koopjs/cli@latest</p>
+</blockquote>
+</li>
+</ul>
+<p>After installed the CLI, we could use Koop commands to create Koop applications and plugins</p>
+<blockquote>
+<p>Koop new app Demo-app</p>
+</blockquote>
+<h2 id="Create-the-provider"><a href="#Create-the-provider" class="headerlink" title="Create the provider"></a>Create the provider</h2><p>Create the provider with the name <strong>provider-google-bigquery</strong> with the CLI. In the <strong>Demo-app</strong> folder</p>
+<blockquote>
+<p>Koop new provider provider-google-bigquery<br>Then a folder with the given name is created in the root folder of the app and contains specific files and the structure.</p>
+</blockquote>
+<p><img src="https://lh3.googleusercontent.com/pw/AM-JKLXPwJKJ8V75igxzJqp0hdvRJWCk92AE-64oztccp9tdKPjZYpWFRMMZGmQUNXYwXeU5HK1FTqMs4hAchMXQM_b4-5bIqYWEN945fkzu7HgMQU1hDMwb1xLCZxyqihns5rlz8Za63Xi5Ir1vpPrBt6YhYg=w441-h361-no?authuser=0"></p>
+<p>Among these files, <strong>/config/default.json</strong> is the configuration file for this provider, we could put some environmental variable in it, <strong>model.js</strong> is the main file where we put our logic code.</p>
+<p>After we create the provider, we need to register it to the Koop core by</p>
+<blockquote>
+<p>Koop add provider provider-google-bigquery</p>
+</blockquote>
+<p>After success, in demo-app/plugin.js we could see this provider has added to the list of the plugins.</p>
+<pre class="line-numbers language-JavaScipt" data-language="JavaScipt"><code class="language-JavaScipt">const plugins &#x3D; [providerGoogleBigquery];
+
+&#96;&#96;&#96;&#96;
+
+Now we could start the server via
+
+&gt; Koop serve
+
+Or jsut node js
+&gt; npm start
+
+In the console, we could see the API structure generated, amazingly it is the same rest structure as ArcGIS MapServer and FeatureServer.
+
+![](https:&#x2F;&#x2F;lh3.googleusercontent.com&#x2F;pw&#x2F;AM-JKLXNrYPmcfkvOlXzgKi2EDibd7JUYHsVMKjMr438Tq5z1dIgsy-Nj30ic_MaBnnX_EQP22pI4No8HuyO_IPX8QGnkm-uivgd6M6zyCaUBa4S1oNQaC5-yw2ZwKJw4DTa-uA9Wr83fv4AZ-7Q8ywxQ732tw&#x3D;w814-h676-no?authuser&#x3D;0)
+
+Use Postman, we could test the API. Unfortunately, the version of the output service is 10.51, not the latest.
+
+![](https:&#x2F;&#x2F;lh3.googleusercontent.com&#x2F;pw&#x2F;AM-JKLXHqKP9dVjGdmBZjeqMqbeeGJ_LI2g1S_A7jO0qDLMN0RwDr5W0ktZ9w_Y8tUCiImlMUnybQRPatf7WpX8bShDl-vLEMUGeRSp_FPLRdbq5RV5iFnRE-uh8JpLixuBVm4PA3eZdT_GsYlU6vIvbR6poJQ&#x3D;w843-h748-no?authuser&#x3D;0)
+
+Up to now, the customized provider has been successfully plug-in the Koop core and connecting with the default GeoSevices output, next we are going to add logic code to retrieve the data from the BigQuery.  
+
+First, we need to install the BigQuery SDK for Node.js via
+&gt; npm install --save @google-cloud&#x2F;bigquery@latest
+
+Add reference in **model.js**
+const &#123; BigQuery &#125; &#x3D; require(&#39;@google-cloud&#x2F;bigquery&#39;);
+
+**model.js** is the template to extract source data and translate it into geojson, the process code within the function of **getData**
+
+&#96;&#96;&#96;Javascript
+Model.prototype.getData &#x3D; function (req, callback) &#123;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>The process could be roughly divided into steps:</p>
+<ol>
+<li>get the parameters from the requested Url<br>Using code below to capture the parameters of the request Url</li>
+</ol>
+<pre class="line-numbers language-Javascript" data-language="Javascript"><code class="language-Javascript">const &#123; params: &#123; id &#125; &#125; &#x3D; req<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>make a request to the Bigquery</li>
+</ol>
+<pre class="line-numbers language-Javascript" data-language="Javascript"><code class="language-Javascript">async function query(id) &#123;
+
+  const bigquery &#x3D; new BigQuery()
+  const query &#x3D; &#96;SELECT * except(geometry), ST_X(geometry) as longitude, ST_Y(geometry) as latitude
+      FROM \&#96;bat-geo-dev.bat_farms.$&#123;id&#125;\&#96;
+
+     &#96;;
+
+  const options &#x3D; &#123;
+    query: query
+    &#x2F;&#x2F; Location must match that of the dataset(s) referenced in the query.
+
+  &#125;;
+
+  &#x2F;&#x2F; Run the query as a job
+  const [job] &#x3D; await bigquery.createQueryJob(options);
+  console.log(&#96;Job $&#123;job.id&#125; started.&#96;);
+
+  &#x2F;&#x2F; Wait for the query to finish
+  const [rows] &#x3D; await job.getQueryResults();
+
+  &#x2F;&#x2F; Print the results
+  console.log(&#96;Rows:$&#123;rows.length&#125;&#96;);
+  &#x2F;&#x2F; rows.forEach(row &#x3D;&gt; console.log(row));
+
+  return rows
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>transfer the returned data into GeoJson</li>
+</ol>
+<pre class="line-numbers language-Javascript" data-language="Javascript"><code class="language-Javascript">function convertBigqueryResultsToGeoJSON(json) &#123;
+
+  const &#123; bigqueryResults: records &#125; &#x3D; json
+  const features &#x3D; json.map(convertBigQueryResultToGeoJSON)
+  return &#123;
+    type: &#39;FeatureCollection&#39;,
+    features
+  &#125;
+&#125;
+function convertBigQueryResultToGeoJSON(record) &#123;
+  &#123;
+
+    const &#123; longitude, latitude, ...properties &#125; &#x3D; record
+    return &#123;
+
+      type: &quot;feature&quot;,
+      properties,
+      geometry: &#123;
+        type: &quot;Point&quot;,
+        coordinates: [
+          Number(longitude),
+          Number(latitude)
+
+        ]
+
+      &#125;
+    &#125;
+
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>add metadata to geojson</li>
+</ol>
+<p>This optional, but highly suggested as it makes the returned data more descriptive.  </p>
+<pre class="line-numbers language-Javascript" data-language="Javascript"><code class="language-Javascript">
+&#x2F;&#x2F;5. add metadata to geojson
+   geojson.metadata &#x3D; &#123;
+
+     geometryType: &#39;Point&#39;,
+     description: &#39;google bigquery data&#39;
+   &#125;
+ geojson.metadata.idField &#x3D; &#39;OBJECTID&#39;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>In the Postman we could test it out  with the exact syntax of <a target="_blank" rel="noopener" href="https://developers.arcgis.com/rest/services-reference/enterprise/get-started-with-the-services-directory.htm">ArcGIS Rest API</a></p>
+<p><img src="https://lh3.googleusercontent.com/pw/AM-JKLX5N916e5EaIDisRBT_PoSFV_F6QoobukEHFcsLcdW6LGL5dLYCj7c2aNuJ-oVWk5e9YMBCakvOnfpRckwMfRgPXtqETjq1HCiPuvFP6O1xRkKsfgedCL5NcpixdyW2GHQhSXC5v01bXwfZ8fZheS3gvg=w1026-h1016-no?authuser=0"></p>
+<p>We could use the powerful ArcGIS Pro to view the data layer and perform the spatial analysis<br><img src="https://lh3.googleusercontent.com/pw/AM-JKLWvBfjDZQRyECPXRqfxbS39jKML9s0tDQYGuvzYURAlLV8p1Ege_6Y9Zwcn1OFvxxy0J1Zy01sume-RULmoddILZizNdb6suJEYZkZP8AThINU23E8VFSI4elGr72ulh9tqqQbScxEcIqoZblLinBo69A=w2033-h1025-no?authuser=0"></p>
+<h2 id="BigQuery-into-Vector-Tiles"><a href="#BigQuery-into-Vector-Tiles" class="headerlink" title="BigQuery into Vector Tiles"></a>BigQuery into Vector Tiles</h2><p>Up to here, we have created a custom provider and used the default output(GeoService) of Koop. BigQuery it is naturally for big data, so Feature Layer might not be the best visualization option when the data exceed a certain amount<br>So it would be really helpful to use Feature Service for the query and data operation and use Vector Tiles for the visualization.</p>
+<p>Fortunately, Koop has officially supported to output of the GeoJSON into its vector tile specification or I probably need to say MapBox specification as  Esri adopted it.</p>
+<ul>
+<li>Install the output</li>
+</ul>
+<blockquote>
+<p>npm install –save @koopjs/output-vector-tiles</p>
+</blockquote>
+<ul>
+<li>Register the output</li>
+</ul>
+<blockquote>
+<p>Koop add output @koopjs/output-vector-tiles</p>
+</blockquote>
+<p>Now when we start the application, we would find each registered provider has an extra output like:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AM-JKLWX3UiQgWyEsSg-emXS6CoVpOLwIiKfWqFzSzatY2G9zA8K-rsUrvGKAUNfK0A62q49-Sp3TJvxTpjo8kg9IIHXd-ga-g0mDvOS8dlaZ3sDyr4YgknywTWaYbMBIPRUN9Bv_uVKO4-IM8zCQyRK4NZCRg=w1508-h298-no?authuser=0"></p>
+<h2 id="ArcGIS-API-to-consumer-the-service"><a href="#ArcGIS-API-to-consumer-the-service" class="headerlink" title="ArcGIS API to consumer the service"></a>ArcGIS API to consumer the service</h2><p>We could use the ArcGIS Javascript API to visualization the vector tiles.</p>
+<pre class="line-numbers language-Javascript" data-language="Javascript"><code class="language-Javascript">
+var map &#x3D; new Map(&quot;map&quot;, &#123;
+           basemap: &quot;topo&quot;,
+           zoom: 13,
+           center: [-118.1445, 34.1478]
+       &#125;);
+
+
+       var pointlayer &#x3D; new VectorTileLayer(&quot;http:&#x2F;&#x2F;localhost:8080&#x2F;koop-provider-google-bigquery&#x2F;rest&#x2F;services&#x2F;farms&#x2F;VectorTileServer &quot;);
+       map.addLayer(pointlayer);
+   &#125;);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://lh3.googleusercontent.com/pw/AM-JKLUQ6iyGSp5l2Q9JTid3dQSAhOfTZHjj09kNXkV9eXqFq4ZA38D9goPz7CdslhRztDXGL-cizZXc_H1QZG_npuX_Zpg33WIzSpGfR5UEnCqG_N2s-7O2Nf7PSrC43b4FS8iIC5pAqUh_n5j5pJvWY-m_YQ=w1601-h1610-no?authuser=0"></p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>This article gives us an example of how to use Koop to extend the capabilities of existing data. It inspired me that this would be really helpful when building the enterprise GIS system which will need integrate different source data in various formats.</p>
+
 
 <!--<a href="http://example.com/2022/03/15/202203_Use_Bigquery_in_ArcGIS/#disqus_thread" class="article-comment-link">Comments</a>
 <div id="disqus_thread"></div>
