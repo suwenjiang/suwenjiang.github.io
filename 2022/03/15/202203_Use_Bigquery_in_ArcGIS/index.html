@@ -1,60 +1,187 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	
-	<title>How to use Bigquery in ArcGIS</title>
-	<meta name="keywords" content="mjiang's blog" />
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <meta name="keywords" content="gis,geospatial,minbin,suwen">
+    <meta name="description" content="Where to build personal knowledge database">
+    <meta name="author" content="Minbin Jiang">
     
-	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
-    
+    <title>
         
-<script src="/js/util.js"></script>
-
-        <script>
-            if(isMobile()) {
-                loadjscssfile('../css/mobile.css', 'css');
-            } else {
-                loadjscssfile('../css/desktop.css', 'css');
-            }
-        </script> 
+            How to use Bigquery in ArcGIS |
+        
+        素的文
+    </title>
     
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
-    
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
-    
-    
-
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
+
 <body>
+<div class="progress-bar-container">
+    
 
-
-<h2 class="title">How to use Bigquery in ArcGIS</h2>
-<!--
-<div style="text-align:center;margin-top: -10px;">
-<div class="article-category">
-发表于2022年3月15日
-
-
-    <a class="article-category-link" href="/categories/GIS-Tech/">GIS Tech</a>
-
-
-
- </div>
--->
+    
 </div>
 
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What%E2%80%99s-Koop"><span class="toc-text">What’s Koop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preparation"><span class="toc-text">Preparation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-the-provider"><span class="toc-text">Create the provider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BigQuery-into-Vector-Tiles"><span class="toc-text">BigQuery into Vector Tiles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArcGIS-API-to-consumer-the-service"><span class="toc-text">ArcGIS API to consumer the service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-text">Summary</span></a></li></ol>
-<p>By: Minbin Jiang</p>
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                素的文
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">How to use Bigquery in ArcGIS</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Minbin Jiang</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-15 17:45:59</span>
+        <span class="mobile">2022-03-15 17:45</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/GIS-Tech/">GIS Tech</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/arcgis-koop-bigquery/">arcgis, koop, bigquery</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>By: Minbin Jiang</p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Google BigQuery as data warehouse is renowned for it’s serverless, highly scalable and high performance in operation. Although it provides data visualization and geospatial analysis tools and solutions, while a GIS developer who normally might be not familiar with those tools and but more with ArcGIS platform.<br>ArcGIS provides a bunch of choices to do the job in different platforms and devices easily and consistently, the prerequisite is the feed-in data needs to be one type of the ArcGIS Geoservices. Therefore, this article will describe how to use <strong>Koop</strong> to convert the data from Bigquery into service of ArcGIS and consume it via ArcGIS Pro/Js API as example. </p>
 <span id="more"></span>
 <h2 id="What’s-Koop"><a href="#What’s-Koop" class="headerlink" title="What’s Koop"></a>What’s Koop</h2><p>There might be a lot of ways to convert the Bigquery into a ArcGIS Service, but here we are going to talk about one open source library named <strong>Koop</strong> which was initialized by Esri itself.</p>
-<p>As per <a target="_blank" rel="noopener" href="https://koopjs.github.io/">Koop’s official webside</a>. Koop is a JavaScript toolkit which was built on Node.js that <strong>translate the GeoJson into the GeoServices specification supported by ArcGIS products</strong>. Below it is a Koop’s integration diagram from which we could take the koop as a middleware that covert feed-in data into GeoServices.As long as the feed-in data could be converted into geojson format.</p>
+<p>As per <a class="link"   target="_blank" rel="noopener" href="https://koopjs.github.io/" >Koop’s official webside<i class="fas fa-external-link-alt"></i></a>. Koop is a JavaScript toolkit which was built on Node.js that <strong>translate the GeoJson into the GeoServices specification supported by ArcGIS products</strong>. Below it is a Koop’s integration diagram from which we could take the koop as a middleware that covert feed-in data into GeoServices.As long as the feed-in data could be converted into geojson format.</p>
 <p><img src="https://lh3.googleusercontent.com/pw/AM-JKLVqEcCGKPOj8z3sjLVcphCVUOCMedrvKzKuqCt7uy82HUiLwUtkaoDdBfEkvQMOl6HSdy5rYihc91cBjYUlue1EftZibByDNrVfjNdeKZ77YrNzocn6rVDE55o94U7o4cGLbX3cQILrf3qnBdhEFe1j6A=w1440-h1080-no?authuser=0" alt="Koop"></p>
 <p>The attractive feature of Koop is it uses plugin mechenism, we could dynamically add in <em>Provider</em> to connect the source data and translate them into GeoJSON and pair the <em>Provider</em> with various <em>Output</em> plugin from Esri GeoServices, OGC etc.</p>
 <p>Koop already has some officially supported providers and outputs, which can be found via the website, however, unfortunately, Bigquery hasn’t been an official one yet. So we’re going to develop a custom Koop provider to fetch Bigquery data into GeoJson format.</p>
@@ -210,7 +337,7 @@ function convertBigQueryResultToGeoJSON(record) &#123;
  geojson.metadata.idField &#x3D; &#39;OBJECTID&#39;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>In the Postman we could test it out  with the exact syntax of <a target="_blank" rel="noopener" href="https://developers.arcgis.com/rest/services-reference/enterprise/get-started-with-the-services-directory.htm">ArcGIS Rest API</a></p>
+<p>In the Postman we could test it out  with the exact syntax of <a class="link"   target="_blank" rel="noopener" href="https://developers.arcgis.com/rest/services-reference/enterprise/get-started-with-the-services-directory.htm" >ArcGIS Rest API<i class="fas fa-external-link-alt"></i></a></p>
 <p><img src="https://lh3.googleusercontent.com/pw/AM-JKLX5N916e5EaIDisRBT_PoSFV_F6QoobukEHFcsLcdW6LGL5dLYCj7c2aNuJ-oVWk5e9YMBCakvOnfpRckwMfRgPXtqETjq1HCiPuvFP6O1xRkKsfgedCL5NcpixdyW2GHQhSXC5v01bXwfZ8fZheS3gvg=w1026-h1016-no?authuser=0"></p>
 <p>We could use the powerful ArcGIS Pro to view the data layer and perform the spatial analysis<br><img src="https://lh3.googleusercontent.com/pw/AM-JKLWvBfjDZQRyECPXRqfxbS39jKML9s0tDQYGuvzYURAlLV8p1Ege_6Y9Zwcn1OFvxxy0J1Zy01sume-RULmoddILZizNdb6suJEYZkZP8AThINU23E8VFSI4elGr72ulh9tqqQbScxEcIqoZblLinBo69A=w2033-h1025-no?authuser=0"></p>
 <h2 id="BigQuery-into-Vector-Tiles"><a href="#BigQuery-into-Vector-Tiles" class="headerlink" title="BigQuery into Vector Tiles"></a>BigQuery into Vector Tiles</h2><p>Up to here, we have created a custom provider and used the default output(GeoService) of Koop. BigQuery it is naturally for big data, so Feature Layer might not be the best visualization option when the data exceed a certain amount.<br>So it would be really helpful to use Feature Service for the query and data operation and use Vector Tiles for the visualization.</p>
@@ -246,28 +373,182 @@ var map &#x3D; new Map(&quot;map&quot;, &#123;
 <p><img src="https://lh3.googleusercontent.com/pw/AM-JKLUQ6iyGSp5l2Q9JTid3dQSAhOfTZHjj09kNXkV9eXqFq4ZA38D9goPz7CdslhRztDXGL-cizZXc_H1QZG_npuX_Zpg33WIzSpGfR5UEnCqG_N2s-7O2Nf7PSrC43b4FS8iIC5pAqUh_n5j5pJvWY-m_YQ=w1601-h1610-no?authuser=0"></p>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>This article gives us an example of how to use Koop to extend the capabilities of existing data. It inspired me that this would be really helpful when building the enterprise GIS system which will need integrate different source data in various formats.</p>
 
+        </div>
 
-<!--<a href="http://example.com/2022/03/15/202203_Use_Bigquery_in_ArcGIS/#disqus_thread" class="article-comment-link">Comments</a>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = ''; // required: replace example with your forum shortname
+        
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
--->
-<div style="display:none">
-<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/arcgis-koop-bigquery/">#arcgis, koop, bigquery</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/03/18/202203_Esri_Dev_Summit_Notes/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/15/202203_deploy_hexo_in_github_actions/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Deploy Hexo with Github Actions</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
 </div>
 
 
+                
+            </div>
 
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Minbin Jiang</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
 
 
 
