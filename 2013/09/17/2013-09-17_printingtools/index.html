@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="gis,geospatial,minbin,suwen">
+    <meta name="description" content="Where to build personal knowledge database">
+    <meta name="author" content="Minbin Jiang">
+    
+    <title>
+        
+            ArcGIS for Server 自定义打印两种方法 |
+        
+        素的文
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                素的文
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">ArcGIS for Server 自定义打印两种方法</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Minbin Jiang</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2013-09-17 11:20:02</span>
+        <span class="mobile">2013-09-17 11:20</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/GIS-Tech/">GIS Tech</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/server/">server</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%8F%91%E5%B8%83/">服务发布</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/printing-Templates/">printing Templates</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用web打印会遇到中文乱码，这是因为使用的打印模板中，配图要素的字体选择了非中文友好字体，如下图所示。模板字体改为中文友好字体，再执行下面的自定义模板步骤</p>
+<span id="more"></span>
+<p><img src="http://7xovpf.com1.z0.glb.clouddn.com/printingTools1.png"></p>
+<p>安装完arcgis server 在站点的utilities 目录下有printing tools的gp服务，其下面有个export web map操作，通过这个gp服务可以实现对web 地图的打印。但是经常会遇到用户反馈有需求，需要自己自定义打印模板，怎么实现。</p>
+<h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><p>安装完arcgis sever后，会在desktop的工具集中添加server工具箱，其中有export web map工具，通过该工具可以创建和发布打印web地图的gp服务，该服务和站点中默认的打印gp服务一样。通过对该gp服务指定自定义模板即可。</p>
+<p>步骤如下：</p>
+<ol>
+<li>准备地图模板，这里制定了jmb custom.mxd 的地图打印模板<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/printingTools2.png"></li>
+</ol>
+<ol start="2">
+<li>在catalog中执行export web map操作，并将gp执行的结果发布成gp 服务</li>
+</ol>
+<p>tips：执行的时候指定自定义模板所在的文件夹，也可以指定模板。如果指定了模板，则gp服务的模板的输入参数具有默认值<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/printingTools3.png"></p>
+<p>其中web map as json 可以为空，这里选择了默认的自己自定义的模板为默认模板。</p>
+<ol start="3">
+<li>发布gp服务，设置参数，由于发布gp服务的时候，模板文件夹下具有多个模板，则layout template 输入参数类型为choice list<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/printingTools4.png"></li>
+</ol>
+<p>tips：发布gp服务时，可以将模板文件夹注册给服务，则模板可以不用拷贝到服务器</p>
+<p>Step 4: gp服务调用<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/printingTools5.png"></p>
+<p>具体rest中的参数怎么填写，参考export web map 规范，链接如下：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://resources.arcgis.com/zh-CN/help/main/10.1/index.html#//0154000004w8000000" >http://resources.arcgis.com/zh-CN/help/main/10.1/index.html#//0154000004w8000000<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h2><p>~update 2016-06-13</p>
+<p>看完方法一，是不是有种累觉不爱的感觉。方法二就简单的很了。</p>
+<p>ArcGIS for Server的打印服务的模板都在其安装目录下存储着。默认路径如下：</p>
+<blockquote>
+<p>C:\Program Files\ArcGIS\Server\Templates\ExportWebMapTemplates</p>
+</blockquote>
+<p>只需要将模板拷贝到该目录即可。是不是很简单的说？</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/server/">#server</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%8F%91%E5%B8%83/">#服务发布</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/printing-Templates/">#printing Templates</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2015/04/19/2015-04-19_selfcontrol/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">《自控力》读书笔记</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2013/03/07/2013-03-07_postgisinstallation/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">postGIS安装与shp文件的存储示范</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Minbin Jiang</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

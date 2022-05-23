@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="gis,geospatial,minbin,suwen">
+    <meta name="description" content="Where to build personal knowledge database">
+    <meta name="author" content="Minbin Jiang">
+    
+    <title>
+        
+            python 中几个层次的中文编码 |
+        
+        素的文
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                素的文
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">python 中几个层次的中文编码</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Minbin Jiang</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2015-08-21 15:51:30</span>
+        <span class="mobile">2015-08-21 15:51</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Tech/">Tech</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>一直不太喜欢使用命令行，所以去年年底的技术创新中，使用TkInter来开发小工具。结果花费了大量的时间来学习TkInter ui的使用。<br>最近想整理该工具，使用命令行的形式，然后将该工具做成exe的形式进行分发。在工作一开始就遇到了编码的问题。<br>在脚本中有如下代码，用来接收用户交互式输入的ip。</p>
+<span id="more"></span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">server <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">"请输GIS Server IP:"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在脚本文件的第一行，我已经加了如下代码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># -*-coding: utf-8 -*-</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>但是在windows 的控制台执行的时候，出现了乱码。有点不解，因为自己一直以来在python中，处理中文都是在文件头加入该代码。</p>
+<p>通过搜索发现，是因为在windows cmd 默认的使用的cp936的编码。既然知道使用这种编码则将编码改为如下：</p>
+<!--more-->
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># -*-coding: cp936-*-</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>但是得到如下的错误：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">SyntaxError<span class="token punctuation">:</span> encoding problem<span class="token punctuation">:</span> cp936 <span class="token keyword">with</span> BOM<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>百思不得其解。作为懒癌患者，就想绕过去。则采用如下方式，对单独字符串进行编码。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">userName<span class="token operator">=</span><span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">"请输入站点管理员用户名:"</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">"cp936"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这样重要在cmd中可以正常的输出中文了。但是问题来了，我的脚本中，有上百行代码有中文。每个地方都这么写，感觉偷懒不成，反被*。<br>这个时候，通过搜索。逐步的发现了问题的原因。这是因为python有几个层次的编码。分别是：</p>
+<ul>
+<li>字符串变量级别编码</li>
+<li>脚本级别的编码</li>
+<li>py文件级别的编码</li>
+<li>显示窗口的编码</li>
+</ul>
+<h2 id="字符串变量的编码"><a href="#字符串变量的编码" class="headerlink" title="字符串变量的编码"></a>字符串变量的编码</h2><p>对单个字符串转码，可以使用：**encode()**编码成可以显示的。通常对字符串不能由一个编码直接转换为另一个编码。通常需要解码到Unicode，然后对unicode字符串重新的编码。比如上面的示例。</p>
+<h2 id="脚本的编码"><a href="#脚本的编码" class="headerlink" title="脚本的编码"></a>脚本的编码</h2><p>上面通过设置 #coding：utf-8设置的就是脚本里面内容的编码。也就是该脚本文件中所有的字符串变量都采用该处设置的编码方式。<br>##py文件的编码<br>py文件的编码，默认的是ANSI。但是也可以使用utf-8，unicode编码。</p>
+<h2 id="显示窗口的编码"><a href="#显示窗口的编码" class="headerlink" title="显示窗口的编码"></a>显示窗口的编码</h2><p>上面的几种情况，中文在运行阶段不会出错。但是这些中文还不一定能够正常的显示。能否正常的显示，<strong>还有显示窗口支持的编码决定</strong>。比如cmd中中文支持GBK和cp936，所以代码中的字符串需要编码到这两种才可以显示。<br>##测试</p>
+<ol>
+<li>当py文件的编码为utf-8的时候。代码中唔需要添加#coding：utf-8 。脚本中的中文，在运行过程不会报错。</li>
+<li>当py文件的编码为ANSI的时候。如代码中没有显示的添加 ** -<em>-coding:utf-8 -</em>- **，则当代码中出现中文的时候，运行脚本的时候。会出现如下错误<pre class="line-numbers language-python" data-language="python"><code class="language-python">SyntaxError<span class="token punctuation">:</span> Non<span class="token operator">-</span>ASCII character <span class="token string">'\xe4'</span> <span class="token keyword">in</span> <span class="token builtin">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>当py文件设置为utf-8，而显示设置代码编码为#coding：936。则会出现ncoding problem: cp936 with BOM的错。这个时候，将py文件的编码改为ANSI即可。</li>
+</ol>
+<p>##结论<br>通过上面的测试，有几个结论：</p>
+<ol>
+<li>编码有层次结构。文件编码影响脚本内容编码，脚本内容编码决定 其中的字符串编码。</li>
+<li> 当字符串显示设置了编码的时候。字符串的编码为显示设置的编码，此时文件和脚本编码不起作用。当字符串没有显示设置编码的时候，则采用上一级编码决定。</li>
+<li>所以设置这三种编码的时候，需要确保三种编码之间能够转换。否则会出现上面列举的错误。</li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/python/">#python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2015/08/26/2015-08-26_batchPublishtools/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">arcgis server管理工具之批量发布动态地图服务</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2015/07/23/2015-07-23-introduction/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">SOI简介</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Minbin Jiang</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

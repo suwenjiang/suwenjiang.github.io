@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="gis,geospatial,minbin,suwen">
+    <meta name="description" content="Where to build personal knowledge database">
+    <meta name="author" content="Minbin Jiang">
+    
+    <title>
+        
+            arcgis server site 快速恢复与重建 |
+        
+        素的文
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                素的文
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">arcgis server site 快速恢复与重建</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Minbin Jiang</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2015-10-21 09:53:35</span>
+        <span class="mobile">2015-10-21 09:53</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/GIS-Tech/">GIS Tech</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/arcgisserver/">arcgisserver</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/management/">management</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在实际的工作中，会遇到如下的情形：</p>
+<blockquote>
+<p><strong>arcgis server服务能够启动</strong>，但是由于未知的操作原因导致site里面的某个功能出现故障。</p>
+</blockquote>
+<p>要想在短时间内，使得server能够恢复正常功能。且：</p>
+<ol>
+<li>不重新安装arcgis server</li>
+<li>不重新发布服务，<span id="more"></span>
+则可以对当前server的站点进行快速的恢复与重建。也就是相当于<strong>恢复出场设置功能</strong>。</li>
+</ol>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在前面的文章已经总结过服务迁移的几种情形，本篇文章为前面情形中最为简单的情况，保持各种参数都不变，具体参考如下链接：</p>
+<p>(<a class="link"   target="_blank" rel="noopener" href="http://www.cnblogs.com/myyouthlife/p/4255311.html" >http://www.cnblogs.com/myyouthlife/p/4255311.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>在按照操作步骤执行前，请确定是否满足条件，参考底下的<strong>注意</strong></p>
+<ul>
+<li><p> 停止arcgis server 服务。</p>
+<blockquote>
+<p>windwos  在服务管理器中，linux通过./stopserver 命令</p>
+</blockquote>
+</li>
+<li><p> 对arcgisserver目录进行备份。最简单的办法是重命名该文件夹，只要不叫arcgisserver即可。</p>
+</li>
+<li><p>启动arcgis server 服务</p>
+</li>
+<li><p>通过manager或者admin重新创建站点</p>
+</li>
+</ul>
+<blockquote>
+<p>由于arcgis server 重启后，在服务目录下 找不到arcgisserver文件夹，故会认为当前机器上不存在站点。则manager页面或者admin页面会出现提醒创建site</p>
+</blockquote>
+<ul>
+<li>创建site</li>
+</ul>
+<blockquote>
+<p>site 的用户名和密码和前面的site 保持匹配。且directory和config-store存储位置也保持匹配。在这一步可能会出现错误 “当前位置已经有站点balalala的”。请去目录下查看是否有arcgisserver目录。有手动删除，然后下一步即可。</p>
+</blockquote>
+<ul>
+<li>恢复服务<br>再次停止arcgis server服务。 将备份文件夹中的至少如下三个文件夹：config-store\services ; directories\arcgissystem\arcgisinput; directories\arcgisoutput 拷贝到新的站点，覆盖新站点对应的文件夹</li>
+</ul>
+<blockquote>
+<p>一般动态地图服务，拷贝上面三个目录即可。但是切片服务或者地理处理服务。需要将arcgiscache和arcgisjob目录拷贝过来。切莫覆盖整个config-store。</p>
+</blockquote>
+<ul>
+<li>重启服务</li>
+</ul>
+<p>重启arcgis server服务即可。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>该项恢复和重建操作，只适合于如下场景：</p>
+<ul>
+<li>在同一台机器上（不在同一台机器上，稍微麻烦，参考原理篇去操作）</li>
+<li>arcgis server版本 大于10.1 </li>
+<li>当前site的arcgis server服务能够正常的启动（不能正常启动，只能重装了arcgis server）。</li>
+<li>重建后site的管理员和用户名和旧site的保持匹配</li>
+<li>arcgisserver目录路径保持不变</li>
+<li>服务所使用到的数据源依然可以访问到</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上面的步骤，基本上百试不爽。</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/arcgisserver/">#arcgisserver</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/management/">#management</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2016/02/29/2016-02-29_geojson/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">需要了解的geojson和操作工具</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2015/10/13/2015-10-13_log-format-tool/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">arcgis server/portal 日志格式化脚本</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Minbin Jiang</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
