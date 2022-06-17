@@ -9,8 +9,6 @@
     
     <title>
         
-            Configure Poetry in Azure Pipeline |
-        
         素的文
     </title>
     
@@ -118,7 +116,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Configure Poetry in Azure Pipeline</span>
+            <span class="title-hover-animation"></span>
         </div>
 
         
@@ -137,32 +135,10 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-05-23 00:00:00</span>
-        <span class="mobile">2022-05-23 00:00</span>
+        <span class="pc">2022-06-17 04:37:09</span>
+        <span class="mobile">2022-06-17 04:37</span>
     </span>
     
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/Tech/">Tech</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/python-Poetry-Azure/">python, Poetry, Azure</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
@@ -177,107 +153,25 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">
-<span class="token key atrule">trigger</span><span class="token punctuation">:</span>
-
-  <span class="token punctuation">-</span> Dev
-<span class="token key atrule">pool</span><span class="token punctuation">:</span>
-
-  vmImage<span class="token punctuation">:</span> windows<span class="token punctuation">-</span>latest
-<span class="token key atrule">steps</span><span class="token punctuation">:</span>
-
-  <span class="token punctuation">-</span> <span class="token key atrule">task</span><span class="token punctuation">:</span> UsePythonVersion@0
-
-    inputs<span class="token punctuation">:</span>
-
-      versionSpec<span class="token punctuation">:</span> <span class="token number">3.7</span>
-
-    displayName<span class="token punctuation">:</span> Install Python
-
-  <span class="token punctuation">-</span> <span class="token key atrule">script</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
-
-      python <span class="token punctuation">-</span>m pip install <span class="token punctuation">-</span>U pip
-      pip install poetry
-      poetry install
-
-    displayName<span class="token punctuation">:</span> Install software
-
-    workingDirectory<span class="token punctuation">:</span> src/libs/portal_roles
-
-  <span class="token punctuation">-</span> <span class="token key atrule">script</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
-
-      poetry run python <span class="token punctuation">-</span>m unittest discover tests/ <span class="token punctuation">-</span>v
-
-    displayName<span class="token punctuation">:</span> Test software
-    workingDirectory<span class="token punctuation">:</span> src/libs/portal_roles
-
-  <span class="token punctuation">-</span> <span class="token key atrule">script</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
-
-      poetry build
-    displayName<span class="token punctuation">:</span> Package software
-    workingDirectory<span class="token punctuation">:</span> <span class="token comment">#directory contains pyproject.toml file</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>For the publishing, the Azure pipeline recomends use <strong>Twine</strong> libary to handle the authentication, however,  was getting <em>entry_points() got an unexpected keyword argument</em>  error, after looking at the log it is because libary conflicts between Twine and Poetry. That means if i’d like to use the Poetry i need to give up Twine. </p>
-<p>Since Poetry supports publish to private repo, then trying to config publish with Poetry directly. </p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">	  <span class="token punctuation">-</span> <span class="token key atrule">task</span><span class="token punctuation">:</span> Bash@3
-    inputs<span class="token punctuation">:</span>
-
-      targetType<span class="token punctuation">:</span> <span class="token string">"inline"</span>
-
-      script<span class="token punctuation">:</span> <span class="token punctuation">|</span>
-
-        poetry config repositories.<span class="token punctuation">[</span>repo_name<span class="token punctuation">]</span> https<span class="token punctuation">:</span>//pkgs.dev.azure.com/<span class="token punctuation">[</span>org_name<span class="token punctuation">]</span>/<span class="token punctuation">[</span>project_name<span class="token punctuation">]</span>/_packaging/<span class="token punctuation">[</span>feed_name<span class="token punctuation">]</span>/pypi/upload
-
-        poetry publish <span class="token punctuation">-</span>r <span class="token punctuation">[</span>repo_anme<span class="token punctuation">]</span> <span class="token punctuation">-</span>u a <span class="token punctuation">-</span>p $(System.AccessToken)
-
-      displayName<span class="token punctuation">:</span> Publish artifacts
-
-      workingDirectory<span class="token punctuation">:</span> src/libs/portal_roles
-	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+            <h1 id="Delete-script-in-Geocortex-Reporting"><a href="#Delete-script-in-Geocortex-Reporting" class="headerlink" title="Delete script in Geocortex Reporting"></a>Delete script in Geocortex Reporting</h1><p><img src="https://user-images.githubusercontent.com/2580080/174225757-d90a1803-7b2f-43ba-9462-708f715a57fe.png" alt="image"></p>
 
         </div>
 
         
 
         
-            <ul class="post-tags-box">
-                
-                    <li class="tag-item">
-                        <a href="/tags/python-Poetry-Azure/">#python, Poetry, Azure</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
             <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/06/17/2022-06-17_Delete%20script%20of%20Geocortex%20Reporting/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item"></span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
                 
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/05/23/2022-05-23_mac_soft_gallery/"
+                           href="/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Mac Softwares</span>
+                                <span class="post-nav-title-item">Configure Poetry in Azure Pipeline</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
