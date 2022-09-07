@@ -1,56 +1,59 @@
 {
-                glyphs:
-                    "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../fonts/{fontstack}/{range}.pbf",
-                layers: [
-                    {
-                        id: "mapillary-dots",
-                        layout: { visibility: "visible" },
-                        paint: {
-                            "circle-opacity": 0.8,
-                            "circle-radius": 5,
-                            "circle-color": "#39AF64"
-                        },
-                        source: "mapillary-source",
-                        "source-layer": "overview",
-                        type: "circle"
-                    },
-                    {
-                        id: "mapillary-lines",
-                        layout: {
-                            "line-cap": "round",
-                            "line-join": "round",
-                            visibility: "visible"
-                        },
-                        paint: {
-                            "line-color": "#39AF64",
-                            "line-opacity": 0.6,
-                            "line-width": 2
-                        },
-                        source: "mapillary-source",
-                        "source-layer": "sequence",
-                        type: "line"
-                    },
-                    {
-                        id: "mapillary-dots-2",
-                        layout: { visibility: "visible" },
-                        paint: {
-                            "circle-opacity": 0.8,
-                            "circle-radius": 5,
-                            "circle-color": "#39AF64"
-                        },
-                        source: "mapillary-source",
-                        "source-layer": "image",
-                        type: "circle"
-                    }
-                ],
-                sources: {
-                    "mapillary-source": {
-                        maxzoom: 14,
-                        tiles: ["https://tiles.mapillary.com/maps/vtp/mly1_public/2/{z}/{x}/{y}"],
-                        type: "vector"
-                    }
-                },
-                sprite:
-                    "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../sprites/sprite",
-                version: 8
-            }
+	"glyphs": "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../fonts/{fontstack}/{range}.pbf",
+	"layers": [{
+			"id": "mapillary-dots",
+			"layout": {
+				"visibility": "visible"
+			},
+			"paint": {
+				"circle-opacity": 0.8,
+				"circle-radius": 5,
+				"circle-color": "#39AF64"
+			},
+			"source": "mapillary-source",
+			"source-layer": "overview",
+			"type": "circle"
+		},
+		{
+			"id": "mapillary-lines",
+			"layout": {
+				"line-cap": "round",
+				"line-join": "round",
+				"visibility": "visible"
+			},
+			"paint": {
+				"line-color": "#39AF64",
+				"line-opacity": 0.6,
+				"line-width": 2
+			},
+			"source": "mapillary-source",
+			"source-layer": "sequence",
+			"type": "line"
+		},
+		{
+			"id": "mapillary-dots-2",
+			"layout": {
+				"visibility": "visible"
+			},
+			"paint": {
+				"circle-opacity": 0.8,
+				"circle-radius": 5,
+				"circle-color": "#39AF64"
+			},
+			"source": "mapillary-source",
+			"source-layer": "image",
+			"type": "circle"
+		}
+	],
+	"sources": {
+		"mapillary": {
+			"maxzoom": 15,
+			"tiles": [
+				"https://tiles.mapillary.com/maps/vtp/mly1_public/2/{z}/{x}/{y}?access_token=MLY|5375351852581571|18fa87459362dbc1439d20d7a1b39165"
+			],
+			"type": "vector"
+		}
+	},
+	"sprite": "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../sprites/sprite",
+	"version": 8
+}
