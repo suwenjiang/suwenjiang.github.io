@@ -47,7 +47,7 @@
 	],
 	"sources": {
 		"mapillary": {
-			"maxzoom": 15,
+			"maxzoom": 14,
 			"tiles": [
 				"https://tiles.mapillary.com/maps/vtp/mly1_public/2/{z}/{x}/{y}?access_token=MLY|5375351852581571|18fa87459362dbc1439d20d7a1b39165"
 			],
