@@ -1,20 +1,7 @@
 {
     "glyphs": "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../fonts/{fontstack}/{range}.pbf",
     "layers": [
-        {
-            "id": "mapillary-dots",
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "circle-opacity": 0.8,
-                "circle-radius": 5,
-                "circle-color": "#39AF64"
-            },
-            "source": "mapillary-source",
-            "source-layer": "overview",
-            "type": "circle"
-        },
+      
         {
             "id": "mapillary-lines",
             "layout": {
@@ -43,6 +30,20 @@
             },
             "source": "mapillary-source",
             "source-layer": "image",
+            "type": "circle"
+        },
+        {
+            "id": "mapillary-dots",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "circle-opacity": 0.8,
+                "circle-radius": 5,
+                "circle-color": "#39AF64"
+            },
+            "source": "mapillary-source",
+            "source-layer": "overview",
             "type": "circle"
         }
     ],
