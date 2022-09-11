@@ -13,7 +13,7 @@
                 "circle-radius": 5,
                 "circle-color": "#39AF64"
             },
-            "source": "mapillary-source",
+            "source": "mapillary",
             "source-layer": "overview",
             "type": "circle"
         }
