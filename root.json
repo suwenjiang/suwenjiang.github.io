@@ -2,36 +2,7 @@
     "glyphs": "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../fonts/{fontstack}/{range}.pbf",
     "layers": [
       
-        {
-            "id": "mapillary-lines",
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
-            "paint": {
-                "line-color": "#39AF64",
-                "line-opacity": 0.6,
-                "line-width": 2
-            },
-            "source": "mapillary-source",
-            "source-layer": "sequence",
-            "type": "line"
-        },
-        {
-            "id": "mapillary-dots-2",
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "circle-opacity": 0.8,
-                "circle-radius": 5,
-                "circle-color": "#39AF64"
-            },
-            "source": "mapillary-source",
-            "source-layer": "image",
-            "type": "circle"
-        },
+ 
         {
             "id": "mapillary-dots",
             "layout": {
