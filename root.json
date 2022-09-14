@@ -16,7 +16,23 @@
             "source": "mapillary",
             "source-layer": "overview",
             "type": "circle"
-        }
+        },
+        {
+                                id: "mapillary-lines",
+                                layout: {
+                                    "line-cap": "round",
+                                    "line-join": "round",
+                                    visibility: "visible",
+                                },
+                                paint: {
+                                    "line-color": "#39AF64",
+                                    "line-opacity": 0.6,
+                                    "line-width": 2,
+                                },
+                                source: "mapillary",
+                                "source-layer": "sequence",
+                                type: "line",
+                            }
     ],
     "sources": {
         "mapillary": {
