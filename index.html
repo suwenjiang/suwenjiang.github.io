@@ -46,7 +46,13 @@
   <p class="intro-sub">Where to build personal knowledge database</p>
 </section>
 
-<div class="card-grid">
+<div class="view-toolbar">
+  <span class="vt-label">view:</span>
+  <button class="vt-btn" data-view="cards" aria-label="card view">▦ cards</button>
+  <button class="vt-btn" data-view="list" aria-label="list view">☰ list</button>
+</div>
+
+<div class="posts-view view-cards" id="postsView">
   
     <article class="post-card">
       <div class="card-top">
@@ -597,6 +603,24 @@ PostGIS是关系对象型postgresql数据库的空间引擎。在安装PostGIS �
 
 
 
+
+<script>
+(function(){
+  var view = document.getElementById('postsView');
+  var btns = document.querySelectorAll('.vt-btn');
+  if(!view) return;
+  function set(mode){
+    view.classList.remove('view-cards','view-list');
+    view.classList.add('view-' + mode);
+    btns.forEach(function(b){ b.classList.toggle('active', b.dataset.view===mode); });
+    try{ localStorage.setItem('blogView', mode); }catch(e){}
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ set(b.dataset.view); }); });
+  var saved;
+  try{ saved = localStorage.getItem('blogView'); }catch(e){}
+  set(saved==='list' ? 'list' : 'cards');
+})();
+</script>
 
   </main>
   <footer class="footer">
