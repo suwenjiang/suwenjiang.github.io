@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Configure Poetry in Azure Pipeline · 素的文</title>
+<meta name="description" content="Where to build personal knowledge database">
+<meta name="author" content="Minbin Jiang">
+<meta name="keywords" content="Minbin Jiang, Enterprise GIS, ArcGIS Enterprise, Cloud GIS, AWS, Azure, geospatial, GIS platform engineer, ex-Esri, Python, GeoEvent, Utility Network, Brisbane, python, Poetry, Azure">
+<meta name="theme-color" content="#151b23">
+<meta property="og:title" content="Configure Poetry in Azure Pipeline · 素的文">
+<meta property="og:description" content="Where to build personal knowledge database">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suwenjiang.github.io/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/">
+<meta property="og:site_name" content="素的文">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://suwenjiang.github.io/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/">
+<script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Configure Poetry in Azure Pipeline","datePublished":"2022-05-23T00:00:00.000Z","dateModified":"2026-07-17T02:20:32.324Z","url":"https://suwenjiang.github.io/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/","author":{"@type":"Person","name":"Minbin Jiang","url":"https://minbin.jfamily.com.au/","sameAs":["https://www.linkedin.com/in/minbin-jiang-07001a91/","https://github.com/suwenjiang"]},"publisher":{"@type":"Person","name":"Minbin Jiang"}}
+
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script defer src="https://umami.jfamily.com.au/script.js" data-website-id="df544efa-3d58-44df-b7a1-4f8086f4eadd"></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="prompt">minbin@blog</span>:~$&nbsp;<span class="caret">█</span></a>
+    <nav class="nav-links">
+      
+        <a href="https://minbin.jfamily.com.au/" target="_blank" rel="noopener">profile</a>
+      
+        <a href="https://github.com/suwenjiang" target="_blank" rel="noopener">github</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <main class="wrap">
+    <article class="post">
+  <a class="back" href="/">‹ cd ..</a>
+  <header class="post-head">
+    <h1>Configure Poetry in Azure Pipeline</h1>
+    <div class="post-meta">
+      <span class="p">$</span> published 2022-05-23
+       · updated 2026-07-17
+      
+       · <a class="tag" href="/tags/python/">#python</a> <a class="tag" href="/tags/Poetry/">#Poetry</a> <a class="tag" href="/tags/Azure/">#Azure</a> 
+    </div>
+  </header>
+  <div class="content post-content">
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">
+<span class="token key atrule">trigger</span><span class="token punctuation">:</span>
+
+  <span class="token punctuation">-</span> Dev
+<span class="token key atrule">pool</span><span class="token punctuation">:</span>
+
+  vmImage<span class="token punctuation">:</span> windows<span class="token punctuation">-</span>latest
+<span class="token key atrule">steps</span><span class="token punctuation">:</span>
+
+  <span class="token punctuation">-</span> <span class="token key atrule">task</span><span class="token punctuation">:</span> UsePythonVersion@0
+
+    inputs<span class="token punctuation">:</span>
+
+      versionSpec<span class="token punctuation">:</span> <span class="token number">3.7</span>
+
+    displayName<span class="token punctuation">:</span> Install Python
+
+  <span class="token punctuation">-</span> <span class="token key atrule">script</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
+
+      python <span class="token punctuation">-</span>m pip install <span class="token punctuation">-</span>U pip
+      pip install poetry
+      poetry install
+
+    displayName<span class="token punctuation">:</span> Install software
+
+    workingDirectory<span class="token punctuation">:</span> src/libs/portal_roles
+
+  <span class="token punctuation">-</span> <span class="token key atrule">script</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
+
+      poetry run python <span class="token punctuation">-</span>m unittest discover tests/ <span class="token punctuation">-</span>v
+
+    displayName<span class="token punctuation">:</span> Test software
+    workingDirectory<span class="token punctuation">:</span> src/libs/portal_roles
+
+  <span class="token punctuation">-</span> <span class="token key atrule">script</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
+
+      poetry build
+    displayName<span class="token punctuation">:</span> Package software
+    workingDirectory<span class="token punctuation">:</span> <span class="token comment">#directory contains pyproject.toml file</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>For the publishing, the Azure pipeline recomends use <strong>Twine</strong> libary to handle the authentication, however,  was getting <em>entry_points() got an unexpected keyword argument</em>  error, after looking at the log it is because libary conflicts between Twine and Poetry. That means if i’d like to use the Poetry i need to give up Twine. </p>
+<p>Since Poetry supports publish to private repo, then trying to config publish with Poetry directly. </p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">	  <span class="token punctuation">-</span> <span class="token key atrule">task</span><span class="token punctuation">:</span> Bash@3
+    inputs<span class="token punctuation">:</span>
+
+      targetType<span class="token punctuation">:</span> <span class="token string">"inline"</span>
+
+      script<span class="token punctuation">:</span> <span class="token punctuation">|</span>
+
+        poetry config repositories.<span class="token punctuation">[</span>repo_name<span class="token punctuation">]</span> https<span class="token punctuation">:</span>//pkgs.dev.azure.com/<span class="token punctuation">[</span>org_name<span class="token punctuation">]</span>/<span class="token punctuation">[</span>project_name<span class="token punctuation">]</span>/_packaging/<span class="token punctuation">[</span>feed_name<span class="token punctuation">]</span>/pypi/upload
+
+        poetry publish <span class="token punctuation">-</span>r <span class="token punctuation">[</span>repo_anme<span class="token punctuation">]</span> <span class="token punctuation">-</span>u a <span class="token punctuation">-</span>p $(System.AccessToken)
+
+      displayName<span class="token punctuation">:</span> Publish artifacts
+
+      workingDirectory<span class="token punctuation">:</span> src/libs/portal_roles
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+  </div>
+  <footer class="post-foot">
+    <a class="back" href="/">‹ back to all posts</a>
+  </footer>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="footer-inner">
+    <span>© 2026 mjiang · <span class="footer-tag">// minbin&#39;s notebook</span></span>
+    <span><a href="https://minbin.jfamily.com.au/" target="_blank" rel="noopener">profile</a> · <a href="https://github.com/suwenjiang" target="_blank" rel="noopener">github</a></span>
+  </div>
+</footer>
+
+
+</body>
+</html>
