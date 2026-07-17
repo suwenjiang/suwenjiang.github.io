@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<script defer src="https://umami.jfamily.com.au/script.js" data-website-id="df544efa-3d58-44df-b7a1-4f8086f4eadd"></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body>
   <header class="nav" id="nav">
@@ -40,16 +41,32 @@
 </header>
 
   <main class="wrap">
-    <section class="intro">
-  <p class="intro-line"><span class="p">minbin@blog</span>:<span class="path">~</span>$ ls -t posts/</p>
-  <h1>素的文 <span class="dim">// minbin&#39;s notebook</span></h1>
-  <p class="intro-sub">Where to build personal knowledge database</p>
+    <section class="masthead">
+  <p class="intro-line"><span class="p">minbin@blog</span>:<span class="path">~</span>$ cat about.md</p>
+  <h1>~/notebook <span class="dim">// minbin&#39;s notebook</span></h1>
+  <p class="intro-sub">Notes on GIS, cloud, automation &amp; the occasional Linux yak-shave. Ask below or search the archive.</p>
 </section>
 
-<div class="view-toolbar">
-  <span class="vt-label">view:</span>
-  <button class="vt-btn" data-view="cards" aria-label="card view">▦ cards</button>
-  <button class="vt-btn" data-view="list" aria-label="list view">☰ list</button>
+<div class="chat chat-hero" id="askChat" data-index="/search.json">
+  <div class="chat-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>ask this notebook · AI</span></div>
+  <div class="chat-body" id="askBody"></div>
+  <div class="chips-q" id="askChips"></div>
+  <form class="chat-input" id="askForm" autocomplete="off">
+    <input id="askInput" type="text" placeholder="Search the notebook… e.g. ArcGIS, python, docker" aria-label="search posts" />
+    <button type="submit" class="vt-btn active">ask</button>
+  </form>
+</div>
+
+
+
+
+<div class="posts-head">
+  <h2 class="posts-title">recent posts <span class="dim">// 40</span></h2>
+  <div class="view-toolbar">
+    <span class="vt-label">view:</span>
+    <button class="vt-btn" data-view="cards" aria-label="card view">▦ cards</button>
+    <button class="vt-btn" data-view="list" aria-label="list view">☰ list</button>
+  </div>
 </div>
 
 <div class="posts-view view-cards" id="postsView">
@@ -601,24 +618,44 @@ PostGIS是关系对象型postgresql数据库的空间引擎。在安装PostGIS �
   
 </div>
 
-
-
+<div id="postsSentinel"></div>
+<div class="load-more-wrap"><button id="loadMore" class="vt-btn">load more ↓</button></div>
 
 <script>
 (function(){
   var view = document.getElementById('postsView');
-  var btns = document.querySelectorAll('.vt-btn');
+  var btns = document.querySelectorAll('.view-toolbar .vt-btn');
   if(!view) return;
-  function set(mode){
+
+  // ---- view toggle (cards / list) ----
+  function setView(mode){
     view.classList.remove('view-cards','view-list');
     view.classList.add('view-' + mode);
     btns.forEach(function(b){ b.classList.toggle('active', b.dataset.view===mode); });
     try{ localStorage.setItem('blogView', mode); }catch(e){}
   }
-  btns.forEach(function(b){ b.addEventListener('click', function(){ set(b.dataset.view); }); });
-  var saved;
-  try{ saved = localStorage.getItem('blogView'); }catch(e){}
-  set(saved==='list' ? 'list' : 'cards');
+  btns.forEach(function(b){ b.addEventListener('click', function(){ setView(b.dataset.view); }); });
+  var saved; try{ saved = localStorage.getItem('blogView'); }catch(e){}
+  setView(saved==='list' ? 'list' : 'cards');
+
+  // ---- incremental loading ----
+  var cards = Array.prototype.slice.call(view.querySelectorAll('.post-card'));
+  var STEP = 6, shown = STEP;
+  var moreBtn = document.getElementById('loadMore');
+  var sentinel = document.getElementById('postsSentinel');
+  function apply(){
+    cards.forEach(function(c,i){ c.style.display = i < shown ? '' : 'none'; });
+    moreBtn.parentNode.style.display = shown >= cards.length ? 'none' : '';
+  }
+  function more(){ shown = Math.min(shown + STEP, cards.length); apply(); }
+  moreBtn.addEventListener('click', more);
+  apply();
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting && shown < cards.length){ more(); } });
+    }, { rootMargin:'300px' });
+    io.observe(sentinel);
+  }
 })();
 </script>
 
@@ -629,6 +666,7 @@ PostGIS是关系对象型postgresql数据库的空间引擎。在安装PostGIS �
     <span><a href="https://minbin.jfamily.com.au/" target="_blank" rel="noopener">profile</a> · <a href="https://github.com/suwenjiang" target="_blank" rel="noopener">github</a></span>
   </div>
 </footer>
+<script src="/js/ask.js"></script>
 
 </body>
 </html>
