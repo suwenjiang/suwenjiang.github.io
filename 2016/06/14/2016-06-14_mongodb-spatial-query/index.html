@@ -1,191 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="gis,geospatial,minbin,suwen">
-    <meta name="description" content="Where to build personal knowledge database">
-    <meta name="author" content="Minbin Jiang">
-    
-    <title>
-        
-            快速了解mongodb的空间操作 |
-        
-        素的文
-    </title>
-    
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>快速了解mongodb的空间操作 · 素的文</title>
+<meta name="description" content="Where to build personal knowledge database">
+<meta name="author" content="Minbin Jiang">
+<meta name="keywords" content="Minbin Jiang, Enterprise GIS, ArcGIS Enterprise, Cloud GIS, AWS, Azure, geospatial, GIS platform engineer, ex-Esri, Python, GeoEvent, Utility Network, Brisbane, opensource, database, mongodb">
+<meta name="theme-color" content="#151b23">
+<meta property="og:title" content="快速了解mongodb的空间操作 · 素的文">
+<meta property="og:description" content="Where to build personal knowledge database">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suwenjiang.github.io/2016/06/14/2016-06-14_mongodb-spatial-query/">
+<meta property="og:site_name" content="素的文">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://suwenjiang.github.io/2016/06/14/2016-06-14_mongodb-spatial-query/">
+<script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"快速了解mongodb的空间操作","datePublished":"2016-06-14T09:50:21.000Z","dateModified":"2026-07-17T01:09:25.280Z","url":"https://suwenjiang.github.io/2016/06/14/2016-06-14_mongodb-spatial-query/","author":{"@type":"Person","name":"Minbin Jiang","url":"https://minbin.jfamily.com.au/","sameAs":["https://www.linkedin.com/in/minbin-jiang-07001a91/","https://github.com/suwenjiang"]},"publisher":{"@type":"Person","name":"Minbin Jiang"}}
+
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
-
-    <link rel="shortcut icon" href="/images/logo.svg">
-    
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
-    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
-  </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
-
-
 <body>
-<div class="progress-bar-container">
-    
-
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            <header class="header-wrapper">
-
-    <div class="header-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                素的文
-            </a>
-        </div>
-
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/"
-                            >
-                                HOME
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                ARCHIVES
-                            </a>
-                        </li>
-                    
-                    
-                </ul>
-            </div>
-            <div class="mobile">
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/">HOME</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">ARCHIVES</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
+  <header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="prompt">minbin@blog</span>:~$&nbsp;<span class="caret">█</span></a>
+    <nav class="nav-links">
+      
+        <a href="https://minbin.jfamily.com.au/" target="_blank" rel="noopener">profile</a>
+      
+        <a href="https://github.com/suwenjiang" target="_blank" rel="noopener">github</a>
+      
+    </nav>
+  </div>
 </header>
 
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">快速了解mongodb的空间操作</span>
-        </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.svg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Minbin Jiang</span>
-                        
-                            <span class="author-label">Lv4</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2016-06-14 09:50:21</span>
-        <span class="mobile">2016-06-14 09:50</span>
-    </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/Tech/">Tech</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/opensource/">opensource</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/database/">database</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/mongodb/">mongodb</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <p>遥想当年做毕业设计的时候，为了写论文而写论文，定了个mongodb 与oracle的互操作。当时使用的mongodb是无法对空间数据进行操作的。当时单纯的使用GDAL将shapelife文件转换文本表达以mongodb进行存储。</p>
+  <main class="wrap">
+    <article class="post">
+  <a class="back" href="/">‹ cd ..</a>
+  <header class="post-head">
+    <h1>快速了解mongodb的空间操作</h1>
+    <div class="post-meta">
+      <span class="p">$</span> published 2016-06-14
+       · updated 2026-07-17
+       · <a class="tag" href="/tags/opensource/">#opensource</a> <a class="tag" href="/tags/database/">#database</a> <a class="tag" href="/tags/mongodb/">#mongodb</a> 
+    </div>
+  </header>
+  <div class="content post-content">
+    <p>遥想当年做毕业设计的时候，为了写论文而写论文，定了个mongodb 与oracle的互操作。当时使用的mongodb是无法对空间数据进行操作的。当时单纯的使用GDAL将shapelife文件转换文本表达以mongodb进行存储。</p>
 <p>而现在看mongodb的空间操作，虽然没有办法和ArcSDE和PostGIS相比，但是比没有强呀。</p>
 <p>文中使用的mongodb为2.4版本，robomongo0.9</p>
 <span id="more"></span>
@@ -194,17 +60,17 @@
 <p>mongodb中有两类空间平面，一个是spherical，也是我们GIS中所熟悉的，另外一类就是纯粹的Euclidean平面。</p>
 <p>针对Eulidena平面下的空间数据使用legacy coordinate pairs的形式进行表达。其格式为[x,y]形式。表达polygon什么的需要和monodb的Geometry Specifiers 来配合，如</p>
 <p><code>$polygon : [ [ 0 , 0 ] , [ 0 , 1 ] , [ 1 , 1 ] , [ 1 , 0 ] ]</code><br>另一种是地球相关的面，采用的geojson的形式。mongodb从2.4开始支持geojson，到2.6 geojson的几何类型基本可以全部表达。</p>
-<p>有关geojson标准可以参考：<a class="link"   target="_blank" rel="noopener" href="http://gishub.info/2016/02/29/geojson/" >需要了解的geojson和操作工具<i class="fas fa-external-link-alt"></i></a></p>
+<p>有关geojson标准可以参考：<a target="_blank" rel="noopener" href="http://gishub.info/2016/02/29/geojson/">需要了解的geojson和操作工具</a></p>
 <p>本文肯定是使用geojson的。。</p>
 <p>##空间索引</p>
 <p>mongodb的空间索引有三类，针对不同的情形。有的操作是必须要指定采用的索引类型。</p>
 <ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/2d/" >2d Index<i class="fas fa-external-link-alt"></i></a>针对mongodb 2.2 以前的版本数据使用legancy coordinate pairs存储。</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/2dsphere/" >2d Sphere Index <i class="fas fa-external-link-alt"></i></a> 用来对sphere的数据进行构建索。本文我们肯定是使用这个索引得。</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/geohaystack/" >Geo Haystack<i class="fas fa-external-link-alt"></i></a>适合用来对小范围的数据进行索引。在Euclide平面中使用的效率比sphere的效率高。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/2d/">2d Index</a>针对mongodb 2.2 以前的版本数据使用legancy coordinate pairs存储。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/2dsphere/">2d Sphere Index </a> 用来对sphere的数据进行构建索。本文我们肯定是使用这个索引得。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/geohaystack/">Geo Haystack</a>适合用来对小范围的数据进行索引。在Euclide平面中使用的效率比sphere的效率高。</li>
 </ul>
 <p>##数据准备</p>
-<p>###创建geojson数据<br>为了简便，通过 <a class="link"   target="_blank" rel="noopener" href="http://geojson.io/" >geojson.io<i class="fas fa-external-link-alt"></i></a>在线网站中生成本次实验的geojson。数据情形如下图所示<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/mongodb1.jpg"></p>
+<p>###创建geojson数据<br>为了简便，通过 <a target="_blank" rel="noopener" href="http://geojson.io/">geojson.io</a>在线网站中生成本次实验的geojson。数据情形如下图所示<br><img src="http://7xovpf.com1.z0.glb.clouddn.com/mongodb1.jpg"></p>
 <p>###mongodb将数据入库</p>
 <p>建立了三个collection，并将每个feature以一个document的形式插入。Geometry的key为“loc”。如下所示</p>
 <pre class="line-numbers language-none"><code class="language-none">db.testpoint.insert(&#123;
@@ -252,196 +118,23 @@ db<span class="token punctuation">.</span>testpoint<span class="token punctuatio
     <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>返回的记录按照距离的从近到远进行排列。</p>
 <p>##更多参考</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/applications/geospatial-indexes/" >Geospatial Indexes and Queries<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="http://blog.mlab.com/2014/08/a-primer-on-geospatial-data-and-mongodb/" >A Primer on Geospatial Data and MongoDB<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="http://tugdualgrall.blogspot.jp/2014/08/introduction-to-mongodb-geospatial.html" >tug’s blog introduction-to-mongodb-geospatial<i class="fas fa-external-link-alt"></i></a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/applications/geospatial-indexes/">Geospatial Indexes and Queries</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.mlab.com/2014/08/a-primer-on-geospatial-data-and-mongodb/">A Primer on Geospatial Data and MongoDB</a></p>
+<p><a target="_blank" rel="noopener" href="http://tugdualgrall.blogspot.jp/2014/08/introduction-to-mongodb-geospatial.html">tug’s blog introduction-to-mongodb-geospatial</a></p>
 
-        </div>
+  </div>
+  <footer class="post-foot">
+    <a class="back" href="/">‹ back to all posts</a>
+  </footer>
+</article>
 
-        
-
-        
-            <ul class="post-tags-box">
-                
-                    <li class="tag-item">
-                        <a href="/tags/opensource/">#opensource</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item">
-                        <a href="/tags/database/">#database</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item">
-                        <a href="/tags/mongodb/">#mongodb</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-            <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2016/06/14/2016-06-14_mongodb-CURD/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Mongodb文档的CURD操作</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2016/05/23/2016-05-23_mongodb%20%E6%B7%BB%E5%8A%A0%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Mongodb 添加安全设置</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
-    </div>
-</div>
-
-
-                
-            </div>
-
-        </div>
-
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-              <span>2020</span>
-              -
-            
-            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Minbin Jiang</a>
-        </div>
-        
-        <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
-        </div>
-        
-        
-    </div>
+  </main>
+  <footer class="footer">
+  <div class="footer-inner">
+    <span>© 2026 mjiang · <span class="footer-tag">// minbin&#39;s notebook</span></span>
+    <span><a href="https://minbin.jfamily.com.au/" target="_blank" rel="noopener">profile</a> · <a href="https://github.com/suwenjiang" target="_blank" rel="noopener">github</a></span>
+  </div>
 </footer>
-
-        </div>
-    </div>
-
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
-    
-
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
-
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
-
-        <li class="tools-item tool-expand-width flex-center">
-            <i class="fas fa-arrows-alt-h"></i>
-        </li>
-
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-
-</main>
-
-
-
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/main.js"></script>
-
-<script src="/js/header-shrink.js"></script>
-
-<script src="/js/back2top.js"></script>
-
-<script src="/js/dark-light-toggle.js"></script>
-
-
-
-
-
-
-
-
-<div class="post-scripts">
-    
-</div>
-
-
 
 </body>
 </html>
