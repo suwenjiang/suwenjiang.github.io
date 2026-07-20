@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://suwenjiang.github.io/sitemap.xml
+Sitemap: https://blog.geoops.dev/sitemap.xml
