@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2019/10/21/2019-10-21_deploy_static_files_in_nginx_docker/</loc>
-    
-    <lastmod>2026-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2022/03/15/2022-03-15_deploy_hexo_in_github_actions/</loc>
     
     <lastmod>2026-08-03</lastmod>
@@ -29,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2018/12/20/2022-03_Esri_Dev_Summit_Notes/</loc>
+    <loc>https://blog.geoops.dev/2019/10/21/2019-10-21_deploy_static_files_in_nginx_docker/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -39,6 +30,15 @@
   
   <url>
     <loc>https://blog.geoops.dev/2022/03/15/2022-03_Use_Bigquery_in_ArcGIS/</loc>
+    
+    <lastmod>2026-08-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2018/12/20/2022-03_Esri_Dev_Summit_Notes/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -93,6 +93,15 @@
   
   <url>
     <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
+    
+    <lastmod>2026-08-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -200,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2016/05/09/2016-05-09-jsapinews/</loc>
+    <loc>https://blog.geoops.dev/2016/05/22/2016-05-22_briefhistory2/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -209,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2016/05/22/2016-05-22_briefhistory2/</loc>
+    <loc>https://blog.geoops.dev/2016/05/09/2016-05-09-jsapinews/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -236,15 +245,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2016/06/14/2016-06-14_mongodb-spatial-query/</loc>
-    
-    <lastmod>2026-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2016/10/12/2016-10-12_12%E5%BC%BA%E8%B5%9B/</loc>
     
     <lastmod>2026-08-03</lastmod>
@@ -255,6 +255,15 @@
   
   <url>
     <loc>https://blog.geoops.dev/2016/11/14/2016-11-14_%E7%94%B1%E5%B7%9D%E6%99%AE%E5%BD%93%E9%80%89%E5%BC%95%E5%8F%91%E7%9A%84%E5%90%84%E7%A7%8D%E4%B9%B1%E5%85%A5/</loc>
+    
+    <lastmod>2026-08-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/06/14/2016-06-14_mongodb-spatial-query/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -299,7 +308,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2017/07/21/2017-07-21_Moving%20saved%20projects%20between%20sites/</loc>
+    <loc>https://blog.geoops.dev/2017/05/23/2017-05-23_%E6%BE%B3%E8%B6%85%EF%BC%9A%E6%B5%A9%E5%85%8B%EF%BC%8C%E5%A5%A5%E6%96%AF%E5%8D%A1%E5%BC%80%E5%BE%80%E8%A5%BF%E6%82%89%E5%B0%BC/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -308,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2017/05/23/2017-05-23_%E6%BE%B3%E8%B6%85%EF%BC%9A%E6%B5%A9%E5%85%8B%EF%BC%8C%E5%A5%A5%E6%96%AF%E5%8D%A1%E5%BC%80%E5%BE%80%E8%A5%BF%E6%82%89%E5%B0%BC/</loc>
+    <loc>https://blog.geoops.dev/2017/07/21/2017-07-21_Moving%20saved%20projects%20between%20sites/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -363,15 +372,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/2019/08/08/2019-08-08_hexo-into-S3/</loc>
-    
-    <lastmod>2026-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
     
     <lastmod>2026-08-03</lastmod>
     
@@ -585,6 +585,13 @@
   </url>
   
   <url>
+    <loc>https://blog.geoops.dev/tags/football-news/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.geoops.dev/tags/GVH/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -600,13 +607,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/Workaround/</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/football-news/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -676,20 +676,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/tags/nginx/</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/Geek/</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/tags/hexo/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -705,6 +691,20 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/S3/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/Geek/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/nginx/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
