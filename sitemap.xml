@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2019/08/03/2019-08-03-how-to-configure-domain-in-aws-router-53/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2019/08/08/2019-08-08_hexo-into-S3/</loc>
     
     <lastmod>2026-08-16</lastmod>
@@ -65,6 +56,15 @@
   </url>
   
   <url>
+    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.geoops.dev/2022/05/16/2022-05-16_Notes_using_conda/</loc>
     
     <lastmod>2026-08-16</lastmod>
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/</loc>
+    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_mac_soft_gallery/</loc>
     
     <lastmod>2026-08-16</lastmod>
     
@@ -101,15 +101,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_mac_soft_gallery/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
     
     <lastmod>2026-08-16</lastmod>
@@ -119,133 +110,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2013/09/17/2013-09-17_printingtools/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2015/07/23/2015-07-23-introduction/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2015/04/19/2015-04-19_selfcontrol/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2015/08/21/2015-08-21_python-code/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2015/08/26/2015-08-26_batchPublishtools/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2015/10/13/2015-10-13_log-format-tool/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2015/10/21/2015-10-21_reconstruct-site/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/02/29/2016-02-29_deletefile/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/02/29/2016-02-29_geojson/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/03/01/2016-03-01_jsdomain/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/05/07/2016-05-07_briefhistory1/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/05/09/2016-05-09-jsapinews/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/05/23/2016-05-23_mongodb%20%E6%B7%BB%E5%8A%A0%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/05/22/2016-05-22_briefhistory2/</loc>
+    <loc>https://blog.geoops.dev/2016/06/14/2016-06-14_mongodb-CURD/</loc>
     
     <lastmod>2026-08-16</lastmod>
     
@@ -255,15 +120,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/2016/06/14/2016-06-14_mongodb-spatial-query/</loc>
-    
-    <lastmod>2026-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2016/06/14/2016-06-14_mongodb-CURD/</loc>
     
     <lastmod>2026-08-16</lastmod>
     
@@ -379,6 +235,150 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://blog.geoops.dev/2019/08/03/2019-08-03-how-to-configure-domain-in-aws-router-53/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2013/09/17/2013-09-17_printingtools/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2015/04/19/2015-04-19_selfcontrol/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2015/07/23/2015-07-23-introduction/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2015/08/21/2015-08-21_python-code/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2015/08/26/2015-08-26_batchPublishtools/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2015/10/13/2015-10-13_log-format-tool/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2015/10/21/2015-10-21_reconstruct-site/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/02/29/2016-02-29_deletefile/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/02/29/2016-02-29_geojson/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/03/01/2016-03-01_jsdomain/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/05/07/2016-05-07_briefhistory1/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/05/09/2016-05-09-jsapinews/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/05/22/2016-05-22_briefhistory2/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2016/05/23/2016-05-23_mongodb%20%E6%B7%BB%E5%8A%A0%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81/</loc>
+    
+    <lastmod>2026-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>https://blog.geoops.dev/</loc>
@@ -424,20 +424,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/tags/arcgis/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/SOI/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/tags/%E9%98%85%E8%AF%BB/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -446,6 +432,20 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/arcgis/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/SOI/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -725,13 +725,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/tags/python-conda/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/tags/Poetry/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -740,6 +733,27 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/Azure/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/python-conda/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/Software/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/Mac/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -768,20 +782,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/Fedora/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/Software/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/Mac/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
