@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2015/07/23/2015-07-23-introduction/</loc>
+    <loc>https://blog.geoops.dev/2015/08/21/2015-08-21_python-code/</loc>
     
     <lastmod>2026-09-17</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2015/08/21/2015-08-21_python-code/</loc>
+    <loc>https://blog.geoops.dev/2015/07/23/2015-07-23-introduction/</loc>
     
     <lastmod>2026-09-17</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2016/12/23/2016-12_%E6%88%91%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E5%BA%9E%E6%B0%8F%E9%AA%97%E5%B1%80/</loc>
+    <loc>https://blog.geoops.dev/2017/05/23/2017-05-23_AFL%20%E7%9F%A5%E5%A4%9A%E5%B0%91/</loc>
     
     <lastmod>2026-09-17</lastmod>
     
@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2017/05/23/2017-05-23_AFL%20%E7%9F%A5%E5%A4%9A%E5%B0%91/</loc>
+    <loc>https://blog.geoops.dev/2016/12/23/2016-12_%E6%88%91%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E5%BA%9E%E6%B0%8F%E9%AA%97%E5%B1%80/</loc>
     
     <lastmod>2026-09-17</lastmod>
     
@@ -317,6 +317,15 @@
   </url>
   
   <url>
+    <loc>https://blog.geoops.dev/2022/05/16/2022-05-16_Notes_using_conda/</loc>
+    
+    <lastmod>2026-09-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.geoops.dev/2022/03/15/2022-03_Use_Bigquery_in_ArcGIS/</loc>
     
     <lastmod>2026-09-17</lastmod>
@@ -326,7 +335,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2022/05/16/2022-05-16_Notes_using_conda/</loc>
+    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_mac_soft_gallery/</loc>
     
     <lastmod>2026-09-17</lastmod>
     
@@ -345,15 +354,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/2022/06/17/2022-06-17_Delete%20script%20of%20Geocortex%20Reporting/</loc>
-    
-    <lastmod>2026-09-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_mac_soft_gallery/</loc>
     
     <lastmod>2026-09-17</lastmod>
     
@@ -438,6 +438,13 @@
   </url>
   
   <url>
+    <loc>https://blog.geoops.dev/tags/python/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.geoops.dev/tags/arcgis/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -446,13 +453,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/SOI/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/python/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -711,6 +711,13 @@
   </url>
   
   <url>
+    <loc>https://blog.geoops.dev/tags/python-conda/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.geoops.dev/tags/koop/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -725,7 +732,14 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/tags/python-conda/</loc>
+    <loc>https://blog.geoops.dev/tags/Software/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/Mac/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -754,20 +768,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/Reporting/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/Software/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/Mac/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
