@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2018/12/20/2022-03_Esri_Dev_Summit_Notes/</loc>
-    
-    <lastmod>2026-11-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2022/03/15/2022-03_Use_Bigquery_in_ArcGIS/</loc>
     
     <lastmod>2026-11-01</lastmod>
@@ -75,6 +66,15 @@
   
   <url>
     <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
+    
+    <lastmod>2026-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
     
     <lastmod>2026-11-01</lastmod>
     
@@ -371,7 +371,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
+    <loc>https://blog.geoops.dev/2018/12/20/2022-03_Esri_Dev_Summit_Notes/</loc>
     
     <lastmod>2026-11-01</lastmod>
     
