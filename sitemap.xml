@@ -11,42 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/</loc>
-    
-    <lastmod>2026-11-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_mac_soft_gallery/</loc>
-    
-    <lastmod>2026-11-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2022/06/17/2022-06-17_Delete%20script%20of%20Geocortex%20Reporting/</loc>
-    
-    <lastmod>2026-11-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2022/08/12/2022-08-12-Touchscreen_not_working_fedora/</loc>
-    
-    <lastmod>2026-11-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
     
     <lastmod>2026-11-04</lastmod>
@@ -263,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2017/05/23/2017-05-23_%E6%BE%B3%E8%B6%85%EF%BC%9A%E6%B5%A9%E5%85%8B%EF%BC%8C%E5%A5%A5%E6%96%AF%E5%8D%A1%E5%BC%80%E5%BE%80%E8%A5%BF%E6%82%89%E5%B0%BC/</loc>
+    <loc>https://blog.geoops.dev/2017/07/21/2017-07-21_Moving%20saved%20projects%20between%20sites/</loc>
     
     <lastmod>2026-11-04</lastmod>
     
@@ -272,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2017/07/21/2017-07-21_Moving%20saved%20projects%20between%20sites/</loc>
+    <loc>https://blog.geoops.dev/2017/05/23/2017-05-23_%E6%BE%B3%E8%B6%85%EF%BC%9A%E6%B5%A9%E5%85%8B%EF%BC%8C%E5%A5%A5%E6%96%AF%E5%8D%A1%E5%BC%80%E5%BE%80%E8%A5%BF%E6%82%89%E5%B0%BC/</loc>
     
     <lastmod>2026-11-04</lastmod>
     
@@ -372,6 +336,42 @@
   
   <url>
     <loc>https://blog.geoops.dev/2022/05/16/2022-05-16_Notes_using_conda/</loc>
+    
+    <lastmod>2026-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/</loc>
+    
+    <lastmod>2026-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2022/06/17/2022-06-17_Delete%20script%20of%20Geocortex%20Reporting/</loc>
+    
+    <lastmod>2026-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_mac_soft_gallery/</loc>
+    
+    <lastmod>2026-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2022/08/12/2022-08-12-Touchscreen_not_working_fedora/</loc>
     
     <lastmod>2026-11-04</lastmod>
     
@@ -585,13 +585,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/tags/football-news/</loc>
-    <lastmod>2026-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/tags/GVH/</loc>
     <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -607,6 +600,13 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/Workaround/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/football-news/</loc>
     <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -746,20 +746,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/tags/Software/</loc>
-    <lastmod>2026-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/Mac/</loc>
-    <lastmod>2026-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/tags/Geocortex/</loc>
     <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -768,6 +754,20 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/Reporting/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/Software/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/tags/Mac/</loc>
     <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
