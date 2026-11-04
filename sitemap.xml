@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2022/05/16/2022-05-16_Notes_using_conda/</loc>
-    
-    <lastmod>2026-11-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2022/05/23/2022-05-23_Configure%20Poetry%20in%20Azure%20Pipeline/</loc>
     
     <lastmod>2026-11-04</lastmod>
@@ -372,6 +363,15 @@
   
   <url>
     <loc>https://blog.geoops.dev/2022/03/15/2022-03_Use_Bigquery_in_ArcGIS/</loc>
+    
+    <lastmod>2026-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2022/05/16/2022-05-16_Notes_using_conda/</loc>
     
     <lastmod>2026-11-04</lastmod>
     
