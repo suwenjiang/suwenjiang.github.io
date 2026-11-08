@@ -11,7 +11,16 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
+    <loc>https://blog.geoops.dev/2017/10/29/2017-10-29_docker_mount_share_directory/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2018/12/20/2018-12-20_before%20the%20end%20of%202018/</loc>
     
     <lastmod>2026-11-08</lastmod>
     
@@ -111,6 +120,15 @@
   
   <url>
     <loc>https://blog.geoops.dev/2022/08/12/2022-08-12-Touchscreen_not_working_fedora/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
     
     <lastmod>2026-11-08</lastmod>
     
@@ -354,24 +372,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/2017/10/15/2017-10-15_unable-to-run-rc-local/</loc>
-    
-    <lastmod>2026-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2017/10/29/2017-10-29_docker_mount_share_directory/</loc>
-    
-    <lastmod>2026-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2018/12/20/2018-12-20_before%20the%20end%20of%202018/</loc>
     
     <lastmod>2026-11-08</lastmod>
     
