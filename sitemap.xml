@@ -11,6 +11,42 @@
   </url>
   
   <url>
+    <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2017/07/21/2017-07-21_Moving%20saved%20projects%20between%20sites/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2017/09/17/2017-09-17_%E4%BC%A0%E5%A5%87%E5%8D%A1%E5%B8%8C%E5%B0%94%E5%A4%A7%E6%8F%AD%E5%AF%86/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.geoops.dev/2017/10/15/2017-10-15_unable-to-run-rc-local/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.geoops.dev/2017/10/29/2017-10-29_docker_mount_share_directory/</loc>
     
     <lastmod>2026-11-13</lastmod>
@@ -120,15 +156,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/2022/08/12/2022-08-12-Touchscreen_not_working_fedora/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2023/05/15/2023-05-15_geobookmarks/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -345,33 +372,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/2017/05/23/2017-05-23_%E6%BE%B3%E8%B6%85%EF%BC%9A%E6%B5%A9%E5%85%8B%EF%BC%8C%E5%A5%A5%E6%96%AF%E5%8D%A1%E5%BC%80%E5%BE%80%E8%A5%BF%E6%82%89%E5%B0%BC/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2017/07/21/2017-07-21_Moving%20saved%20projects%20between%20sites/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2017/09/17/2017-09-17_%E4%BC%A0%E5%A5%87%E5%8D%A1%E5%B8%8C%E5%B0%94%E5%A4%A7%E6%8F%AD%E5%AF%86/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/2017/10/15/2017-10-15_unable-to-run-rc-local/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
