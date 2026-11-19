@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
-    
-    <lastmod>2026-11-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.geoops.dev/2013/09/17/2013-09-17_printingtools/</loc>
     
     <lastmod>2026-11-19</lastmod>
@@ -101,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2016/03/01/2016-03-01_jsdomain/</loc>
+    <loc>https://blog.geoops.dev/2016/05/07/2016-05-07_briefhistory1/</loc>
     
     <lastmod>2026-11-19</lastmod>
     
@@ -110,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://blog.geoops.dev/2016/05/07/2016-05-07_briefhistory1/</loc>
+    <loc>https://blog.geoops.dev/2016/03/01/2016-03-01_jsdomain/</loc>
     
     <lastmod>2026-11-19</lastmod>
     
@@ -379,6 +370,15 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://blog.geoops.dev/2013/03/07/2013-03-07_postgisinstallation/</loc>
+    
+    <lastmod>2026-11-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>https://blog.geoops.dev/</loc>
@@ -522,6 +522,13 @@
   </url>
   
   <url>
+    <loc>https://blog.geoops.dev/tags/%E5%8E%86%E5%8F%B2/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.geoops.dev/tags/javascript/</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -530,13 +537,6 @@
   
   <url>
     <loc>https://blog.geoops.dev/tags/scope/</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.geoops.dev/tags/%E5%8E%86%E5%8F%B2/</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
